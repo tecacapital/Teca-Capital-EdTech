@@ -1,443 +1,821 @@
 <!DOCTYPE html>
-<html lang="pt-ao">
+<html lang="pt-AO">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Teca Capital - Simuladores</title>
+    <title>Teca Capital - Simuladores Educacionais Interativos</title>
     <link rel="icon" href="Icon/Teca Capital favicon.png" type="image/x-icon">
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/simuladores.css">
 </head>
 <body>
-
-    <header>
-        <div id="logotipo"><img src="Imagem/Teca Capital Logo Atualizado - Copia.png" width="15%" alt="logo da Teca Capital"></div>
-        <nav>
-            <ul>
+    <!-- HEADER PADRÃO (EXATAMENTE COMO NO CONTEXTO) -->
+    <header class="site-header">
+        <div class="logo-container">
+            <a href="index.html">
+                <img src="Icon/Teca Capital favicon.png" 
+                     alt="Teca Capital" 
+                     class="site-logo">
+            </a>
+        </div>
+        
+        <nav class="main-nav desktop-nav">
+            <ul class="nav-list">
                 <li><a href="index.html">Página Inicial</a></li>
                 <li><a href="biblioteca.html">Biblioteca</a></li>
-                <li><a href="simuladores.html">Simuladores</a></li>
+                <li><a href="simuladores.html" class="active">Simuladores</a></li>
                 <li><a href="sobre.html">+Sobre Nós</a></li>
                 <li><a href="login-cadastramento.html">Login/Cadastro</a></li>
-                <li><a href="raking.html">Raking</a></li>
+                <li><a href="ranking.html">Ranking</a></li>
                 <li><a href="admin.html">Administrador</a></li>
             </ul>
         </nav>
+        
+        <button class="menu-toggle mobile-nav-toggle" aria-label="Menu">
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+        </button>
+        
+        <div class="mobile-nav-overlay">
+            <nav class="mobile-nav">
+                <ul class="mobile-nav-list">
+                    <li><a href="index.html">Página Inicial</a></li>
+                    <li><a href="biblioteca.html">Biblioteca</a></li>
+                    <li><a href="simuladores.html" class="active">Simuladores</a></li>
+                    <li><a href="sobre.html">+Sobre Nós</a></li>
+                    <li><a href="login-cadastramento.html">Login/Cadastro</a></li>
+                    <li><a href="ranking.html">Ranking</a></li>
+                    <li><a href="admin.html">Administrador</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
     
-    
-    <main>
+    <!-- CONTEÚDO PRINCIPAL DOS SIMULADORES -->
+    <main class="page-content">
+        <!-- SEÇÃO 1: CABEÇALHO DOS SIMULADORES -->
+        <section class="simulators-header fade-in">
+            <div class="container">
+                <div class="simulator-icon">
+                    <i class="fas fa-gamepad"></i>
+                </div>
+                <h1 class="simulator-title">Nossos <span class="highlight">Simuladores Educacionais</span> Interativos</h1>
+                <p class="simulator-subtitle">
+                    Explore nossos simuladores educacionais interativos, criados para transformar conceitos teóricos em experiências práticas e visuais. 
+                    Cada simulador permite aprender de forma autónoma, sem riscos, experimentando cenários reais da economia, gestão e mercado financeiro 
+                    em um ambiente seguro e intuitivo.
+                </p>
+            </div>
+        </section>
         
-        <h1>Nossos Simuladores</h1>
-
-        <p class="page-description">
-            Explore nossos <span class="highlight">simuladores educacionais interativos</span>, criados para transformar conceitos teóricos em experiências práticas e visuais. 
-            Cada simulador permite aprender de forma autónoma, <span class="highlight">sem riscos</span>, experimentando cenários reais da economia, gestão e mercado financeiro em um ambiente seguro e intuitivo.
-        </p>
-
-        <div id="simuladores">
-            <!-- SIMULADOR DE CONTABILIDADE -->
-            <div class="simulador-card simulador-contabilidade">
-                <div class="simulador-badge">Para Contabilista</div>
-                <div class="simulador-icon"><img src="Icon/Contabilidade.png" width="70%" alt=""></div>
-                <h2 class="simulador-title">Contabilidade Prática</h2>
-                <p class="simulador-description">
-                    Aprenda os fundamentos da contabilidade de forma prática! Este simulador ensina como registrar transações, 
-                    elaborar balanços patrimoniais e entender demonstrações financeiras. Ideal para pequenos empreendedores 
-                    e estudantes que desejam dominar a linguagem dos negócios.
-                </p>
-                <a href="simulador-de-contabilidade.html" class="simulador-link">
-                    <button class="simulador-button">
-                        Acessar Simulador
-                        <span class="button-icon">→</span>
-                    </button>
-                </a>
+        <!-- SEÇÃO 2: GRID DOS 6 SIMULADORES -->
+        <section class="simulators-grid-section fade-in">
+            <div class="container">
+                <div class="simulators-grid">
+                    <!-- Simulador 1: Contabilidade Prática -->
+                    <div class="simulator-card">
+                        <div class="simulator-badge badge-contabilista">Para Contabilista</div>
+                        <div class="simulator-icon-container">
+                            <img src="Icon/Contabilidade.png" alt="Ícone de Contabilidade" class="simulator-icon-image">
+                        </div>
+                        <div class="simulator-content">
+                            <h3 class="simulator-card-title">Contabilidade Prática</h3>
+                            <p class="simulator-description">
+                                Aprenda os fundamentos da contabilidade de forma prática! Este simulador ensina como registrar transações, 
+                                elaborar balanços patrimoniais e entender demonstrações financeiras. Ideal para pequenos empreendedores 
+                                e estudantes que desejam dominar a linguagem dos negócios.
+                            </p>
+                            <a href="simulador-de-contabilidade.html" class="btn btn-primary">Acessar Simulador</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Simulador 2: Estudo de Viabilidade -->
+                    <div class="simulator-card">
+                        <div class="simulator-badge badge-financeiro">Para Financeiro</div>
+                        <div class="simulator-icon-container">
+                            <img src="Icon/pesquisa-de-mercado.png" alt="Ícone de Pesquisa de Mercado" class="simulator-icon-image">
+                        </div>
+                        <div class="simulator-content">
+                            <h3 class="simulator-card-title">Estudo de Viabilidade</h3>
+                            <p class="simulator-description">
+                                Descubra se seu negócio é viável antes de investir! Analise mercados, projete receitas, calcule custos 
+                                e determine o retorno sobre investimento. Ferramenta essencial para quem planeja abrir uma empresa 
+                                ou lançar um novo produto no mercado.
+                            </p>
+                            <a href="simulador-de-estudo-de-viabilidade.html" class="btn btn-primary">Analisar Viabilidade</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Simulador 3: Mercados Financeiros -->
+                    <div class="simulator-card">
+                        <div class="simulator-badge badge-investidores">Para Investidores</div>
+                        <div class="simulator-icon-container">
+                            <img src="Icon/mercado financeiro.png" alt="Ícone de Mercado Financeiro" class="simulator-icon-image">
+                        </div>
+                        <div class="simulator-content">
+                            <h3 class="simulator-card-title">Mercados Financeiros</h3>
+                            <p class="simulator-description">
+                                Entre no mundo dos investimentos sem riscos! Simule operações com ações, criptomoedas, títulos e ETFs. 
+                                Aprenda sobre análise técnica, diversificação de carteira e gestão de riscos em um ambiente controlado 
+                                que replica as variações do mercado real.
+                            </p>
+                            <a href="simulador-de-investimentos.html" class="btn btn-primary">Iniciar Investimentos</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Simulador 4: Quiz do Mercado -->
+                    <div class="simulator-card">
+                        <div class="simulator-badge badge-todos">Para Todos</div>
+                        <div class="simulator-icon-container">
+                            <div class="simulator-icon-emoji">🧠</div>
+                        </div>
+                        <div class="simulator-content">
+                            <h3 class="simulator-card-title">Quiz do Mercado</h3>
+                            <p class="simulator-description">
+                                Teste seu conhecimento sobre o mercado angolano e global! Desafie-se com perguntas sobre economia, 
+                                finanças, negócios e atualidades. Aprenda enquanto se diverte e acompanhe seu progresso com nosso 
+                                sistema de pontuação e ranking.
+                            </p>
+                            <a href="simulador-quiz.html" class="btn btn-primary">Iniciar Quiz</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Simulador 5: Cenários Económicos -->
+                    <div class="simulator-card">
+                        <div class="simulator-badge badge-economistas">Para Economistas</div>
+                        <div class="simulator-icon-container">
+                            <img src="Icon/Decisão.png" alt="Ícone de Decisão" class="simulator-icon-image">
+                        </div>
+                        <div class="simulator-content">
+                            <h3 class="simulator-card-title">Cenários Económicos</h3>
+                            <p class="simulator-description">
+                                Faça simulação de diferentes cenários económicos, e entenda como a economia angolana funciona, como afeta o seu dinheiro, 
+                                emprego, empresa, qualidade de vida, tudo através de indicadores económicos explicados, para que possas entender como 
+                                todos os elementos estão ligados e a função e a influência do Estado em tudo.
+                            </p>
+                            <a href="cenario-economico.html" class="btn btn-primary">Cenários Económicos</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Simulador 6: Minha Empresa na Bolsa -->
+                    <div class="simulator-card">
+                        <div class="simulator-badge badge-empresas">Para Empresas</div>
+                        <div class="simulator-icon-container">
+                            <img src="Icon/Empresa.png" alt="Ícone de Empresa" class="simulator-icon-image">
+                        </div>
+                        <div class="simulator-content">
+                            <h3 class="simulator-card-title">Minha Empresa na Bolsa de Valores</h3>
+                            <p class="simulator-description">
+                                Faça simulação de como seria ter a sua empresa na Bolsa de Valores, entenda os benefícios e os processos todos, 
+                                desde o mercado primário ao secundário. Veja quanto a sua empresa vale, a precificação do seu ativo em tempo real. 
+                                Você pode emitir ações ou obrigações.
+                            </p>
+                            <a href="minha-empresa-na-bolsa.html" class="btn btn-primary">Empresa na Bolsa</a>
+                        </div>
+                    </div>
+                </div>
             </div>
-
-            <!-- SIMULADOR DE ESTUDO DE VIABILIDADE -->
-            <div class="simulador-card simulador-est-viabilidade">
-                <div class="simulador-badge">Para Financeiro</div>
-                <div class="simulador-icon"><img src="Icon/pesquisa-de-mercado.png" width="70%" alt=""></div>
-                <h2 class="simulador-title">Estudo de Viabilidade</h2>
-                <p class="simulador-description">
-                    Descubra se seu negócio é viável antes de investir! Analise mercados, projete receitas, calcule custos 
-                    e determine o retorno sobre investimento. Ferramenta essencial para quem planeja abrir uma empresa 
-                    ou lançar um novo produto no mercado.
-                </p>
-                <a href="simulador-de-estudo-de-viabilidade.html" class="simulador-link">
-                    <button class="simulador-button">
-                        Analisar Viabilidade
-                        <span class="button-icon">→</span>
-                    </button>
-                </a>
+        </section>
+        
+        <!-- SEÇÃO 3: SEÇÃO DE BENEFÍCIOS -->
+        <section class="benefits-section fade-in">
+            <div class="container">
+                <h2 class="section-title text-center">Por que usar nossos <span class="highlight">simuladores?</span></h2>
+                <p class="section-subtitle text-center">Vantagens da aprendizagem prática através de simulação</p>
+                
+                <div class="benefits-grid">
+                    <div class="benefit-item">
+                        <div class="benefit-icon">🎯</div>
+                        <h3 class="benefit-title">Aprendizado Prático</h3>
+                        <p class="benefit-description">
+                            Teoria aplicada na prática. Aprenda fazendo, errando e corrigindo sem riscos financeiros.
+                        </p>
+                    </div>
+                    
+                    <div class="benefit-item">
+                        <div class="benefit-icon">🛡️</div>
+                        <h3 class="benefit-title">Ambiente Seguro</h3>
+                        <p class="benefit-description">
+                            Experimente situações reais do mercado sem colocar seu dinheiro em risco.
+                        </p>
+                    </div>
+                    
+                    <div class="benefit-item">
+                        <div class="benefit-icon">📚</div>
+                        <h3 class="benefit-title">Conteúdo Educacional</h3>
+                        <p class="benefit-description">
+                            Cada simulador inclui explicações detalhadas e materiais de apoio para seu aprendizado.
+                        </p>
+                    </div>
+                    
+                    <div class="benefit-item">
+                        <div class="benefit-icon">🚀</div>
+                        <h3 class="benefit-title">Preparação Real</h3>
+                        <p class="benefit-description">
+                            Desenvolva habilidades que serão úteis no mundo real dos negócios e investimentos.
+                        </p>
+                    </div>
+                </div>
             </div>
-
-            <!-- SIMULADOR DE MERCADOS FINANCEIROS -->
-            <div class="simulador-card simulador-mercados-financeiros">
-                <div class="simulador-badge">Para Investidores</div>
-                <div class="simulador-icon"><img src="Icon/mercado financeiro.png" width="65%"  alt=""></div>
-                <h2 class="simulador-title">Mercados Financeiros</h2>
-                <p class="simulador-description">
-                    Entre no mundo dos investimentos sem riscos! Simule operações com ações, criptomoedas, títulos e ETFs. 
-                    Aprenda sobre análise técnica, diversificação de carteira e gestão de riscos em um ambiente controlado 
-                    que replica as variações do mercado real.
-                </p>
-                <a href="simulador-de-investimentos.html" class="simulador-link">
-                    <button class="simulador-button">
-                        Iniciar Investimentos
-                        <span class="button-icon">→</span>
-                    </button>
-                </a>
+        </section>
+        
+        <!-- SEÇÃO 4: EXPLICAÇÃO EDUCACIONAL -->
+        <section class="educational-explanation fade-in">
+            <div class="container">
+                <div class="explanation-content">
+                    <h2 class="section-title">O que é um <span class="highlight">simulador educacional?</span></h2>
+                    
+                    <p class="explanation-text">
+                        Um simulador educacional é uma ferramenta ou ambiente digital que replica situações do mundo real de forma controlada, 
+                        permitindo que o usuário experimente, explore e tome decisões sem os riscos associados a essas situações na prática real. 
+                        Ele vai além de um simples recurso visual, combina lógica, regras, feedback e interação para que o aprendiz possa executar ações, 
+                        ver resultados imediatos e aprender pela experiência ativa, em vez de apenas consumir informação de forma passiva (Pearson Higher Education).
+                    </p>
+                    
+                    <p class="explanation-text">
+                        No campo pedagógico, simuladores são alinhados com a aprendizagem experiencial (learning by doing), que parte da ideia de que o 
+                        conhecimento se constrói melhor quando o sujeito está diretamente engajado em resolver problemas e fazer escolhas em ambientes 
+                        que imitam aspectos essenciais do real (Pearson Higher Education).
+                    </p>
+                    
+                    <p class="explanation-text">
+                        Autoria clássica relacionada ao papel dos meios audiovisuais na aprendizagem aparece em Edgar Dale, com seu Cone da Experiência, 
+                        que enfatiza o valor de métodos audiovisuais para reforçar a aprendizagem além do texto tradicional. Ele desenvolveu metodologias 
+                        que associam filmes, imagens e experiências a melhora na retenção e compreensão do conteúdo.
+                    </p>
+                    
+                    <h3 class="simulator-detail-title mt-40">Educação Tradicional vs Educação Audiovisual/Digital</h3>
+                    
+                    <div class="table-responsive">
+                        <table class="comparison-table">
+                            <thead>
+                                <tr>
+                                    <th>Aspecto</th>
+                                    <th>Educação Tradicional</th>
+                                    <th>Educação Audiovisual/Digital</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Retenção de conteúdo</td>
+                                    <td>Moderada a baixa</td>
+                                    <td>Alta (multissensorial) (KCAV)</td>
+                                </tr>
+                                <tr>
+                                    <td>Flexibilidade</td>
+                                    <td>Baixa</td>
+                                    <td>Alta (acesso remoto) (online.uj.ac.za)</td>
+                                </tr>
+                                <tr>
+                                    <td>Engajamento</td>
+                                    <td>Variável</td>
+                                    <td>Elevado (interativo) (Editora Verde)</td>
+                                </tr>
+                                <tr>
+                                    <td>Personalização</td>
+                                    <td>Limitada</td>
+                                    <td>Alta (adaptação individual) (iiscientific.com)</td>
+                                </tr>
+                                <tr>
+                                    <td>Desenvolvimento de habilidades práticas</td>
+                                    <td>Média</td>
+                                    <td>Excelente (simuladores e interatividade) (KCAV)</td>
+                                </tr>
+                                <tr>
+                                    <td>Estrutura</td>
+                                    <td>Fixa</td>
+                                    <td>Flexível</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <p class="explanation-text mt-40">
+                        A proposta da Teca Capital Investimentos de usar simuladores e conteúdos audiovisuais educativos capitaliza exatamente 
+                        os pontos fortes do modelo digital:
+                    </p>
+                    
+                    <ul class="comparison-list">
+                        <li>Aprendizagem ativa e interativa: os simuladores estimulam o pensamento crítico e a aplicação prática.</li>
+                        <li>Retenção superior de conteúdo: apoiada por multimídia que engaja mais que texto ou palestra apenas.</li>
+                        <li>Flexibilidade e autonomia: permitindo ao usuário aprender quando e como quiser, essencial para adultos e profissionais em formação.</li>
+                        <li>Personalização, porque cada aluno pode navegar em conteúdo à sua velocidade e necessidade, algo que a educação tradicional nem sempre consegue oferecer. (KCAV)</li>
+                    </ul>
+                    
+                    <p class="explanation-text">
+                        A educação do presente e do futuro não é "ou tradicional ou audiovisual" é a integração inteligente dos dois. 
+                        A educação tradicional continua essencial por oferecer estrutura, base teórica, método, disciplina e raciocínio lógico, 
+                        enquanto a educação audiovisual entra para resolver o que o modelo clássico não consegue escalar bem: visualização, prática, 
+                        interação, autonomia e experimentação sem risco. Quando esses dois mundos se unem, o aprendizado deixa de ser apenas transmissão 
+                        de conteúdo e passa a ser construção ativa de conhecimento, o aluno entende o conceito, vê como ele funciona e aplica na prática.
+                    </p>
+                    
+                    <p class="explanation-text">
+                        É exatamente nesse ponto que a Teca Capital Investimentos se destaca. A plataforma nasce para fundir teoria sólida com tecnologia 
+                        audiovisual interativa, usando simuladores, gráficos dinâmicos, vídeos, áudios, exercícios práticos, quizzes e análise de cenários 
+                        como extensão natural do ensino tradicional. O conteúdo não substitui a base académica, ele potencializa, acelera a compreensão 
+                        e reduz a distância entre aprender e saber fazer. Com múltiplos serviços dentro desse nicho, a Teca Capital cria um ecossistema 
+                        educacional híbrido, onde aprender é entender, testar, errar, ajustar e evoluir tudo no mesmo ambiente, isso não é tendência, é direção.
+                    </p>
+                </div>
             </div>
-
-            <!-- SIMULADOR DE QUIZ -->
-            <div class="simulador-card simulador-quiz">
-                <div class="simulador-badge">Para Todos</div>
-                <div class="simulador-icon">🧠</div>
-                <h2 class="simulador-title">Quiz do Mercado</h2>
-                <p class="simulador-description">
-                    Teste seu conhecimento sobre o mercado angolano e global! Desafie-se com perguntas sobre economia, 
-                    finanças, negócios e atualidades. Aprenda enquanto se diverte e acompanhe seu progresso com nosso 
-                    sistema de pontuação e ranking.
-                </p>
-                <a href="simulador-quiz.html" class="simulador-link">
-                    <button class="simulador-button">
-                        Iniciar Quiz
-                        <span class="button-icon">→</span>
-                    </button>
-                </a>
+        </section>
+        
+        <!-- SEÇÃO 5: MULTIMÍDIA INTEGRADA -->
+        <section class="multimedia-section fade-in">
+            <div class="container">
+                <div class="multimedia-grid">
+                    <!-- 5.1 Vídeo Principal -->
+                    <div class="multimedia-item">
+                        <h3 class="multimedia-title">Apresentação em Vídeo do Nosso Principal Serviço</h3>
+                        <div class="video-container">
+                            <video controls preload="metadata">
+                                <source src="Video/O_Poder_de_Aprender_Fazendo.mp4" type="video/mp4">
+                                Seu navegador não suporta o elemento de vídeo.
+                            </video>
+                        </div>
+                    </div>
+                    
+                    <!-- 5.2 Infográfico Interativo -->
+                    <div class="multimedia-item">
+                        <h3 class="multimedia-title">Infográfico</h3>
+                        <div class="infographic-container">
+                            <img src="Imagem/Aprender fazendo Teca Capital Investimentos.png" 
+                                 alt="Infográfico - Aprender Fazendo Teca Capital Investimentos" 
+                                 class="infographic-image"
+                                 id="infographic-image">
+                            <p class="mb-20">Clique na imagem para visualizar em tela cheia</p>
+                        </div>
+                    </div>
+                    
+                    <!-- 5.3 Slideshow dos Simuladores -->
+                    <div class="multimedia-item" style="grid-column: span 2;">
+                        <h3 class="multimedia-title">Apresentação dos Nossos Simuladores</h3>
+                        <div class="slideshow-container">
+                            <div class="slideshow" id="slideshow">
+                                <!-- Slides serão inseridos via JavaScript -->
+                            </div>
+                            <div class="slideshow-controls">
+                                <button class="btn-icon prev-btn" aria-label="Imagem anterior">
+                                    <i class="fas fa-chevron-left"></i>
+                                </button>
+                                <div class="slide-counter">
+                                    <span id="currentSlide">1</span> / <span id="totalSlides">14</span>
+                                </div>
+                                <button class="btn-icon next-btn" aria-label="Próxima imagem">
+                                    <i class="fas fa-chevron-right"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 5.4 Podcast Educacional -->
+                    <div class="multimedia-item" style="grid-column: span 2;">
+                        <h3 class="multimedia-title">Mini-Podcast - Teca Capital</h3>
+                        <p class="mb-20">Uma breve conversa sobre educação audiovisual e simuladores educacionais</p>
+                        <div class="audio-container">
+                            <audio controls preload="metadata">
+                                <source src="audio/Simuladores_Teca_Capital__Ponte_Teoria_Prática.m4a" type="audio/mpeg">
+                                Seu navegador não suporta o elemento de áudio.
+                            </audio>
+                        </div>
+                    </div>
+                </div>
             </div>
-
-             <!-- SIMULADOR DE CENÁRIO ECONOMICO -->
-            <div class="simulador-card simulador-quiz">
-                <div class="simulador-badge">Para Economistas</div>
-                <div class="simulador-icon"><img src="Icon/Decisão.png" width="70%" alt=""></div>
-                <h2 class="simulador-title">Cenários Economicos</h2>
-                <p class="simulador-description">
-                    Faça de simulação de diferentes cenários económicos, e entenda como a economia angolana funciona, como afeta o seu dinheiro, emprego, empresa, qualidade de vida, tudo através de indicadores económicos explicados, para que possas entender como todos os elementos estão ligados e a função e a influência do Estado em tudo.
-                </p>
-                <a href="cenario-economico.html" class="simulador-link">
-                    <button class="simulador-button">
-                        Cenários Económicos
-                        <span class="button-icon">→</span>
-                    </button>
-                </a>
+        </section>
+        
+        <!-- SEÇÃO 6: DETALHAMENTO DOS SIMULADORES -->
+        <section class="details-section fade-in">
+            <div class="container">
+                <div class="details-content">
+                    <h2 class="section-title">O simulador da Teca Capital Investimentos: <span class="highlight">o que é e como funciona</span></h2>
+                    
+                    <p class="explanation-text mb-40">
+                        A Teca Capital Investimentos disponibiliza atualmente seis simuladores educacionais, todos focados nas Ciências Económicas, 
+                        concebidos para transformar teoria em prática por meio de interação direta, análise de dados e experimentação sem risco. 
+                        Cada simulador funciona como um laboratório digital, permitindo que o usuário compreenda como os conceitos funcionam no mundo real. 
+                        No futuro, essa mesma lógica será expandida para áreas como saúde, agricultura, engenharia e outros setores estratégicos.
+                    </p>
+                    
+                    <div class="simulator-detail">
+                        <h3 class="simulator-detail-title">1. Simulador de Contabilidade Prática</h3>
+                        <p class="simulator-detail-description">
+                            Este simulador foi criado para ensinar a linguagem dos negócios de forma aplicada. O usuário aprende a registrar transações, 
+                            compreender débitos e créditos, elaborar balanços patrimoniais, demonstrações de resultados e interpretar informações financeiras essenciais. 
+                            É ideal para estudantes, empreendedores e gestores que precisam entender como a contabilidade reflete a realidade financeira de uma empresa e apoia a tomada de decisões.
+                        </p>
+                    </div>
+                    
+                    <div class="simulator-detail">
+                        <h3 class="simulator-detail-title">2. Simulador de Estudo de Viabilidade</h3>
+                        <p class="simulator-detail-description">
+                            Aqui o foco é responder à pergunta-chave de qualquer projeto: vale a pena investir? O simulador permite analisar mercados, projetar receitas, 
+                            estimar custos, calcular lucros e retorno sobre o investimento (ROI). O usuário pode testar diferentes cenários antes de investir dinheiro real, 
+                            tornando a ferramenta essencial para quem pretende abrir um negócio, expandir uma empresa ou lançar um novo produto.
+                        </p>
+                    </div>
+                    
+                    <div class="simulator-detail">
+                        <h3 class="simulator-detail-title">3. Simulador de Mercados Financeiros</h3>
+                        <p class="simulator-detail-description">
+                            Este ambiente replica o funcionamento do mercado financeiro de forma controlada. O usuário pode simular investimentos em ações, 
+                            criptomoedas, títulos e ETFs, aprendendo na prática sobre diversificação de carteira, análise de risco, volatilidade e comportamento do mercado. 
+                            O objetivo é ensinar como investir de forma consciente, estratégica e sem exposição a perdas reais.
+                        </p>
+                    </div>
+                    
+                    <div class="simulator-detail">
+                        <h3 class="simulator-detail-title">4. Quiz do Mercado</h3>
+                        <p class="simulator-detail-description">
+                            O Quiz do Mercado é uma ferramenta de aprendizagem ativa, baseada em perguntas e respostas sobre economia, finanças, negócios, 
+                            mercado angolano e global. O sistema de pontuação e ranking estimula o raciocínio rápido, a revisão de conceitos e a evolução 
+                            contínua do conhecimento, tornando o aprendizado mais dinâmico e envolvente.
+                        </p>
+                    </div>
+                    
+                    <div class="simulator-detail">
+                        <h3 class="simulator-detail-title">5. Simulador de Cenários Económicos</h3>
+                        <p class="simulator-detail-description">
+                            Neste simulador, o usuário compreende como a economia funciona como um sistema interligado. São apresentados diferentes cenários económicos, 
+                            explicando indicadores como inflação, crescimento, emprego, políticas públicas e o papel do Estado. O foco é mostrar como essas variáveis 
+                            afetam o dinheiro, as empresas, o emprego e a qualidade de vida, ajudando o usuário a interpretar a economia angolana de forma clara e prática.
+                        </p>
+                    </div>
+                    
+                    <div class="simulator-detail">
+                        <h3 class="simulator-detail-title">6. Simulador "Minha Empresa na Bolsa de Valores"</h3>
+                        <p class="simulator-detail-description">
+                            Este simulador permite experimentar como seria ter uma empresa listada na Bolsa de Valores. O usuário aprende sobre os processos do mercado 
+                            primário e secundário, entende como uma empresa é avaliada, acompanha a precificação do ativo em tempo real e pode simular a emissão de 
+                            ações ou obrigações. É uma ferramenta essencial para compreender o funcionamento do mercado de capitais e o acesso das empresas ao financiamento via bolsa.
+                        </p>
+                    </div>
+                    
+                    <p class="explanation-text mt-40">
+                        Em conjunto, esses seis simuladores formam o núcleo educacional da Teca Capital Investimentos, oferecendo uma experiência prática, 
+                        audiovisual e interativa nas ciências económicas. A mesma arquitetura será futuramente aplicada a outros setores estratégicos, 
+                        mantendo o mesmo princípio: aprender fazendo, testando cenários e tomando decisões informadas.
+                    </p>
+                </div>
             </div>
-
-             <!-- SIMULADOR DA MINHA EMPRESA NA BOLSA -->
-            <div class="simulador-card simulador-quiz">
-                <div class="simulador-badge">Para Empresas</div>
-                <div class="simulador-icon"><img src="Icon/Empresa.png" width="70%" alt=""></div>
-                <h2 class="simulador-title">Minha Empresa na Bolsa de Valores</h2>
-                <p class="simulador-description">
-                    Faça de simulação de como seria ter a sua empresa na Bolsa de Valores, entenda os beneficios e os precessos todos, desde o mercado primário ao secundários. Vê quanto a sua empresa  vale, a precificação do seu ativo em tempo real. Você pode emitir ações ou obrigações.
-                </p>
-                <a href="minha-empresa-na-bolsa.html" class="simulador-link">
-                    <button class="simulador-button">
-                        Empresa na Bolsa
-                        <span class="button-icon">→</span>
-                    </button>
-                </a>
+        </section>
+        
+        <!-- SEÇÃO 7: MOTIVAÇÃO E VISÃO -->
+        <section class="motivation-section fade-in">
+            <div class="container">
+                <div class="motivation-content">
+                    <h2 class="section-title">O Motivo por trás de <span class="highlight">tudo</span></h2>
+                    
+                    <p class="motivation-text">
+                        Para mim, Alberto Teca Tomás, aprender nunca foi apenas ouvir dizer ou o professor falou. Aprender de verdade é testar, experimentar, 
+                        errar, ajustar e comprovar se funciona. É assim que exploramos o nosso potencial, fazemos descobertas reais e criamos soluções úteis para o mundo. 
+                        Com o avanço acelerado da inteligência artificial, o acesso à informação e à educação tornou-se descentralizado; memorizar e repetir perdeu valor. 
+                        O que passa a importar é analisar, pensar criticamente, interpretar dados, emitir opiniões fundamentadas e tomar decisões. 
+                    </p>
+                    
+                    <p class="motivation-text">
+                        Ao mesmo tempo, tecnologias como blockchain, tokenização, energia nuclear, carros autónomos e robótica estão a redefinir o trabalho: 
+                        tarefas repetitivas desaparecem, profissões mudam, outras surgem, e muita gente ficará perdida sem ferramentas adequadas. 
+                        A Teca Capital nasce exatamente para isso: unir experiência prática, tecnologia e dados para mostrar o passado, explicar o presente 
+                        e dar direção para o futuro, capacitando pessoas a aprender fazendo e a decidir com consciência. 
+                    </p>
+                    
+                    <p class="motivation-text">
+                        O futuro é claro para mim, vou transformar a educação em Angola através da tecnologia, colocar o país no mapa do mundo e mudar vidas com conhecimento aplicado.
+                    </p>
+                    
+                    <div class="inevitable-text">Eu Sou Inevitável</div>
+                </div>
             </div>
-        </div>
-
+        </section>
+    </main>
+    
     <!-- MODAL PARA VISUALIZAÇÃO DE IMAGENS EM TELA CHEIA -->
     <div class="image-modal" id="imageModal">
-        <button class="modal-close" onclick="closeModal()">×</button>
-        <button class="modal-nav modal-prev" onclick="prevModalImage()">❮</button>
+        <button class="modal-close" id="modalClose" aria-label="Fechar modal">×</button>
+        <button class="modal-nav modal-prev" id="modalPrev" aria-label="Imagem anterior">❮</button>
         <div class="modal-content">
             <img id="modalImage" class="modal-image" src="" alt="">
         </div>
-        <button class="modal-nav modal-next" onclick="nextModalImage()">❯</button>
+        <button class="modal-nav modal-next" id="modalNext" aria-label="Próxima imagem">❯</button>
     </div>
-
-    <h1>Simuladores da Teca Capital Investimentos</h1>
     
-    <div class="highlight-text">
-        <h2>O que é um simulador?</h2>
-        <p>Um simulador educacional é uma ferramenta ou ambiente digital que replica situações do mundo real de forma controlada, permitindo que o usuário experimente, explore e tome decisões sem os riscos associados a essas situações na prática real. Ele vai além de um simples recurso visual, combina lógica, regras, feedback e interação para que o aprendiz possa executar ações, ver resultados imediatos e aprender pela experiência ativa, em vez de apenas consumir informação de forma passiva (Pearson Higher Education).</p>
-        
-        <p>No campo pedagógico, simuladores são alinhados com a aprendizagem experiencial (learning by doing), que parte da ideia de que o conhecimento se constrói melhor quando o sujeito está diretamente engajado em resolver problemas e fazer escolhas em ambientes que imitam aspectos essenciais do real (Pearson Higher Education).</p>
-        
-        <p>Autoria clássica relacionada ao papel dos meios audiovisuais na aprendizagem aparece em Edgar Dale, com seu Cone da Experiência, que enfatiza o valor de métodos audiovisuais para reforçar a aprendizagem além do texto tradicional. Ele desenvolveu metodologias que associam filmes, imagens e experiências a melhora na retenção e compreensão do conteúdo.</p>
-    </div>
-
-    <div class="section-container">
-        <h2>Educação Tradicional vs Educação Audiovisual/Digital</h2>
-        
-        <h3>1. Estrutura e Método</h3>
-        <p>A educação tradicional baseia-se em aulas presenciais com o professor como transmissor principal do conteúdo, seguindo horários fixos, currículos rígidos e métodos conteudistas, onde o foco muitas vezes é a memorização e repetição de informações. Esse modelo pode desenvolver disciplina e interação social, mas nem sempre favorece o desenvolvimento de habilidades práticas ou pensamento crítico por si só.</p>
-        
-        <p>A educação audiovisual e digital incorpora tecnologias como vídeo, áudio, gráficos, animações e simuladores, permitindo ao aprendiz interagir com o conteúdo e experimentar cenários de forma ativa, promovendo aprendizagem experiencial e multimodal.</p>
-        
-        <h3>2. Retenção e Engajamento</h3>
-        <p>A retenção de informação com a educação tradicional tende a ser menor quando comparada com métodos multimídia; estudos sugerem que alunos podem reter apenas 10–20% do que é apresentado em aulas expositivas tradicionais.</p>
-        
-        <p>Já o uso de tecnologias audiovisuais e multimídia pode elevar a retenção de informações para até 65% ou mais, porque engaja múltiplos sentidos, visual, auditivo e cognitivo, o que aumenta o armazenamento e recuperação do conteúdo aprendido.</p>
-        
-        <h3>3. Flexibilidade e Acesso</h3>
-        <p>A educação tradicional exige presença física e horários fixos, o que limita a flexibilidade para quem trabalha, viaja ou tem outros compromissos.</p>
-        
-        <p>Ambientes digitais audiovisuais permitem que o aprendiz acesse conteúdos quando e onde for favorecendo o próprio ritmo, revisões e personalização. Estudos demonstram que plataformas online podem aumentar taxas de retenção e conclusão de cursos justamente por oferecer esta flexibilidade.</p>
-        
-        <h3>4. Aprendizagem Ativa vs Passiva</h3>
-        <p>A abordagem tradicional muitas vezes mantém o aluno em posição passiva, recebendo informação sem a necessidade de experimentação prática.</p>
-        
-        <p>A educação audiovisual favorece uma aprendizagem ativa por meio de simuladores, quizzes, animações e interações alinhando-se com o conceito de "learning by doing" (aprender fazendo), que tem suporte em pedagogias contemporâneas de educação digital.</p>
-        
-        <h3>5. Competências e Habilidades do Século XXI</h3>
-        <p>Metodologias tradicionais frequentemente preparam bem para habilidades básicas, mas podem ser lentas em desenvolver pensamento crítico, adaptabilidade e autonomia, que são essenciais em ambientes dinâmicos e mercados modernos.</p>
-        
-        <p>O uso sistemático de ferramentas audiovisuais e digitais incentiva o desenvolvimento de pensamento analítico, resolução de problemas e autogestão da aprendizagem, competências valorizadas no mercado global (iiscientific.com).</p>
-        
-        <h3>6. Personalização e Inclusão</h3>
-        <p>Nas salas tradicionais, a personalização é limitada; todos seguem o mesmo ritmo e metodologia.</p>
-        
-        <p>Ferramentas digitais, especialmente as que combinam audiovisual e interatividade, permitem traçar rotas de aprendizagem personalizadas com base no desempenho e nas preferências individuais, reduzindo barreiras para diferentes perfis de estudantes (iiscientific.com).</p>
-    </div>
-
-    <div class="section-container">
-        <h2>Resumo de Forças e Limitações</h2>
-        
-        <div class="table-responsive">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Aspecto</th>
-                        <th>Educação Tradicional</th>
-                        <th>Educação Audiovisual/Digital</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Retenção de conteúdo</td>
-                        <td>Moderada a baixa</td>
-                        <td>Alta (multissensorial) (KCAV)</td>
-                    </tr>
-                    <tr>
-                        <td>Flexibilidade</td>
-                        <td>Baixa</td>
-                        <td>Alta (acesso remoto) (online.uj.ac.za)</td>
-                    </tr>
-                    <tr>
-                        <td>Engajamento</td>
-                        <td>Variável</td>
-                        <td>Elevado (interativo) (Editora Verde)</td>
-                    </tr>
-                    <tr>
-                        <td>Personalização</td>
-                        <td>Limitada</td>
-                        <td>Alta (adaptação individual) (iiscientific.com)</td>
-                    </tr>
-                    <tr>
-                        <td>Desenvolvimento de habilidades práticas</td>
-                        <td>Média</td>
-                        <td>Excelente (simuladores e interatividade) (KCAV)</td>
-                    </tr>
-                    <tr>
-                        <td>Estrutura</td>
-                        <td>Fixa</td>
-                        <td>Flexível</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        
-        <p>A proposta da Teca Capital Investimentos de usar simuladores e conteúdos audiovisuais educativos capitaliza exatamente os pontos fortes do modelo digital:</p>
-        
-        <ul>
-            <li>Aprendizagem ativa e interativa: os simuladores estimulam o pensamento crítico e a aplicação prática.</li>
-            <li>Retenção superior de conteúdo: apoiada por multimídia que engaja mais que texto ou palestra apenas.</li>
-            <li>Flexibilidade e autonomia: permitindo ao usuário aprender quando e como quiser, essencial para adultos e profissionais em formação.</li>
-            <li>Personalização, porque cada aluno pode navegar em conteúdo à sua velocidade e necessidade, algo que a educação tradicional nem sempre consegue oferecer. (KCAV)</li>
-        </ul>
-    </div>
-
-    <div class="section-container">
-        <h2>Educação Híbrida</h2>
-        <p>A educação do presente e do futuro não é "ou tradicional ou audiovisual" é a integração inteligente dos dois. A educação tradicional continua essencial por oferecer estrutura, base teórica, método, disciplina e raciocínio lógico, enquanto a educação audiovisual entra para resolver o que o modelo clássico não consegue escalar bem: visualização, prática, interação, autonomia e experimentação sem risco. Quando esses dois mundos se unem, o aprendizado deixa de ser apenas transmissão de conteúdo e passa a ser construção ativa de conhecimento, o aluno entende o conceito, vê como ele funciona e aplica na prática.</p>
-        
-        <p>É exatamente nesse ponto que a Teca Capital Investimentos se destaca. A plataforma nasce para fundir teoria sólida com tecnologia audiovisual interativa, usando simuladores, gráficos dinâmicos, vídeos, áudios, exercícios práticos, quizzes e análise de cenários como extensão natural do ensino tradicional. O conteúdo não substitui a base académica, ele potencializa, acelera a compreensão e reduz a distância entre aprender e saber fazer. Com múltiplos serviços dentro desse nicho, a Teca Capital cria um ecossistema educacional híbrido, onde aprender é entender, testar, errar, ajustar e evoluir tudo no mesmo ambiente, isso não é tendência, é direção.</p>
-    </div>
-
-    <!-- MULTIMÍDIA INTEGRADA -->
-    <div class="media-container">
-        <div class="media-section">
-            <h2>Apresentação em Vídeo do Nosso Principal Serviço</h2>
-            <video src="Video/O_Poder_de_Aprender_Fazendo.mp4" width="100%" controls></video>
-        </div>
-
-        <div class="media-section">
-            <h2>Infográfico</h2>
-            <p>Clique na imagem para visualizar em tela cheia:</p>
-            <img src="Imagem/Aprender fazendo Teca Capital Investimentos.png" 
-                 class="clickable-image" 
-                 alt="infografico da teca capital"
-                 onclick="openModal('Imagem/Aprender fazendo Teca Capital Investimentos.png', true)">
-        </div>
-
-        <div class="media-section">
-            <h2>Apresentação dos Nossos Simuladores</h2>
-            <p>O que são? Como funcionam? E quem está por trás disso? E os nossos objetivos com eles</p>
-            
-            <!-- SLIDESHOW -->
-            <div class="slideshow-container">
-                <div class="slideshow">
-                    <!-- Slides serão inseridos via JavaScript -->
-                </div>
-                
-                <div class="slideshow-controls">
-                    <button class="slideshow-btn prev-btn" aria-label="Imagem anterior">❮</button>
-                    <div class="slide-counter">
-                        <span id="currentSlide">1</span> / <span id="totalSlides">14</span>
-                    </div>
-                    <button class="slideshow-btn next-btn" aria-label="Próxima imagem">❯</button>
+    <!-- FOOTER PADRÃO (EXATAMENTE COMO NO CONTEXTO) -->
+    <footer class="site-footer">
+        <div class="footer-content container">
+            <div class="footer-section social-section">
+                <h3>Redes Sociais</h3>
+                <div class="social-icons">
+                    <a href="https://www.youtube.com/watch?v=_lbwST_xK_E" target="_blank" aria-label="YouTube">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                    <a href="https://www.tiktok.com/@tecacapital" target="_blank" aria-label="TikTok">
+                        <i class="fab fa-tiktok"></i>
+                    </a>
+                    <a href="https://www.facebook.com/profile.php?id=61579163578380" target="_blank" aria-label="Facebook">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                    <a href="https://wa.me/message/2X43ZA7RMITSJ1" target="_blank" aria-label="WhatsApp">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
                 </div>
             </div>
-            <!-- FIM SLIDESHOW -->
-        </div>
-
-        <div class="media-section">
-            <h2>Mini-Podcast - Teca Capital</h2>
-            <p>Uma breve conversa de 12 minutos e 40 segundos sobre educação audiovisual</p>
-            <audio src="audio/Simuladores_Teca_Capital__Ponte_Teoria_Prática.m4a" controls></audio>
-        </div>
-    </div>
-
-    <div class="section-container">
-        <h2>O simulador da Teca Capital Investimentos: o que é e como funciona</h2>
-        <p>A Teca Capital Investimentos disponibiliza atualmente seis simuladores educacionais, todos focados nas Ciências Económicas, concebidos para transformar teoria em prática por meio de interação direta, análise de dados e experimentação sem risco. Cada simulador funciona como um laboratório digital, permitindo que o usuário compreenda como os conceitos funcionam no mundo real. No futuro, essa mesma lógica será expandida para áreas como saúde, agricultura, engenharia e outros setores estratégicos.</p>
-        
-        <h3>1. Simulador de Contabilidade Prática</h3>
-        <p>Este simulador foi criado para ensinar a linguagem dos negócios de forma aplicada. O usuário aprende a registrar transações, compreender débitos e créditos, elaborar balanços patrimoniais, demonstrações de resultados e interpretar informações financeiras essenciais. É ideal para estudantes, empreendedores e gestores que precisam entender como a contabilidade reflete a realidade financeira de uma empresa e apoia a tomada de decisões.</p>
-        
-        <h3>2. Simulador de Estudo de Viabilidade</h3>
-        <p>Aqui o foco é responder à pergunta-chave de qualquer projeto: vale a pena investir? O simulador permite analisar mercados, projetar receitas, estimar custos, calcular lucros e retorno sobre o investimento (ROI). O usuário pode testar diferentes cenários antes de investir dinheiro real, tornando a ferramenta essencial para quem pretende abrir um negócio, expandir uma empresa ou lançar um novo produto.</p>
-        
-        <h3>3. Simulador de Mercados Financeiros</h3>
-        <p>Este ambiente replica o funcionamento do mercado financeiro de forma controlada. O usuário pode simular investimentos em ações, criptomoedas, títulos e ETFs, aprendendo na prática sobre diversificação de carteira, análise de risco, volatilidade e comportamento do mercado. O objetivo é ensinar como investir de forma consciente, estratégica e sem exposição a perdas reais.</p>
-        
-        <h3>4. Quiz do Mercado</h3>
-        <p>O Quiz do Mercado é uma ferramenta de aprendizagem ativa, baseada em perguntas e respostas sobre economia, finanças, negócios, mercado angolano e global. O sistema de pontuação e ranking estimula o raciocínio rápido, a revisão de conceitos e a evolução contínua do conhecimento, tornando o aprendizado mais dinâmico e envolvente.</p>
-        
-        <h3>5. Simulador de Cenários Económicos</h3>
-        <p>Neste simulador, o usuário compreende como a economia funciona como um sistema interligado. São apresentados diferentes cenários económicos, explicando indicadores como inflação, crescimento, emprego, políticas públicas e o papel do Estado. O foco é mostrar como essas variáveis afetam o dinheiro, as empresas, o emprego e a qualidade de vida, ajudando o usuário a interpretar a economia angolana de forma clara e prática.</p>
-        
-        <h3>6. Simulador "Minha Empresa na Bolsa de Valores"</h3>
-        <p>Este simulador permite experimentar como seria ter uma empresa listada na Bolsa de Valores. O usuário aprende sobre os processos do mercado primário e secundário, entende como uma empresa é avaliada, acompanha a precificação do ativo em tempo real e pode simular a emissão de ações ou obrigações. É uma ferramenta essencial para compreender o funcionamento do mercado de capitais e o acesso das empresas ao financiamento via bolsa.</p>
-        
-        <p>Em conjunto, esses seis simuladores formam o núcleo educacional da Teca Capital Investimentos, oferecendo uma experiência prática, audiovisual e interativa nas ciências económicas. A mesma arquitetura será futuramente aplicada a outros setores estratégicos, mantendo o mesmo princípio: aprender fazendo, testando cenários e tomando decisões informadas.</p>
-    </div>
-
-    <div class="highlight-text">
-        <h2>O Motivo por trás de tudo</h2>
-        <p>Para mim, Alberto Teca Tomás, aprender nunca foi apenas ouvir dizer ou o professor falou. Aprender de verdade é testar, experimentar, errar, ajustar e comprovar se funciona. É assim que exploramos o nosso potencial, fazemos descobertas reais e criamos soluções úteis para o mundo. Com o avanço acelerado da inteligência artificial, o acesso à informação e à educação tornou-se descentralizado; memorizar e repetir perdeu valor. O que passa a importar é analisar, pensar criticamente, interpretar dados, emitir opiniões fundamentadas e tomar decisões. Ao mesmo tempo, tecnologias como blockchain, tokenização, energia nuclear, carros autónomos e robótica estão a redefinir o trabalho: tarefas repetitivas desaparecem, profissões mudam, outras surgem, e muita gente ficará perdida sem ferramentas adequadas. A Teca Capital nasce exatamente para isso: unir experiência prática, tecnologia e dados para mostrar o passado, explicar o presente e dar direção para o futuro, capacitando pessoas a aprender fazendo e a decidir com consciência. O futuro é claro para mim, vou transformar a educação em Angola através da tecnologia, colocar o país no mapa do mundo e mudar vidas com conhecimento aplicado.</p>
-        
-        <p style="text-align: center; font-weight: bold; font-size: 1.2rem; margin-top: 2rem; color: var(--primary-gold);">Eu Sou Inevitável</p>
-    </div>
-
-    <script>
-        // ===== CONFIGURAÇÃO DAS IMAGENS =====
-        const slideImages = [
-            'Imagem/1A.png',
-            'Imagem/2A.png',
-            'Imagem/A3.png',
-            'Imagem/A4.png',
-            'Imagem/A5.png',
-            'Imagem/A6.png',
-            'Imagem/A7.png',
-            'Imagem/A8.png',
-            'Imagem/A9.png',
-            'Imagem/A10.png',
-            'Imagem/A11.png',
-            'Imagem/A12.png',
-            'Imagem/A13.png',
-            'Imagem/A14.png'
-        ];
-
-        const slideAltTexts = [
-            'Simulador 1',
-            'Simulador 2',
-            'Simulador 3',
-            'Simulador 4',
-            'Simulador 5',
-            'Simulador 6',
-            'Simulador 7',
-            'Simulador 8',
-            'Simulador 9',
-            'Simulador 10',
-            'Simulador 11',
-            'Simulador 12',
-            'Simulador 13',
-            'Simulador 14'
-        ];
-
-        // ===== VARIÁVEIS GLOBAIS =====
-        let currentSlide = 0;
-        let currentModalImageIndex = 0;
-        let slideInterval;
-        let isModalOpen = false;
-        let isInfographicModal = false;
-
-        // ===== INICIALIZAÇÃO =====
-        document.addEventListener('DOMContentLoaded', function() {
-            initSlideshow();
-            initVideoControls();
-            updateSlideCounter();
-        });
-
-        // ===== SLIDESHOW =====
-        function initSlideshow() {
-            const slideshow = document.querySelector('.slideshow');
             
-            // Criar slides dinamicamente
-            slideImages.forEach((src, index) => {
-                const slide = document.createElement('div');
-                slide.className = 'slide';
-                slide.dataset.index = index;
-                
-                const img = document.createElement('img');
-                img.src = src;
-                img.alt = slideAltTexts[index];
-                img.loading = 'lazy';
-                
-                // Adicionar evento de clique para abrir no modal
-                slide.addEventListener('click', () => openModal(src, index));
-                
-                slide.appendChild(img);
-                slideshow.appendChild(slide);
+            <div class="footer-section contact-section">
+                <h3>Contato</h3>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <p>Gmail:</p>
+                        <a href="mailto:tecacapitaledtech@gmail.com">
+                            tecacapitaledtech@gmail.com
+                        </a>
+                    </div>
+                    <div class="contact-item">
+                        <p>Telefone:</p>
+                        <a href="tel:+244974235284">
+                            +244 974 235 284
+                        </a>
+                    </div>
+                    <div class="contact-item">
+                        <p>Endereço:</p>
+                        <span>Rua Comandante Nzage, Uíge, Angola</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-section copyright-section">
+                <p class="copyright-text">
+                    &copy; <span id="current-year">2026</span> Teca Capital | Todos os direitos reservados
+                </p>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- JAVASCRIPT INLINE -->
+    <script>
+        // ============================================
+        // JAVASCRIPT OBRIGATÓRIO EM TODAS AS PÁGINAS
+        // ============================================
+        
+        // 1. Menu mobile toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileToggle = document.querySelector('.mobile-nav-toggle');
+            const mobileOverlay = document.querySelector('.mobile-nav-overlay');
+            const mobileLinks = document.querySelectorAll('.mobile-nav-list a');
+            
+            // Abrir/fechar menu mobile
+            if (mobileToggle) {
+                mobileToggle.addEventListener('click', function() {
+                    mobileOverlay.classList.toggle('active');
+                    
+                    // Animar ícone hamburguer
+                    const lines = this.querySelectorAll('.hamburger-line');
+                    if (mobileOverlay.classList.contains('active')) {
+                        lines[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+                        lines[1].style.opacity = '0';
+                        lines[2].style.transform = 'rotate(-45deg) translate(7px, -6px)';
+                    } else {
+                        lines[0].style.transform = 'rotate(0) translate(0, 0)';
+                        lines[1].style.opacity = '1';
+                        lines[2].style.transform = 'rotate(0) translate(0, 0)';
+                    }
+                });
+            }
+            
+            // Fechar menu ao clicar em um link
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileOverlay.classList.remove('active');
+                    const lines = mobileToggle.querySelectorAll('.hamburger-line');
+                    lines[0].style.transform = 'rotate(0) translate(0, 0)';
+                    lines[1].style.opacity = '1';
+                    lines[2].style.transform = 'rotate(0) translate(0, 0)';
+                });
             });
             
-            const slides = document.querySelectorAll('.slide');
+            // 2. Atualizar ano no footer
+            const yearSpan = document.getElementById('current-year');
+            if (yearSpan) {
+                yearSpan.textContent = new Date().getFullYear();
+            }
+            
+            // 3. Destacar link ativo no menu
+            const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+            const navLinks = document.querySelectorAll('.nav-list a, .mobile-nav-list a');
+            
+            navLinks.forEach(link => {
+                const linkPage = link.getAttribute('href');
+                if (linkPage === currentPage || (currentPage === '' && linkPage === 'index.html')) {
+                    link.classList.add('active');
+                } else {
+                    link.classList.remove('active');
+                }
+            });
+            
+            // 4. Tratamento básico de erros
+            window.addEventListener('error', function(e) {
+                console.error('Erro detectado:', e.error);
+            });
+            
+            // ============================================
+            // JAVASCRIPT ESPECÍFICO PARA PÁGINA DE SIMULADORES
+            // ============================================
+            
+            // ESTRUTURA DE DADOS PARA SLIDESHOW
+            const slideImages = [
+                'Imagem/1A.png',
+                'Imagem/2A.png',
+                'Imagem/A3.png',
+                'Imagem/A4.png',
+                'Imagem/A5.png',
+                'Imagem/A6.png',
+                'Imagem/A7.png',
+                'Imagem/A8.png',
+                'Imagem/A9.png',
+                'Imagem/A10.png',
+                'Imagem/A11.png',
+                'Imagem/A12.png',
+                'Imagem/A13.png',
+                'Imagem/A14.png'
+            ];
+            
+            const slideAltTexts = [
+                'Simulador 1',
+                'Simulador 2',
+                'Simulador 3',
+                'Simulador 4',
+                'Simulador 5',
+                'Simulador 6',
+                'Simulador 7',
+                'Simulador 8',
+                'Simulador 9',
+                'Simulador 10',
+                'Simulador 11',
+                'Simulador 12',
+                'Simulador 13',
+                'Simulador 14'
+            ];
+            
+            // VARIÁVEIS DE CONTROLE
+            let currentSlideIndex = 0;
+            let currentModalImageIndex = 0;
+            let slideInterval;
+            let isModalOpen = false;
+            let isInfographicModal = false;
+            let touchStartX = 0;
+            let touchEndX = 0;
+            
+            // ELEMENTOS DO DOM
+            const slideshow = document.getElementById('slideshow');
+            const currentSlideSpan = document.getElementById('currentSlide');
+            const totalSlidesSpan = document.getElementById('totalSlides');
             const prevBtn = document.querySelector('.prev-btn');
             const nextBtn = document.querySelector('.next-btn');
+            const infographicImage = document.getElementById('infographic-image');
+            const imageModal = document.getElementById('imageModal');
+            const modalImage = document.getElementById('modalImage');
+            const modalClose = document.getElementById('modalClose');
+            const modalPrev = document.getElementById('modalPrev');
+            const modalNext = document.getElementById('modalNext');
+            const slideshowContainer = document.querySelector('.slideshow-container');
             
-            // Mostrar slide inicial
-            showSlide(0);
+            // 1. SLIDESHOW INTERATIVO COM 14 IMAGENS
+            function initSlideshow() {
+                // Configurar total de slides
+                totalSlidesSpan.textContent = slideImages.length;
+                
+                // Criar slides dinamicamente
+                slideImages.forEach((src, index) => {
+                    const slide = document.createElement('div');
+                    slide.className = 'slide';
+                    slide.dataset.index = index;
+                    
+                    const img = document.createElement('img');
+                    img.src = src;
+                    img.alt = slideAltTexts[index];
+                    img.loading = 'lazy';
+                    
+                    // Adicionar evento de clique para abrir modal
+                    slide.addEventListener('click', () => {
+                        openModal(src, index, false);
+                    });
+                    
+                    slide.appendChild(img);
+                    slideshow.appendChild(slide);
+                });
+                
+                // Mostrar slide inicial
+                showSlide(0);
+                
+                // Event listeners para controles
+                prevBtn.addEventListener('click', () => {
+                    prevSlide();
+                    resetInterval();
+                });
+                
+                nextBtn.addEventListener('click', () => {
+                    nextSlide();
+                    resetInterval();
+                });
+                
+                // Iniciar auto-play
+                startSlideInterval();
+                
+                // Pausar no hover
+                slideshowContainer.addEventListener('mouseenter', () => {
+                    clearInterval(slideInterval);
+                });
+                
+                slideshowContainer.addEventListener('mouseleave', () => {
+                    startSlideInterval();
+                });
+            }
             
-            // Event listeners
-            prevBtn.addEventListener('click', (e) => {
-                e.stopPropagation();
-                prevSlide();
-                resetInterval();
-            });
+            function showSlide(index) {
+                const slides = document.querySelectorAll('.slide');
+                
+                // Esconder todos os slides
+                slides.forEach(slide => {
+                    slide.classList.remove('active');
+                });
+                
+                // Mostrar slide atual
+                slides[index].classList.add('active');
+                currentSlideIndex = index;
+                currentSlideSpan.textContent = index + 1;
+            }
             
-            nextBtn.addEventListener('click', (e) => {
-                e.stopPropagation();
-                nextSlide();
-                resetInterval();
-            });
+            function nextSlide() {
+                currentSlideIndex = (currentSlideIndex + 1) % slideImages.length;
+                showSlide(currentSlideIndex);
+            }
             
-            // Controles por teclado
-            document.addEventListener('keydown', (e) => {
-                if (isModalOpen) {
-                    if (e.key === 'Escape') {
-                        closeModal();
-                    } else if (e.key === 'ArrowLeft') {
-                        if (!isInfographicModal) prevModalImage();
-                    } else if (e.key === 'ArrowRight') {
-                        if (!isInfographicModal) nextModalImage();
-                    }
+            function prevSlide() {
+                currentSlideIndex = (currentSlideIndex - 1 + slideImages.length) % slideImages.length;
+                showSlide(currentSlideIndex);
+            }
+            
+            function startSlideInterval() {
+                slideInterval = setInterval(nextSlide, 5000); // 5 segundos
+            }
+            
+            function resetInterval() {
+                clearInterval(slideInterval);
+                startSlideInterval();
+            }
+            
+            // 2. MODAL DE IMAGEM EM TELA CHEIA
+            function openModal(src, index = 0, isInfographic = false) {
+                modalImage.src = src;
+                
+                if (isInfographic) {
+                    modalImage.alt = 'Infográfico da Teca Capital - Aprender Fazendo';
+                    isInfographicModal = true;
+                    modalPrev.style.display = 'none';
+                    modalNext.style.display = 'none';
                 } else {
+                    modalImage.alt = slideAltTexts[index];
+                    isInfographicModal = false;
+                    currentModalImageIndex = index;
+                    modalPrev.style.display = 'flex';
+                    modalNext.style.display = 'flex';
+                }
+                
+                imageModal.classList.add('active');
+                isModalOpen = true;
+                document.body.style.overflow = 'hidden';
+            }
+            
+            function closeModal() {
+                imageModal.classList.remove('active');
+                isModalOpen = false;
+                document.body.style.overflow = '';
+            }
+            
+            function nextModalImage() {
+                if (isInfographicModal) return;
+                
+                currentModalImageIndex = (currentModalImageIndex + 1) % slideImages.length;
+                modalImage.src = slideImages[currentModalImageIndex];
+                modalImage.alt = slideAltTexts[currentModalImageIndex];
+            }
+            
+            function prevModalImage() {
+                if (isInfographicModal) return;
+                
+                currentModalImageIndex = (currentModalImageIndex - 1 + slideImages.length) % slideImages.length;
+                modalImage.src = slideImages[currentModalImageIndex];
+                modalImage.alt = slideAltTexts[currentModalImageIndex];
+            }
+            
+            // 3. NAVEGAÇÃO POR TECLADO
+            function handleKeydown(e) {
+                if (!isModalOpen) {
+                    // Controles do slideshow
                     if (e.key === 'ArrowLeft') {
                         prevSlide();
                         resetInterval();
@@ -445,268 +823,156 @@
                         nextSlide();
                         resetInterval();
                     }
+                } else {
+                    // Controles do modal
+                    if (e.key === 'Escape') {
+                        closeModal();
+                    } else if (e.key === 'ArrowLeft' && !isInfographicModal) {
+                        prevModalImage();
+                    } else if (e.key === 'ArrowRight' && !isInfographicModal) {
+                        nextModalImage();
+                    }
                 }
-            });
-            
-            // Iniciar intervalo automático
-            startInterval();
-            
-            // Pausar slideshow quando hover
-            const slideshowContainer = document.querySelector('.slideshow-container');
-            slideshowContainer.addEventListener('mouseenter', () => clearInterval(slideInterval));
-            slideshowContainer.addEventListener('mouseleave', startInterval);
-            
-            // Touch controls para mobile
-            initTouchControls(slideshowContainer);
-        }
-        
-        function showSlide(index) {
-            const slides = document.querySelectorAll('.slide');
-            slides.forEach(slide => slide.classList.remove('active'));
-            slides[index].classList.add('active');
-            currentSlide = index;
-            updateSlideCounter();
-        }
-        
-        function nextSlide() {
-            currentSlide = (currentSlide + 1) % slideImages.length;
-            showSlide(currentSlide);
-        }
-        
-        function prevSlide() {
-            currentSlide = (currentSlide - 1 + slideImages.length) % slideImages.length;
-            showSlide(currentSlide);
-        }
-        
-        function startInterval() {
-            slideInterval = setInterval(nextSlide, 5000); // 5 segundos
-        }
-        
-        function resetInterval() {
-            clearInterval(slideInterval);
-            startInterval();
-        }
-        
-        function updateSlideCounter() {
-            document.getElementById('currentSlide').textContent = currentSlide + 1;
-            document.getElementById('totalSlides').textContent = slideImages.length;
-        }
-        
-        // ===== MODAL =====
-        function openModal(src, index = 0, isInfographic = false) {
-            const modal = document.getElementById('imageModal');
-            const modalImage = document.getElementById('modalImage');
-            
-            modalImage.src = src;
-            modalImage.alt = isInfographic ? 'Infográfico da Teca Capital' : slideAltTexts[index];
-            
-            isInfographicModal = isInfographic;
-            
-            // Se for uma imagem do slideshow, usar o índice correspondente
-            if (!isInfographic) {
-                currentModalImageIndex = index;
-                // Mostrar controles de navegação
-                document.querySelector('.modal-prev').style.display = 'flex';
-                document.querySelector('.modal-next').style.display = 'flex';
-            } else {
-                // Esconder controles de navegação para infográfico
-                document.querySelector('.modal-prev').style.display = 'none';
-                document.querySelector('.modal-next').style.display = 'none';
             }
             
-            modal.classList.add('active');
-            isModalOpen = true;
-            document.body.style.overflow = 'hidden';
-            
-            // Adicionar evento para fechar com ESC
-            document.addEventListener('keydown', handleModalKeydown);
-        }
-        
-        function closeModal() {
-            const modal = document.getElementById('imageModal');
-            modal.classList.remove('active');
-            isModalOpen = false;
-            isInfographicModal = false;
-            document.body.style.overflow = '';
-            
-            // Remover evento do teclado
-            document.removeEventListener('keydown', handleModalKeydown);
-        }
-        
-        function nextModalImage() {
-            if (isInfographicModal) return;
-            
-            currentModalImageIndex = (currentModalImageIndex + 1) % slideImages.length;
-            document.getElementById('modalImage').src = slideImages[currentModalImageIndex];
-            document.getElementById('modalImage').alt = slideAltTexts[currentModalImageIndex];
-        }
-        
-        function prevModalImage() {
-            if (isInfographicModal) return;
-            
-            currentModalImageIndex = (currentModalImageIndex - 1 + slideImages.length) % slideImages.length;
-            document.getElementById('modalImage').src = slideImages[currentModalImageIndex];
-            document.getElementById('modalImage').alt = slideAltTexts[currentModalImageIndex];
-        }
-        
-        function handleModalKeydown(e) {
-            if (!isModalOpen) return;
-            
-            if (e.key === 'Escape') {
-                closeModal();
+            // 4. CONTROLES TOUCH PARA MOBILE
+            function initTouchControls() {
+                slideshowContainer.addEventListener('touchstart', (e) => {
+                    touchStartX = e.changedTouches[0].screenX;
+                });
+                
+                slideshowContainer.addEventListener('touchend', (e) => {
+                    touchEndX = e.changedTouches[0].screenX;
+                    handleSwipe();
+                });
+                
+                // Touch controls para modal
+                if (modalImage) {
+                    modalImage.addEventListener('touchstart', (e) => {
+                        if (!isInfographicModal) {
+                            touchStartX = e.changedTouches[0].screenX;
+                        }
+                    });
+                    
+                    modalImage.addEventListener('touchend', (e) => {
+                        if (!isInfographicModal) {
+                            touchEndX = e.changedTouches[0].screenX;
+                            handleModalSwipe();
+                        }
+                    });
+                }
             }
-        }
-        
-        // Fechar modal ao clicar fora da imagem
-        document.getElementById('imageModal').addEventListener('click', function(e) {
-            if (e.target === this || e.target.classList.contains('modal-content')) {
-                closeModal();
-            }
-        });
-        
-        // ===== CONTROLES DE TOUCH PARA MOBILE =====
-        function initTouchControls(container) {
-            let touchStartX = 0;
-            let touchStartY = 0;
-            let touchEndX = 0;
-            let touchEndY = 0;
-            
-            container.addEventListener('touchstart', (e) => {
-                touchStartX = e.changedTouches[0].screenX;
-                touchStartY = e.changedTouches[0].screenY;
-            }, false);
-            
-            container.addEventListener('touchend', (e) => {
-                touchEndX = e.changedTouches[0].screenX;
-                touchEndY = e.changedTouches[0].screenY;
-                handleSwipe();
-            }, false);
             
             function handleSwipe() {
                 const swipeThreshold = 50;
-                const xDiff = touchStartX - touchEndX;
-                const yDiff = touchStartY - touchEndY;
+                const diff = touchStartX - touchEndX;
                 
-                // Verificar se é um swipe horizontal (não vertical)
-                if (Math.abs(xDiff) > Math.abs(yDiff)) {
-                    if (Math.abs(xDiff) > swipeThreshold) {
-                        if (xDiff > 0) {
-                            // Swipe para a esquerda - próxima imagem
-                            nextSlide();
-                        } else {
-                            // Swipe para a direita - imagem anterior
-                            prevSlide();
-                        }
-                        resetInterval();
+                if (Math.abs(diff) > swipeThreshold) {
+                    if (diff > 0) {
+                        // Swipe para a esquerda - próxima imagem
+                        nextSlide();
+                    } else {
+                        // Swipe para a direita - imagem anterior
+                        prevSlide();
+                    }
+                    resetInterval();
+                }
+            }
+            
+            function handleModalSwipe() {
+                const swipeThreshold = 50;
+                const diff = touchStartX - touchEndX;
+                
+                if (Math.abs(diff) > swipeThreshold) {
+                    if (diff > 0) {
+                        nextModalImage();
+                    } else {
+                        prevModalImage();
                     }
                 }
             }
-        }
-        
-        // ===== CONTROLES DE VÍDEO =====
-        function initVideoControls() {
-            const video = document.querySelector('video');
-            if (video) {
-                video.addEventListener('keydown', (e) => {
-                    if (e.ctrlKey && e.code === 'Space') {
-                        e.preventDefault();
-                        if (video.paused) {
-                            video.play();
-                        } else {
-                            video.pause();
+            
+            // 5. SISTEMA DE BADGES COLORIDOS
+            function initBadges() {
+                // As cores já estão aplicadas via CSS com classes específicas
+                console.log('Sistema de badges inicializado');
+            }
+            
+            // 6. ANIMAÇÕES SUAVES PARA TRANSIÇÕES
+            function initAnimations() {
+                const fadeElements = document.querySelectorAll('.fade-in');
+                
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.style.opacity = '1';
+                            entry.target.style.transform = 'translateY(0)';
                         }
-                    }
+                    });
+                }, {
+                    threshold: 0.1,
+                    rootMargin: '0px 0px -50px 0px'
+                });
+                
+                fadeElements.forEach(element => {
+                    element.style.opacity = '0';
+                    element.style.transform = 'translateY(20px)';
+                    element.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+                    observer.observe(element);
                 });
             }
-        }
-    </script>
-</section>
-
-        <!-- SEÇÃO DE BENEFÍCIOS -->
-        <section class="benefits-section">
-            <h2 class="benefits-title">Por que usar nossos simuladores?</h2>
-            <div class="benefits-grid">
-                <div class="benefit-item">
-                    <div class="benefit-icon">🎯</div>
-                    <h3 class="benefit-title">Aprendizado Prático</h3>
-                    <p class="benefit-description">
-                        Teoria aplicada na prática. Aprenda fazendo, errando e corrigindo sem riscos financeiros.
-                    </p>
-                </div>
-                <div class="benefit-item">
-                    <div class="benefit-icon">🛡️</div>
-                    <h3 class="benefit-title">Ambiente Seguro</h3>
-                    <p class="benefit-description">
-                        Experimente situações reais do mercado sem colocar seu dinheiro em risco.
-                    </p>
-                </div>
-                <div class="benefit-item">
-                    <div class="benefit-icon">📚</div>
-                    <h3 class="benefit-title">Conteúdo Educacional</h3>
-                    <p class="benefit-description">
-                        Cada simulador inclui explicações detalhadas e materiais de apoio para seu aprendizado.
-                    </p>
-                </div>
-                <div class="benefit-item">
-                    <div class="benefit-icon">🚀</div>
-                    <h3 class="benefit-title">Preparação Real</h3>
-                    <p class="benefit-description">
-                        Desenvolva habilidades que serão úteis no mundo real dos negócios e investimentos.
-                    </p>
-                </div>
-            </div>
-        </section>
-
-
-    </main>
-
-    <footer>
-        <div>
-        <!-- REDES SOCIAIS -->
-        <div id="socialmidia">
-            <h3>Redes Sociais</h3>
-            <div class="social-icons">
-                <a href="https://www.youtube.com/watch?v=_lbwST_xK_E" target="_blank">
-                    <i class="fa-brands fa-youtube"></i>
-                </a>
-                <a href="https://www.tiktok.com/@tecacapital" target="_blank">
-                    <i class="fa-brands fa-tiktok"></i>
-                </a>
-                <a href="https://www.facebook.com/profile.php?id=61579163578380" target="_blank">
-                    <i class="fa-brands fa-facebook"></i>
-                </a>
-                <a href="https://wa.me/message/2X43ZA7RMITSJ1" target="_blank">
-                    <i class="fa-brands fa-whatsapp"></i>
-                </a>
-            </div>
-        </div>
-
-        <!-- CONTATO -->
-        <div id="Contato">
-            <h3>Contato</h3>
-            <div class="contact-info">
-                <div class="contact-item">
-                    <p>Gmail:</p>
-                    <a href="mailto:tecacapitaledtech@gmail.com">
-                        tecacapitaledtech@gmail.com
-                    </a>
-                </div>
-                <div class="contact-item">
-                    <p>Telefone:</p>
-                    <a href="tel:+244974235284">
-                        +244 974 235 284
-                    </a>
-                </div>
-                <div class="contact-item">
-                    <p>Endereço:</p>
-                    <span>Rua Comandante Nzage, Uíge, Angola</span>
-                </div>
-            </div>
-        </div>
+            
+            // EVENT LISTENERS
+            if (infographicImage) {
+                infographicImage.addEventListener('click', () => {
+                    openModal('Imagem/Aprender fazendo Teca Capital Investimentos.png', 0, true);
+                });
+            }
+            
+            if (modalClose) {
+                modalClose.addEventListener('click', closeModal);
+            }
+            
+            if (modalPrev) {
+                modalPrev.addEventListener('click', prevModalImage);
+            }
+            
+            if (modalNext) {
+                modalNext.addEventListener('click', nextModalImage);
+            }
+            
+            // Fechar modal ao clicar fora da imagem
+            imageModal.addEventListener('click', (e) => {
+                if (e.target === imageModal || e.target.classList.contains('modal-content')) {
+                    closeModal();
+                }
+            });
+            
+            // Adicionar listener para teclado
+            document.addEventListener('keydown', handleKeydown);
+            
+            // INICIALIZAÇÃO
+            function initializePage() {
+                initSlideshow();
+                initTouchControls();
+                initBadges();
+                initAnimations();
+            }
+            
+            // Executar inicialização
+            initializePage();
+            
+            // Fallback para navegadores sem suporte a IntersectionObserver
+            if (!('IntersectionObserver' in window)) {
+                document.querySelectorAll('.fade-in').forEach(element => {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                });
+            }
+        });
         
-        <p class="timeline">&copy; 2025 Teca Capital | Todos os direitos reservados</p>
-    </div>
-    </footer>
-
+        // Fallback para JS desabilitado
+        document.documentElement.classList.add('js-enabled');
+    </script>
 </body>
 </html>

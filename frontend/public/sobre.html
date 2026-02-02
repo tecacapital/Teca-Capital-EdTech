@@ -1,80 +1,813 @@
 <!DOCTYPE html>
-<html lang="pt-ao">
+<html lang="pt-AO">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Teca Capital - +Sobre</title>
-    <link rel="icon" href="Icon/Teca Capital favicon.png" type="image/x-icon">
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+    <title>Teca Capital - +Sobre Nós | Missão, Visão e Valores</title>
+    <link rel="icon" href="Imagem/Teca Capital Logo Atualizado - Copia.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/+sobrenos.css">
 </head>
 <body>
-
-    <header>
-        <div id="logotipo"><img src="Imagem/Teca Capital Logo Atualizado - Copia.png" width="15%" alt="logo da Teca Capital"></div>
-        <nav>
-            <ul>
+    <!-- HEADER PADRÃO (EXATAMENTE COMO NO CONTEXTO) -->
+    <header class="site-header">
+        <div class="logo-container">
+            <a href="index.html">
+                <img src="Icon/Teca Capital favicon.png" 
+                     alt="Teca Capital" 
+                     class="site-logo">
+            </a>
+        </div>
+        
+        <nav class="main-nav desktop-nav">
+            <ul class="nav-list">
                 <li><a href="index.html">Página Inicial</a></li>
                 <li><a href="biblioteca.html">Biblioteca</a></li>
                 <li><a href="simuladores.html">Simuladores</a></li>
-                <li><a href="sobre.html">+Sobre Nós</a></li>
+                <li><a href="sobre.html" class="active">+Sobre Nós</a></li>
                 <li><a href="login-cadastramento.html">Login/Cadastro</a></li>
-                <li><a href="raking.html">Raking</a></li>
+                <li><a href="ranking.html">Ranking</a></li>
                 <li><a href="admin.html">Administrador</a></li>
             </ul>
         </nav>
+        
+        <button class="menu-toggle mobile-nav-toggle" aria-label="Menu">
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+        </button>
+        
+        <div class="mobile-nav-overlay">
+            <nav class="mobile-nav">
+                <ul class="mobile-nav-list">
+                    <li><a href="index.html">Página Inicial</a></li>
+                    <li><a href="biblioteca.html">Biblioteca</a></li>
+                    <li><a href="simuladores.html">Simuladores</a></li>
+                    <li><a href="sobre.html" class="active">+Sobre Nós</a></li>
+                    <li><a href="login-cadastramento.html">Login/Cadastro</a></li>
+                    <li><a href="ranking.html">Ranking</a></li>
+                    <li><a href="admin.html">Administrador</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
     
-    <main>
-
-    </main>
-
-    <footer>
-        <div>
-        <!-- REDES SOCIAIS -->
-        <div id="socialmidia">
-            <h3>Redes Sociais</h3>
-            <div class="social-icons">
-                <a href="https://www.youtube.com/watch?v=_lbwST_xK_E" target="_blank">
-                    <i class="fa-brands fa-youtube"></i>
-                </a>
-                <a href="https://www.tiktok.com/@tecacapital" target="_blank">
-                    <i class="fa-brands fa-tiktok"></i>
-                </a>
-                <a href="https://www.facebook.com/profile.php?id=61579163578380" target="_blank">
-                    <i class="fa-brands fa-facebook"></i>
-                </a>
-                <a href="https://wa.me/message/2X43ZA7RMITSJ1" target="_blank">
-                    <i class="fa-brands fa-whatsapp"></i>
-                </a>
+    <!-- CONTEÚDO PRINCIPAL SOBRE NÓS -->
+    <main class="page-content">
+        <!-- SEÇÃO 1: CABEÇALHO INSTITUCIONAL -->
+        <section class="about-header fade-in">
+            <div class="container">
+                <div class="institutional-icon">
+                    <i class="fas fa-building"></i>
+                </div>
+                <h1 class="institutional-title">+Sobre a <span class="highlight">Teca Capital</span></h1>
+                <p class="institutional-subtitle">
+                    Conheça nossa missão, visão, valores e propósito educacional
+                </p>
             </div>
-        </div>
-
-        <!-- CONTATO -->
-        <div id="Contato">
-            <h3>Contato</h3>
-            <div class="contact-info">
-                <div class="contact-item">
-                    <p>Gmail:</p>
-                    <a href="mailto:tecacapitaledtech@gmail.com">
-                        tecacapitaledtech@gmail.com
-                    </a>
-                </div>
-                <div class="contact-item">
-                    <p>Telefone:</p>
-                    <a href="tel:+244974235284">
-                        +244 974 235 284
-                    </a>
-                </div>
-                <div class="contact-item">
-                    <p>Endereço:</p>
-                    <span>Rua Comandante Nzage, Uíge, Angola</span>
-                </div>
-            </div>
+        </section>
+        
+        <!-- NAVEGAÇÃO POR SEÇÕES (DESKTOP) -->
+        <div class="section-navigation" id="sectionNav">
+            <ul class="section-nav-list">
+                <li class="section-nav-item" data-section="quem-somos">Quem Somos</li>
+                <li class="section-nav-item" data-section="visao">Visão</li>
+                <li class="section-nav-item" data-section="missao">Missão</li>
+                <li class="section-nav-item" data-section="valores">Valores</li>
+                <li class="section-nav-item" data-section="objetivos">Objetivos</li>
+                <li class="section-nav-item" data-section="diferenciais">Diferenciais</li>
+                <li class="section-nav-item" data-section="fundador">Fundador</li>
+                <li class="section-nav-item" data-section="compromisso">Compromisso</li>
+            </ul>
         </div>
         
-        <p class="timeline">&copy; 2025 Teca Capital | Todos os direitos reservados</p>
+        <!-- SEÇÃO 2: QUEM SOMOS -->
+        <section id="quem-somos" class="about-section fade-in">
+            <div class="container">
+                <div class="section-card">
+                    <div class="section-header">
+                        <div class="section-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h2 class="section-card-title">Quem Somos</h2>
+                    </div>
+                    <div class="section-content">
+                        <p>
+                            A <strong>Teca Capital</strong> é uma empresa angolana de educação audiovisual e tecnologia,
+                            criada para enfrentar um dos maiores desafios da educação contemporânea: a distância entre
+                            o conhecimento teórico e a competência prática exigida pelo mundo real.
+                        </p>
+                        <p>
+                            Atuando como uma startup EdTech, a Teca Capital desenvolve soluções educacionais digitais
+                            baseadas em conteúdos audiovisuais interativos, simuladores e aprendizagem experiencial,
+                            permitindo que estudantes, profissionais e instituições aprendam de forma prática,
+                            autónoma e orientada à tomada de decisão.
+                        </p>
+                        <p>
+                            O foco da empresa não está apenas em ensinar conceitos, mas em formar pessoas capazes de
+                            aplicar o que aprendem, resolver problemas reais e atuar com pensamento crítico em
+                            contextos profissionais cada vez mais complexos.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- SEÇÃO 3: VISÃO -->
+        <section id="visao" class="about-section fade-in">
+            <div class="container">
+                <div class="section-card">
+                    <div class="section-header">
+                        <div class="section-icon">
+                            <i class="fas fa-eye"></i>
+                        </div>
+                        <h2 class="section-card-title">Visão</h2>
+                    </div>
+                    <div class="section-content">
+                        <p>
+                            Ser uma referência em educação e tecnologia em Angola e em África, contribuindo de forma
+                            consistente para a transformação do modelo educacional através de soluções digitais
+                            que integrem teoria sólida, prática aplicada e tecnologia de ponta.
+                        </p>
+                        <p>
+                            A Teca Capital projeta um futuro em que o aprendizado prepara pessoas para cenários reais,
+                            fortalece o capital humano e acompanha as exigências do mercado, da economia e do futuro
+                            do trabalho.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- SEÇÃO 4: MISSÃO -->
+        <section id="missao" class="about-section fade-in">
+            <div class="container">
+                <div class="section-card">
+                    <div class="section-header">
+                        <div class="section-icon">
+                            <i class="fas fa-bullseye"></i>
+                        </div>
+                        <h2 class="section-card-title">Missão</h2>
+                    </div>
+                    <div class="section-content">
+                        <p>
+                            Desenvolver soluções educacionais e tecnológicas que reduzam de forma concreta a
+                            distância entre teoria e prática, promovendo aprendizagem aplicada, autonomia,
+                            pensamento crítico e capacidade de decisão.
+                        </p>
+                        <p>
+                            A missão da Teca Capital é capacitar indivíduos e instituições por meio de experiências
+                            de aprendizagem práticas e acessíveis, utilizando tecnologia audiovisual e digital
+                            como ferramenta para gerar impacto real e mensurável.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- SEÇÃO 5: VALORES -->
+        <section id="valores" class="about-section fade-in">
+            <div class="container">
+                <div class="section-card">
+                    <div class="section-header">
+                        <div class="section-icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <h2 class="section-card-title">Valores</h2>
+                    </div>
+                    
+                    <div class="values-grid">
+                        <!-- Valor 1: Aprendizagem Prática -->
+                        <div class="value-item">
+                            <div class="value-header">
+                                <div class="value-icon">
+                                    <i class="fas fa-hands-on"></i>
+                                </div>
+                                <h3 class="value-title">Aprendizagem Prática</h3>
+                            </div>
+                            <p class="value-description">
+                                Acreditamos que aprender é aplicar, experimentar e desenvolver competências reais.
+                            </p>
+                        </div>
+                        
+                        <!-- Valor 2: Inovação Responsável -->
+                        <div class="value-item">
+                            <div class="value-header">
+                                <div class="value-icon">
+                                    <i class="fas fa-lightbulb"></i>
+                                </div>
+                                <h3 class="value-title">Inovação Responsável</h3>
+                            </div>
+                            <p class="value-description">
+                                Utilizamos a tecnologia de forma consciente, com foco em soluções úteis, sustentáveis
+                                e alinhadas à realidade social.
+                            </p>
+                        </div>
+                        
+                        <!-- Valor 3: Excelência -->
+                        <div class="value-item">
+                            <div class="value-header">
+                                <div class="value-icon">
+                                    <i class="fas fa-award"></i>
+                                </div>
+                                <h3 class="value-title">Excelência</h3>
+                            </div>
+                            <p class="value-description">
+                                Buscamos qualidade técnica, pedagógica e institucional em tudo o que desenvolvemos.
+                            </p>
+                        </div>
+                        
+                        <!-- Valor 4: Impacto Real -->
+                        <div class="value-item">
+                            <div class="value-header">
+                                <div class="value-icon">
+                                    <i class="fas fa-chart-line"></i>
+                                </div>
+                                <h3 class="value-title">Impacto Real</h3>
+                            </div>
+                            <p class="value-description">
+                                Medimos o sucesso pelo efeito positivo gerado na vida das pessoas e nas instituições.
+                            </p>
+                        </div>
+                        
+                        <!-- Valor 5: Ética -->
+                        <div class="value-item">
+                            <div class="value-header">
+                                <div class="value-icon">
+                                    <i class="fas fa-balance-scale"></i>
+                                </div>
+                                <h3 class="value-title">Ética</h3>
+                            </div>
+                            <p class="value-description">
+                                Atuamos com transparência, responsabilidade e respeito em todas as relações.
+                            </p>
+                        </div>
+                        
+                        <!-- Valor 6: Inclusão -->
+                        <div class="value-item">
+                            <div class="value-header">
+                                <div class="value-icon">
+                                    <i class="fas fa-users"></i>
+                                </div>
+                                <h3 class="value-title">Inclusão</h3>
+                            </div>
+                            <p class="value-description">
+                                Criamos soluções acessíveis, que ampliam oportunidades de aprendizagem para diferentes
+                                perfis e contextos.
+                            </p>
+                        </div>
+                        
+                        <!-- Valor 7: Responsabilidade Social -->
+                        <div class="value-item">
+                            <div class="value-header">
+                                <div class="value-icon">
+                                    <i class="fas fa-hand-holding-heart"></i>
+                                </div>
+                                <h3 class="value-title">Responsabilidade Social</h3>
+                            </div>
+                            <p class="value-description">
+                                Entendemos a educação como ferramenta estratégica para o desenvolvimento económico e
+                                social.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <!-- Contador de Valores -->
+                    <div class="values-counter">
+                        <div class="counter-number" id="valuesCounter">7</div>
+                        <div class="counter-label">Valores Fundamentais</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- SEÇÃO 6: OBJETIVOS ESTRATÉGICOS -->
+        <section id="objetivos" class="about-section fade-in">
+            <div class="container">
+                <div class="section-card">
+                    <div class="section-header">
+                        <div class="section-icon">
+                            <i class="fas fa-flag"></i>
+                        </div>
+                        <h2 class="section-card-title">Objetivos Estratégicos</h2>
+                    </div>
+                    <div class="section-content">
+                        <p>
+                            A Teca Capital tem como objetivos centrais <span class="tooltip-container">formar pessoas com competências práticas relevantes<span class="tooltip-text">Desenvolver habilidades aplicáveis no mercado de trabalho atual</span></span>, apoiar instituições de ensino e empresas na modernização dos seus processos
+                            formativos e democratizar o acesso à tecnologia educacional.
+                        </p>
+                        <p>
+                            O projeto está alinhado com o desenvolvimento económico e social, preparando estudantes
+                            e profissionais para responder às exigências do mercado moderno e contribuir de forma
+                            ativa para o crescimento sustentável.
+                        </p>
+                        
+                        <!-- Timeline Simples -->
+                        <div class="timeline">
+                            <div class="timeline-item">
+                                <div class="timeline-year">2025</div>
+                                <div class="timeline-content">
+                                    Fundação da Teca Capital e lançamento dos primeiros simuladores educacionais
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-year">2026</div>
+                                <div class="timeline-content">
+                                    Expansão da biblioteca audiovisual e parcerias com instituições educacionais
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-year">2026-2027</div>
+                                <div class="timeline-content">
+                                    Consolidação como referência em EdTech e expansão para novos setores
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- SEÇÃO 7: DIFERENCIAIS -->
+        <section id="diferenciais" class="about-section fade-in">
+            <div class="container">
+                <div class="section-card">
+                    <div class="section-header">
+                        <div class="section-icon">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <h2 class="section-card-title">O Que Nos Diferencia</h2>
+                    </div>
+                    <div class="section-content">
+                        <p>
+                            A Teca Capital diferencia-se por <span class="tooltip-container">integrar educação tradicional com tecnologia digital aplicada<span class="tooltip-text">Combinação de fundamentos teóricos com ferramentas tecnológicas modernas</span></span>, utilizando simuladores educacionais, conteúdos audiovisuais interativos e
+                            metodologias de aprendizagem experiencial.
+                        </p>
+                        <p>
+                            Em vez de focar apenas na transmissão de conteúdos, a empresa cria ambientes onde o
+                            usuário pode experimentar, tomar decisões, errar sem risco e aprender com feedback
+                            contínuo, aproximando o processo educacional da realidade profissional.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- SEÇÃO 8: FUNDADOR -->
+        <section id="fundador" class="about-section fade-in">
+            <div class="container">
+                <div class="section-card founder-card">
+                    <div class="section-header">
+                        <div class="section-icon">
+                            <i class="fas fa-user-tie"></i>
+                        </div>
+                        <h2 class="section-card-title">Fundador</h2>
+                    </div>
+                    <div class="section-content">
+                        <p>
+                            A Teca Capital foi fundada por <strong>Alberto Teca Tomás</strong>, com o propósito de
+                            criar uma alternativa educacional orientada à prática, à tecnologia e à preparação
+                            real para o mercado.
+                        </p>
+                        <p>
+                            A criação do projeto nasce da visão de que a educação deve evoluir para além do modelo
+                            exclusivamente teórico, integrando ferramentas digitais capazes de formar pessoas mais
+                            preparadas, autónomas e conscientes do seu papel profissional e social.
+                        </p>
+                        
+                        <div class="founder-name">
+                            Alberto Teca Tomás
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- SEÇÃO 9: COMPROMISSO COM O FUTURO -->
+        <section id="compromisso" class="about-section fade-in">
+            <div class="container">
+                <div class="section-card future-card">
+                    <div class="section-header">
+                        <div class="section-icon">
+                            <i class="fas fa-handshake"></i>
+                        </div>
+                        <h2 class="section-card-title">Compromisso com o Futuro</h2>
+                    </div>
+                    <div class="section-content">
+                        <p>
+                            A Teca Capital é um <span class="tooltip-container">projeto concebido com visão de longo prazo<span class="tooltip-text">Planejamento estratégico com foco no impacto sustentável</span></span>, comprometido com o futuro
+                            da educação, da tecnologia e do trabalho em Angola.
+                        </p>
+                        <p>
+                            Ao integrar educação, inovação e responsabilidade social, a empresa assume o
+                            compromisso de contribuir para a formação das próximas gerações, fortalecendo o capital
+                            humano e criando bases sólidas para um desenvolvimento sustentável e competitivo.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <!-- BOTÃO VOLTAR AO TOPO -->
+    <div class="back-to-top" id="backToTop">
+        <i class="fas fa-chevron-up"></i>
     </div>
+    
+    <!-- FOOTER PADRÃO (EXATAMENTE COMO NO CONTEXTO) -->
+    <footer class="site-footer">
+        <div class="footer-content container">
+            <div class="footer-section social-section">
+                <h3>Redes Sociais</h3>
+                <div class="social-icons">
+                    <a href="https://www.youtube.com/watch?v=_lbwST_xK_E" target="_blank" aria-label="YouTube">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                    <a href="https://www.tiktok.com/@tecacapital" target="_blank" aria-label="TikTok">
+                        <i class="fab fa-tiktok"></i>
+                    </a>
+                    <a href="https://www.facebook.com/profile.php?id=61579163578380" target="_blank" aria-label="Facebook">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                    <a href="https://wa.me/message/2X43ZA7RMITSJ1" target="_blank" aria-label="WhatsApp">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="footer-section contact-section">
+                <h3>Contato</h3>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <p>Gmail:</p>
+                        <a href="mailto:tecacapitaledtech@gmail.com">
+                            tecacapitaledtech@gmail.com
+                        </a>
+                    </div>
+                    <div class="contact-item">
+                        <p>Telefone:</p>
+                        <a href="tel:+244974235284">
+                            +244 974 235 284
+                        </a>
+                    </div>
+                    <div class="contact-item">
+                        <p>Endereço:</p>
+                        <span>Rua Comandante Nzage, Uíge, Angola</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-section copyright-section">
+                <p class="copyright-text">
+                    &copy; <span id="current-year">2026</span> Teca Capital | Todos os direitos reservados
+                </p>
+            </div>
+        </div>
     </footer>
-
+    
+    <!-- JAVASCRIPT INLINE -->
+    <script>
+        // ============================================
+        // JAVASCRIPT OBRIGATÓRIO EM TODAS AS PÁGINAS
+        // ============================================
+        
+        // 1. Menu mobile toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileToggle = document.querySelector('.mobile-nav-toggle');
+            const mobileOverlay = document.querySelector('.mobile-nav-overlay');
+            const mobileLinks = document.querySelectorAll('.mobile-nav-list a');
+            
+            // Abrir/fechar menu mobile
+            if (mobileToggle) {
+                mobileToggle.addEventListener('click', function() {
+                    mobileOverlay.classList.toggle('active');
+                    
+                    // Animar ícone hamburguer
+                    const lines = this.querySelectorAll('.hamburger-line');
+                    if (mobileOverlay.classList.contains('active')) {
+                        lines[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+                        lines[1].style.opacity = '0';
+                        lines[2].style.transform = 'rotate(-45deg) translate(7px, -6px)';
+                    } else {
+                        lines[0].style.transform = 'rotate(0) translate(0, 0)';
+                        lines[1].style.opacity = '1';
+                        lines[2].style.transform = 'rotate(0) translate(0, 0)';
+                    }
+                });
+            }
+            
+            // Fechar menu ao clicar em um link
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileOverlay.classList.remove('active');
+                    const lines = mobileToggle.querySelectorAll('.hamburger-line');
+                    lines[0].style.transform = 'rotate(0) translate(0, 0)';
+                    lines[1].style.opacity = '1';
+                    lines[2].style.transform = 'rotate(0) translate(0, 0)';
+                });
+            });
+            
+            // 2. Atualizar ano no footer
+            const yearSpan = document.getElementById('current-year');
+            if (yearSpan) {
+                yearSpan.textContent = new Date().getFullYear();
+            }
+            
+            // 3. Destacar link ativo no menu
+            const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+            const navLinks = document.querySelectorAll('.nav-list a, .mobile-nav-list a');
+            
+            navLinks.forEach(link => {
+                const linkPage = link.getAttribute('href');
+                if (linkPage === currentPage || (currentPage === '' && linkPage === 'index.html')) {
+                    link.classList.add('active');
+                } else {
+                    link.classList.remove('active');
+                }
+            });
+            
+            // 4. Tratamento básico de erros
+            window.addEventListener('error', function(e) {
+                console.error('Erro detectado:', e.error);
+            });
+            
+            // ============================================
+            // JAVASCRIPT ESPECÍFICO PARA PÁGINA +SOBRE NÓS
+            // ============================================
+            
+            // ESTRUTURA DE INFORMAÇÕES INSTITUCIONAIS
+            const sobreInfo = {
+                fundacao: "2024",
+                localizacao: "Uíge, Angola",
+                setor: "EdTech (Educação + Tecnologia)",
+                publicoAlvo: "Estudantes, profissionais, instituições educacionais",
+                diferencial: "Simuladores educacionais + Conteúdo audiovisual"
+            };
+            
+            // ELEMENTOS DO DOM
+            const sectionNav = document.getElementById('sectionNav');
+            const sectionNavItems = document.querySelectorAll('.section-nav-item');
+            const backToTopBtn = document.getElementById('backToTop');
+            const valuesCounter = document.getElementById('valuesCounter');
+            const sections = document.querySelectorAll('.about-section');
+            const tooltipContainers = document.querySelectorAll('.tooltip-container');
+            
+            // 1. SCROLL SUAVE PARA NAVEGAÇÃO ENTRE SEÇÕES
+            function initSmoothScroll() {
+                // Para navegação por seções
+                sectionNavItems.forEach(item => {
+                    item.addEventListener('click', function() {
+                        const sectionId = this.getAttribute('data-section');
+                        const targetSection = document.getElementById(sectionId);
+                        
+                        if (targetSection) {
+                            window.scrollTo({
+                                top: targetSection.offsetTop - 80,
+                                behavior: 'smooth'
+                            });
+                        }
+                    });
+                });
+                
+                // Para links internos
+                document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                    anchor.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        
+                        const targetId = this.getAttribute('href');
+                        if (targetId === '#') return;
+                        
+                        const targetElement = document.querySelector(targetId);
+                        if (targetElement) {
+                            window.scrollTo({
+                                top: targetElement.offsetTop - 80,
+                                behavior: 'smooth'
+                            });
+                        }
+                    });
+                });
+            }
+            
+            // 2. ANIMAÇÕES DE ENTRADA PARA CADA SEÇÃO
+            function initAnimations() {
+                const observerOptions = {
+                    threshold: 0.1,
+                    rootMargin: '0px 0px -50px 0px'
+                };
+                
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('fade-in');
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, observerOptions);
+                
+                sections.forEach(section => {
+                    observer.observe(section);
+                });
+            }
+            
+            // 3. CONTADOR DE VALORES (ANIMAÇÃO)
+            function initValuesCounter() {
+                if (!valuesCounter) return;
+                
+                let currentCount = 0;
+                const targetCount = 7;
+                const duration = 2000;
+                const increment = targetCount / (duration / 16);
+                
+                const counterInterval = setInterval(() => {
+                    currentCount += increment;
+                    if (currentCount >= targetCount) {
+                        currentCount = targetCount;
+                        clearInterval(counterInterval);
+                    }
+                    valuesCounter.textContent = Math.floor(currentCount);
+                }, 16);
+            }
+            
+            // 4. SISTEMA DE NAVEGAÇÃO POR SEÇÕES
+            function initSectionNavigation() {
+                if (!sectionNav) return;
+                
+                // Observar quais seções estão visíveis
+                const sectionObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        const sectionId = entry.target.getAttribute('id');
+                        const navItem = document.querySelector(`.section-nav-item[data-section="${sectionId}"]`);
+                        
+                        if (entry.isIntersecting && navItem) {
+                            // Remover active de todos os itens
+                            sectionNavItems.forEach(item => {
+                                item.classList.remove('active');
+                            });
+                            
+                            // Adicionar active ao item correspondente
+                            navItem.classList.add('active');
+                        }
+                    });
+                }, {
+                    threshold: 0.3,
+                    rootMargin: '-100px 0px -100px 0px'
+                });
+                
+                // Observar cada seção
+                sections.forEach(section => {
+                    sectionObserver.observe(section);
+                });
+                
+                // Mostrar/ocultar navegação baseado no scroll
+                let lastScrollTop = 0;
+                
+                window.addEventListener('scroll', () => {
+                    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                    
+                    // Mostrar/ocultar navegação baseado na direção do scroll
+                    if (scrollTop > 500) {
+                        sectionNav.style.opacity = '1';
+                        sectionNav.style.visibility = 'visible';
+                        
+                        if (scrollTop > lastScrollTop) {
+                            // Scroll para baixo
+                            sectionNav.style.transform = 'translateY(-50%) translateX(20px)';
+                        } else {
+                            // Scroll para cima
+                            sectionNav.style.transform = 'translateY(-50%) translateX(0)';
+                        }
+                    } else {
+                        sectionNav.style.opacity = '0';
+                        sectionNav.style.visibility = 'hidden';
+                    }
+                    
+                    lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+                });
+            }
+            
+            // 5. HIGHLIGHTS INTERATIVOS NOS VALORES
+            function initValueHighlights() {
+                const valueItems = document.querySelectorAll('.value-item');
+                
+                valueItems.forEach(item => {
+                    item.addEventListener('mouseenter', function() {
+                        this.style.borderLeftColor = 'rgb(214, 174, 100)';
+                        this.style.backgroundColor = 'rgba(214, 174, 100, 0.1)';
+                    });
+                    
+                    item.addEventListener('mouseleave', function() {
+                        this.style.borderLeftColor = 'rgb(214, 174, 100)';
+                        this.style.backgroundColor = 'rgba(0, 0, 0, 0.3)';
+                    });
+                });
+            }
+            
+            // 6. TOOLTIPS PARA TERMOS-CHAVE
+            function initTooltips() {
+                // Tooltips já funcionam via CSS, esta função é para garantir compatibilidade
+                tooltipContainers.forEach(container => {
+                    container.addEventListener('click', function(e) {
+                        if (window.innerWidth < 768) {
+                            const tooltip = this.querySelector('.tooltip-text');
+                            if (tooltip) {
+                                tooltip.style.visibility = tooltip.style.visibility === 'visible' ? 'hidden' : 'visible';
+                                tooltip.style.opacity = tooltip.style.opacity === '1' ? '0' : '1';
+                            }
+                        }
+                    });
+                });
+            }
+            
+            // 7. BOTÃO "VOLTAR AO TOPO"
+            function initBackToTop() {
+                if (!backToTopBtn) return;
+                
+                // Mostrar/ocultar botão baseado no scroll
+                window.addEventListener('scroll', () => {
+                    if (window.pageYOffset > 300) {
+                        backToTopBtn.classList.add('visible');
+                    } else {
+                        backToTopBtn.classList.remove('visible');
+                    }
+                });
+                
+                // Scroll suave para o topo
+                backToTopBtn.addEventListener('click', () => {
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                });
+                
+                // Tecla ESC também volta ao topo
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'Escape') {
+                        window.scrollTo({
+                            top: 0,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            }
+            
+            // 8. TIMELINE INTERATIVA
+            function initTimeline() {
+                const timelineItems = document.querySelectorAll('.timeline-item');
+                
+                timelineItems.forEach((item, index) => {
+                    // Adicionar delay de animação
+                    item.style.animationDelay = `${index * 0.2}s`;
+                    item.style.animation = 'fadeInUp 0.5s ease forwards';
+                    item.style.opacity = '0';
+                    
+                    // Animar ao aparecer na viewport
+                    const observer = new IntersectionObserver((entries) => {
+                        entries.forEach(entry => {
+                            if (entry.isIntersecting) {
+                                item.style.opacity = '1';
+                                observer.unobserve(item);
+                            }
+                        });
+                    }, { threshold: 0.5 });
+                    
+                    observer.observe(item);
+                });
+            }
+            
+            // INICIALIZAÇÃO DA PÁGINA
+            function initializePage() {
+                initSmoothScroll();
+                initAnimations();
+                initValuesCounter();
+                initSectionNavigation();
+                initValueHighlights();
+                initTooltips();
+                initBackToTop();
+                initTimeline();
+            }
+            
+            // Executar inicialização
+            initializePage();
+            
+            // Fallback para navegadores sem suporte a IntersectionObserver
+            if (!('IntersectionObserver' in window)) {
+                sections.forEach(section => {
+                    section.style.opacity = '1';
+                    section.style.transform = 'translateY(0)';
+                });
+                
+                // Contador fallback
+                if (valuesCounter) {
+                    valuesCounter.textContent = '7';
+                }
+            }
+        });
+        
+        // Fallback para JS desabilitado
+        document.documentElement.classList.add('js-enabled');
+    </script>
 </body>
 </html>

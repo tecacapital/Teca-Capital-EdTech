@@ -1,95 +1,1249 @@
 <!DOCTYPE html>
-<html lang="pt-ao">
+<html lang="pt-AO">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Teca Capital - Biblioteca de Vídeos</title>
-    <link rel="icon" href="Icon/Teca Capital favicon.png" type="image/x-icon">
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+    <title>Teca Capital - Biblioteca de Vídeos | Conteúdo Educacional Audiovisual</title>
+    <link rel="icon" href="Imagem/Teca Capital Logo Atualizado - Copia.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/b-video.css">
 </head>
 <body>
-
-    <header>
-        <div id="logotipo"><img src="Imagem/Teca Capital Logo Atualizado - Copia.png" width="15%" alt="logo da Teca Capital"></div>
-        <nav>
-            <ul>
+    <!-- HEADER PADRÃO (EXATAMENTE COMO NO CONTEXTO) -->
+    <header class="site-header">
+        <div class="logo-container">
+            <a href="index.html">
+                <img src="Imagem/Teca Capital Logo Atualizado - Copia.png" 
+                     alt="Teca Capital" 
+                     class="site-logo">
+            </a>
+        </div>
+        
+        <nav class="main-nav desktop-nav">
+            <ul class="nav-list">
                 <li><a href="index.html">Página Inicial</a></li>
                 <li><a href="biblioteca.html">Biblioteca</a></li>
+                <li><a href="biblioteca-video.html" class="active">Biblioteca de Vídeos</a></li>
                 <li><a href="simuladores.html">Simuladores</a></li>
                 <li><a href="sobre.html">+Sobre Nós</a></li>
                 <li><a href="login-cadastramento.html">Login/Cadastro</a></li>
-                <li><a href="raking.html">Raking</a></li>
+                <li><a href="ranking.html">Ranking</a></li>
                 <li><a href="admin.html">Administrador</a></li>
             </ul>
         </nav>
+        
+        <button class="menu-toggle mobile-nav-toggle" aria-label="Menu">
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+        </button>
+        
+        <div class="mobile-nav-overlay">
+            <nav class="mobile-nav">
+                <ul class="mobile-nav-list">
+                    <li><a href="index.html">Página Inicial</a></li>
+                    <li><a href="biblioteca.html">Biblioteca</a></li>
+                    <li><a href="biblioteca-video.html" class="active">Biblioteca de Vídeos</a></li>
+                    <li><a href="simuladores.html">Simuladores</a></li>
+                    <li><a href="sobre.html">+Sobre Nós</a></li>
+                    <li><a href="login-cadastramento.html">Login/Cadastro</a></li>
+                    <li><a href="ranking.html">Ranking</a></li>
+                    <li><a href="admin.html">Administrador</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
     
-    <main>
-        <img src="Icon/video.png" alt="icone de vídeo" width="5%">
-        <h1>Nossos Vídeos Educacionais</h1>
-
-        <section id="Finanças">
-            <h2>Categoria: Finanças</h2>
-            
-            <div id="finanças-video">
-
-                <div id="finanças-v-1">
-                    <h3>O que é o mercado financeiro</h3>
-                    <video src="Video/Analise de dados 1.mp4" autoplay loop width="100%"></video>
+    <!-- CONTEÚDO PRINCIPAL DA BIBLIOTECA DE VÍDEOS -->
+    <main class="page-content">
+        <!-- SEÇÃO 1: CABEÇALHO DA BIBLIOTECA DE VÍDEOS -->
+        <section class="video-header fade-in">
+            <div class="container">
+                <div class="video-icon">
+                    <i class="fas fa-video"></i>
                 </div>
-
+                <h1 class="video-title">Biblioteca de <span class="highlight">Vídeos</span></h1>
+                <p class="video-subtitle">
+                    Aprenda através de vídeos explicativos, tutoriais e demonstrações práticas. 
+                    Nossa coleção de vídeos educacionais foi cuidadosamente selecionada para 
+                    oferecer conhecimento visual de alta qualidade que complementa sua jornada 
+                    de aprendizagem.
+                </p>
+                
+                <div class="video-search-container">
+                    <div class="video-search-box">
+                        <input type="text" class="video-search-input" id="video-search-input" 
+                               placeholder="Buscar vídeos por título, categoria ou palavra-chave...">
+                        <button class="btn btn-primary" id="video-search-btn">Buscar</button>
+                    </div>
+                    
+                    <div class="video-category-filters">
+                        <button class="video-filter-btn active" data-category="todos">Todos</button>
+                        <button class="video-filter-btn" data-category="finanças">Finanças</button>
+                        <button class="video-filter-btn" data-category="tecnologia">Tecnologia</button>
+                        <button class="video-filter-btn" data-category="economia">Economia</button>
+                    </div>
+                </div>
             </div>
         </section>
-
-    </main>
-
-    <footer>
-        <div>
-        <!-- REDES SOCIAIS -->
-        <div id="socialmidia">
-            <h3>Redes Sociais</h3>
-            <div class="social-icons">
-                <a href="https://www.youtube.com/watch?v=_lbwST_xK_E" target="_blank">
-                    <i class="fa-brands fa-youtube"></i>
-                </a>
-                <a href="https://www.tiktok.com/@tecacapital" target="_blank">
-                    <i class="fa-brands fa-tiktok"></i>
-                </a>
-                <a href="https://www.facebook.com/profile.php?id=61579163578380" target="_blank">
-                    <i class="fa-brands fa-facebook"></i>
-                </a>
-                <a href="https://wa.me/message/2X43ZA7RMITSJ1" target="_blank">
-                    <i class="fa-brands fa-whatsapp"></i>
-                </a>
-            </div>
-        </div>
-
-        <!-- CONTATO -->
-        <div id="Contato">
-            <h3>Contato</h3>
-            <div class="contact-info">
-                <div class="contact-item">
-                    <p>Gmail:</p>
-                    <a href="mailto:tecacapitaledtech@gmail.com">
-                        tecacapitaledtech@gmail.com
-                    </a>
-                </div>
-                <div class="contact-item">
-                    <p>Telefone:</p>
-                    <a href="tel:+244974235284">
-                        +244 974 235 284
-                    </a>
-                </div>
-                <div class="contact-item">
-                    <p>Endereço:</p>
-                    <span>Rua Comandante Nzage, Uíge, Angola</span>
-                </div>
-            </div>
-        </div>
         
-        <p class="timeline">&copy; 2025 Teca Capital | Todos os direitos reservados</p>
+        <!-- SEÇÃO 2: CATEGORIA - FINANÇAS -->
+        <section class="category-section fade-in" id="financas-section">
+            <div class="container">
+                <div class="category-header">
+                    <h2 class="category-name">Finanças e Mercado Financeiro</h2>
+                    <p class="category-description">
+                        Vídeos educacionais sobre conceitos financeiros e análise de mercado. 
+                        Aprenda os fundamentos do mercado financeiro e tome decisões mais 
+                        informadas sobre investimentos e gestão financeira.
+                    </p>
+                </div>
+                
+                <div class="videos-grid" id="videos-container">
+                    <!-- Vídeo 1: O que é o mercado financeiro -->
+                    <div class="video-card" data-id="1" data-category="finanças">
+                        <div class="video-thumbnail-container">
+                            <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                                 alt="Thumbnail do vídeo: O que é o mercado financeiro" 
+                                 class="video-thumbnail">
+                            <div class="video-thumbnail-overlay">
+                                <div class="play-icon">
+                                    <i class="fas fa-play"></i>
+                                </div>
+                            </div>
+                            <div class="video-duration">05:30</div>
+                        </div>
+                        
+                        <div class="video-content">
+                            <h3 class="video-title-card">O que é o mercado financeiro</h3>
+                            
+                            <div class="video-meta">
+                                <span><i class="fas fa-calendar"></i> 15/03/2024</span>
+                                <span><i class="fas fa-eye"></i> <span id="view-count-1">450</span> visualizações</span>
+                                <span><i class="fas fa-tag"></i> Finanças</span>
+                            </div>
+                            
+                            <div class="video-actions">
+                                <div class="action-buttons">
+                                    <button class="btn btn-primary btn-small watch-btn" data-id="1">Assistir</button>
+                                    <button class="btn-icon details-btn" data-id="1" aria-label="Detalhes">
+                                        <i class="fas fa-info-circle"></i>
+                                    </button>
+                                    <button class="btn-icon favorite-btn" data-id="1" aria-label="Adicionar aos favoritos">
+                                        <i class="far fa-heart"></i>
+                                    </button>
+                                    <button class="btn-icon share-btn" data-id="1" aria-label="Compartilhar">
+                                        <i class="fas fa-share-alt"></i>
+                                    </button>
+                                </div>
+                                
+                                <div class="video-stats">
+                                    <span><i class="fas fa-thumbs-up"></i> <span id="like-count-1">25</span></span>
+                                    <span><i class="fas fa-comment"></i> <span id="comment-count-1">8</span></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Vídeo 2: Simulado para demonstração -->
+                    <div class="video-card" data-id="2" data-category="finanças">
+                        <div class="video-thumbnail-container">
+                            <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                                 alt="Thumbnail do vídeo: Introdução aos Investimentos" 
+                                 class="video-thumbnail">
+                            <div class="video-thumbnail-overlay">
+                                <div class="play-icon">
+                                    <i class="fas fa-play"></i>
+                                </div>
+                            </div>
+                            <div class="video-duration">07:45</div>
+                        </div>
+                        
+                        <div class="video-content">
+                            <h3 class="video-title-card">Introdução aos Investimentos para Iniciantes</h3>
+                            
+                            <div class="video-meta">
+                                <span><i class="fas fa-calendar"></i> 10/02/2024</span>
+                                <span><i class="fas fa-eye"></i> <span id="view-count-2">320</span> visualizações</span>
+                                <span><i class="fas fa-tag"></i> Finanças</span>
+                            </div>
+                            
+                            <div class="video-actions">
+                                <div class="action-buttons">
+                                    <button class="btn btn-primary btn-small watch-btn" data-id="2">Assistir</button>
+                                    <button class="btn-icon details-btn" data-id="2" aria-label="Detalhes">
+                                        <i class="fas fa-info-circle"></i>
+                                    </button>
+                                    <button class="btn-icon favorite-btn" data-id="2" aria-label="Adicionar aos favoritos">
+                                        <i class="far fa-heart"></i>
+                                    </button>
+                                    <button class="btn-icon share-btn" data-id="2" aria-label="Compartilhar">
+                                        <i class="fas fa-share-alt"></i>
+                                    </button>
+                                </div>
+                                
+                                <div class="video-stats">
+                                    <span><i class="fas fa-thumbs-up"></i> <span id="like-count-2">18</span></span>
+                                    <span><i class="fas fa-comment"></i> <span id="comment-count-2">5</span></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Vídeo 3: Simulado para demonstração -->
+                    <div class="video-card" data-id="3" data-category="finanças">
+                        <div class="video-thumbnail-container">
+                            <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                                 alt="Thumbnail do vídeo: Gestão Financeira Pessoal" 
+                                 class="video-thumbnail">
+                            <div class="video-thumbnail-overlay">
+                                <div class="play-icon">
+                                    <i class="fas fa-play"></i>
+                                </div>
+                            </div>
+                            <div class="video-duration">09:20</div>
+                        </div>
+                        
+                        <div class="video-content">
+                            <h3 class="video-title-card">Gestão Financeira Pessoal: Primeiros Passos</h3>
+                            
+                            <div class="video-meta">
+                                <span><i class="fas fa-calendar"></i> 22/01/2024</span>
+                                <span><i class="fas fa-eye"></i> <span id="view-count-3">280</span> visualizações</span>
+                                <span><i class="fas fa-tag"></i> Finanças</span>
+                            </div>
+                            
+                            <div class="video-actions">
+                                <div class="action-buttons">
+                                    <button class="btn btn-primary btn-small watch-btn" data-id="3">Assistir</button>
+                                    <button class="btn-icon details-btn" data-id="3" aria-label="Detalhes">
+                                        <i class="fas fa-info-circle"></i>
+                                    </button>
+                                    <button class="btn-icon favorite-btn" data-id="3" aria-label="Adicionar aos favoritos">
+                                        <i class="far fa-heart"></i>
+                                    </button>
+                                    <button class="btn-icon share-btn" data-id="3" aria-label="Compartilhar">
+                                        <i class="fas fa-share-alt"></i>
+                                    </button>
+                                </div>
+                                
+                                <div class="video-stats">
+                                    <span><i class="fas fa-thumbs-up"></i> <span id="like-count-3">32</span></span>
+                                    <span><i class="fas fa-comment"></i> <span id="comment-count-3">12</span></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- SEÇÃO 3: CATEGORIAS ADICIONAIS (PLACEHOLDER) -->
+        <section class="placeholder-section fade-in">
+            <div class="container">
+                <h2 class="section-title text-center">Outras <span class="highlight">Categorias</span></h2>
+                <p class="section-subtitle text-center">Novos conteúdos em produção para expandir nossa biblioteca</p>
+                
+                <div class="placeholder-grid">
+                    <!-- Tecnologia -->
+                    <div class="placeholder-card">
+                        <div class="placeholder-icon">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                        <h3 class="placeholder-title">Tecnologia</h3>
+                        <p class="placeholder-text">
+                            Em breve - Vídeos sobre programação, análise de dados, 
+                            inteligência artificial e outras tecnologias emergentes.
+                        </p>
+                    </div>
+                    
+                    <!-- Economia -->
+                    <div class="placeholder-card">
+                        <div class="placeholder-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3 class="placeholder-title">Economia</h3>
+                        <p class="placeholder-text">
+                            Em breve - Conteúdos sobre macroeconomia, microeconomia, 
+                            políticas econômicas e análise de mercado global.
+                        </p>
+                    </div>
+                    
+                    <!-- Metodologia -->
+                    <div class="placeholder-card">
+                        <div class="placeholder-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <h3 class="placeholder-title">Metodologia</h3>
+                        <p class="placeholder-text">
+                            Em breve - Vídeos sobre técnicas de estudo, métodos de 
+                            aprendizagem eficaz e desenvolvimento de habilidades.
+                        </p>
+                    </div>
+                    
+                    <!-- Ciência de Dados -->
+                    <div class="placeholder-card">
+                        <div class="placeholder-icon">
+                            <i class="fas fa-database"></i>
+                        </div>
+                        <h3 class="placeholder-title">Ciência de Dados</h3>
+                        <p class="placeholder-text">
+                            Em breve - Tutoriais sobre análise de dados, visualização, 
+                            machine learning e ferramentas de data science.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- SEÇÃO 5: LISTA DE REPRODUÇÃO RECOMENDADA -->
+        <section class="recommendations-section fade-in">
+            <div class="container">
+                <h2 class="section-title">Recomendados <span class="highlight">para você</span></h2>
+                <p class="section-subtitle">Baseado na sua categoria de interesse em finanças</p>
+                
+                <div class="recommendations-list">
+                    <!-- Recomendação 1 -->
+                    <div class="recommendation-item" data-id="4">
+                        <div class="recommendation-thumbnail">
+                            <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+                                 alt="Thumbnail do vídeo recomendado">
+                        </div>
+                        <div class="recommendation-content">
+                            <h4 class="recommendation-title">Como Analisar Ações para Investimento</h4>
+                            <div class="recommendation-meta">
+                                <span>08:15</span>
+                                <span>•</span>
+                                <span>Finanças</span>
+                                <span>•</span>
+                                <span>215 visualizações</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Recomendação 2 -->
+                    <div class="recommendation-item" data-id="5">
+                        <div class="recommendation-thumbnail">
+                            <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+                                 alt="Thumbnail do vídeo recomendado">
+                        </div>
+                        <div class="recommendation-content">
+                            <h4 class="recommendation-title">Fundamentos de Economia Comportamental</h4>
+                            <div class="recommendation-meta">
+                                <span>11:30</span>
+                                <span>•</span>
+                                <span>Finanças</span>
+                                <span>•</span>
+                                <span>189 visualizações</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Recomendação 3 -->
+                    <div class="recommendation-item" data-id="6">
+                        <div class="recommendation-thumbnail">
+                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+                                 alt="Thumbnail do vídeo recomendado">
+                        </div>
+                        <div class="recommendation-content">
+                            <h4 class="recommendation-title">Planejamento Financeiro para Jovens</h4>
+                            <div class="recommendation-meta">
+                                <span>06:45</span>
+                                <span>•</span>
+                                <span>Finanças</span>
+                                <span>•</span>
+                                <span>312 visualizações</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- SEÇÃO 6: SISTEMA DE COMENTÁRIOS SIMULADO -->
+        <section class="comments-section fade-in">
+            <div class="container">
+                <div class="comments-container">
+                    <h2 class="section-title">Comentários <span class="highlight">do Vídeo</span></h2>
+                    <p class="section-subtitle mb-40">Compartilhe sua opinião sobre o conteúdo assistido</p>
+                    
+                    <div class="comments-form">
+                        <textarea class="comment-input" id="comment-input" placeholder="Adicione um comentário público..."></textarea>
+                        <button class="btn btn-primary" id="submit-comment">Publicar Comentário</button>
+                    </div>
+                    
+                    <div class="comments-list" id="comments-list">
+                        <!-- Comentário 1 -->
+                        <div class="comment-item">
+                            <div class="comment-header">
+                                <span class="comment-author">Maria Silva</span>
+                                <span class="comment-date">2 dias atrás</span>
+                            </div>
+                            <p class="comment-text">
+                                Excelente explicação sobre mercado financeiro! Como iniciante, consegui entender 
+                                conceitos que antes pareciam complexos. Aguardando mais vídeos como este.
+                            </p>
+                            <div class="comment-actions">
+                                <div class="comment-action">
+                                    <i class="fas fa-thumbs-up"></i>
+                                    <span>12</span>
+                                </div>
+                                <div class="comment-action">
+                                    <i class="fas fa-thumbs-down"></i>
+                                    <span>1</span>
+                                </div>
+                                <div class="comment-action">
+                                    <i class="fas fa-reply"></i>
+                                    <span>Responder</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Comentário 2 -->
+                        <div class="comment-item">
+                            <div class="comment-header">
+                                <span class="comment-author">João Pereira</span>
+                                <span class="comment-date">1 semana atrás</span>
+                            </div>
+                            <p class="comment-text">
+                                Conteúdo muito bem estruturado. Gostaria de ver mais exemplos práticos 
+                                sobre aplicação dos conceitos no mercado angolano.
+                            </p>
+                            <div class="comment-actions">
+                                <div class="comment-action">
+                                    <i class="fas fa-thumbs-up"></i>
+                                    <span>8</span>
+                                </div>
+                                <div class="comment-action">
+                                    <i class="fas fa-thumbs-down"></i>
+                                    <span>0</span>
+                                </div>
+                                <div class="comment-action">
+                                    <i class="fas fa-reply"></i>
+                                    <span>Responder</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Comentário 3 -->
+                        <div class="comment-item">
+                            <div class="comment-header">
+                                <span class="comment-author">Ana Costa</span>
+                                <span class="comment-date">2 semanas atrás</span>
+                            </div>
+                            <p class="comment-text">
+                                A didática do instrutor é excelente. Consegui aplicar alguns conceitos 
+                                na minha gestão financeira pessoal. Recomendo este vídeo para quem está começando.
+                            </p>
+                            <div class="comment-actions">
+                                <div class="comment-action">
+                                    <i class="fas fa-thumbs-up"></i>
+                                    <span>15</span>
+                                </div>
+                                <div class="comment-action">
+                                    <i class="fas fa-thumbs-down"></i>
+                                    <span>2</span>
+                                </div>
+                                <div class="comment-action">
+                                    <i class="fas fa-reply"></i>
+                                    <span>Responder</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- SEÇÃO 7: ESTATÍSTICAS DE VÍDEOS -->
+        <section class="video-stats-section fade-in">
+            <div class="container">
+                <h2 class="section-title text-center">Nossa Biblioteca em <span class="highlight">Números</span></h2>
+                <p class="section-subtitle text-center">Conteúdo audiovisual de qualidade para seu aprendizado</p>
+                
+                <div class="video-stats-grid">
+                    <div class="video-stat-card">
+                        <div class="video-stat-number" data-target="10">0</div>
+                        <div class="video-stat-label">Total de Vídeos</div>
+                    </div>
+                    <div class="video-stat-card">
+                        <div class="video-stat-number" data-target="8">0</div>
+                        <div class="video-stat-label">Horas de Conteúdo</div>
+                    </div>
+                    <div class="video-stat-card">
+                        <div class="video-stat-number" data-target="1000">0</div>
+                        <div class="video-stat-label">Visualizações</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <!-- SEÇÃO 4: MODAL PLAYER PRINCIPAL -->
+    <div class="video-modal" id="video-modal">
+        <div class="video-modal-content">
+            <div class="video-modal-header">
+                <div class="video-modal-title" id="video-modal-title">O que é o mercado financeiro</div>
+                <button class="video-modal-close" id="video-modal-close" aria-label="Fechar">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <div class="video-modal-body">
+                <div class="video-player-container">
+                    <video class="video-player" id="video-player" controls preload="metadata">
+                        <source src="Video/Analise de dados 1.mp4" type="video/mp4">
+                        Seu navegador não suporta o elemento de vídeo.
+                    </video>
+                </div>
+                
+                <div class="video-modal-info">
+                    <div class="video-modal-meta">
+                        <span><i class="fas fa-calendar"></i> Publicado em: 15/03/2024</span>
+                        <span><i class="fas fa-clock"></i> Duração: 05:30</span>
+                        <span><i class="fas fa-eye"></i> Visualizações: <span id="modal-view-count">450</span></span>
+                        <span><i class="fas fa-tag"></i> Categoria: Finanças</span>
+                    </div>
+                    
+                    <p class="video-modal-description">
+                        Introdução ao conceito de mercado financeiro e seus componentes básicos. 
+                        Este vídeo explica de forma clara e objetiva o que é o mercado financeiro, 
+                        seus principais participantes, tipos de ativos negociados e sua importância 
+                        para a economia.
+                    </p>
+                    
+                    <div class="video-modal-actions">
+                        <button class="btn-icon" id="modal-like-btn" aria-label="Curtir vídeo">
+                            <i class="far fa-thumbs-up"></i>
+                        </button>
+                        <button class="btn-icon" id="modal-favorite-btn" aria-label="Adicionar aos favoritos">
+                            <i class="far fa-heart"></i>
+                        </button>
+                        <button class="btn-icon" id="modal-share-btn" aria-label="Compartilhar vídeo">
+                            <i class="fas fa-share-alt"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+    
+    <!-- FOOTER PADRÃO (EXATAMENTE COMO NO CONTEXTO) -->
+    <footer class="site-footer">
+        <div class="footer-content container">
+            <div class="footer-section social-section">
+                <h3>Redes Sociais</h3>
+                <div class="social-icons">
+                    <a href="https://www.youtube.com/watch?v=_lbwST_xK_E" target="_blank" aria-label="YouTube">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                    <a href="https://www.tiktok.com/@tecacapital" target="_blank" aria-label="TikTok">
+                        <i class="fab fa-tiktok"></i>
+                    </a>
+                    <a href="https://www.facebook.com/profile.php?id=61579163578380" target="_blank" aria-label="Facebook">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                    <a href="https://wa.me/message/2X43ZA7RMITSJ1" target="_blank" aria-label="WhatsApp">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="footer-section contact-section">
+                <h3>Contato</h3>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <p>Gmail:</p>
+                        <a href="mailto:tecacapitaledtech@gmail.com">
+                            tecacapitaledtech@gmail.com
+                        </a>
+                    </div>
+                    <div class="contact-item">
+                        <p>Telefone:</p>
+                        <a href="tel:+244974235284">
+                            +244 974 235 284
+                        </a>
+                    </div>
+                    <div class="contact-item">
+                        <p>Endereço:</p>
+                        <span>Rua Comandante Nzage, Uíge, Angola</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-section copyright-section">
+                <p class="copyright-text">
+                    &copy; <span id="current-year">2026</span> Teca Capital | Todos os direitos reservados
+                </p>
+            </div>
+        </div>
     </footer>
-
+    
+    <!-- TOAST PARA MENSAGENS -->
+    <div class="toast" id="toast"></div>
+    
+    <!-- JAVASCRIPT INLINE -->
+    <script>
+        // ============================================
+        // JAVASCRIPT OBRIGATÓRIO EM TODAS AS PÁGINAS
+        // ============================================
+        
+        // 1. Menu mobile toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileToggle = document.querySelector('.mobile-nav-toggle');
+            const mobileOverlay = document.querySelector('.mobile-nav-overlay');
+            const mobileLinks = document.querySelectorAll('.mobile-nav-list a');
+            
+            // Abrir/fechar menu mobile
+            if (mobileToggle) {
+                mobileToggle.addEventListener('click', function() {
+                    mobileOverlay.classList.toggle('active');
+                    
+                    // Animar ícone hamburguer
+                    const lines = this.querySelectorAll('.hamburger-line');
+                    if (mobileOverlay.classList.contains('active')) {
+                        lines[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+                        lines[1].style.opacity = '0';
+                        lines[2].style.transform = 'rotate(-45deg) translate(7px, -6px)';
+                    } else {
+                        lines[0].style.transform = 'rotate(0) translate(0, 0)';
+                        lines[1].style.opacity = '1';
+                        lines[2].style.transform = 'rotate(0) translate(0, 0)';
+                    }
+                });
+            }
+            
+            // Fechar menu ao clicar em um link
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileOverlay.classList.remove('active');
+                    const lines = mobileToggle.querySelectorAll('.hamburger-line');
+                    lines[0].style.transform = 'rotate(0) translate(0, 0)';
+                    lines[1].style.opacity = '1';
+                    lines[2].style.transform = 'rotate(0) translate(0, 0)';
+                });
+            });
+            
+            // 2. Atualizar ano no footer
+            const yearSpan = document.getElementById('current-year');
+            if (yearSpan) {
+                yearSpan.textContent = new Date().getFullYear();
+            }
+            
+            // 3. Destacar link ativo no menu
+            const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+            const navLinks = document.querySelectorAll('.nav-list a, .mobile-nav-list a');
+            
+            navLinks.forEach(link => {
+                const linkPage = link.getAttribute('href');
+                if (linkPage === currentPage || (currentPage === '' && linkPage === 'index.html')) {
+                    link.classList.add('active');
+                } else {
+                    link.classList.remove('active');
+                }
+            });
+            
+            // 4. Tratamento básico de erros
+            window.addEventListener('error', function(e) {
+                console.error('Erro detectado:', e.error);
+            });
+            
+            // ============================================
+            // JAVASCRIPT ESPECÍFICO PARA BIBLIOTECA DE VÍDEOS
+            // ============================================
+            
+            // ESTRUTURA DE DADOS PARA VÍDEOS
+            const videos = [
+                {
+                    id: 1,
+                    titulo: "O que é o mercado financeiro",
+                    categoria: "finanças",
+                    descricao: "Introdução ao conceito de mercado financeiro e seus componentes básicos",
+                    duracao: "05:30",
+                    dataPublicacao: "2024-03-15",
+                    visualizacoes: 450,
+                    arquivo: "Video/Analise de dados 1.mp4",
+                    thumbnail: "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                    likes: 25,
+                    comentarios: 8
+                },
+                {
+                    id: 2,
+                    titulo: "Introdução aos Investimentos para Iniciantes",
+                    categoria: "finanças",
+                    descricao: "Conceitos básicos para quem está começando no mundo dos investimentos",
+                    duracao: "07:45",
+                    dataPublicacao: "2024-02-10",
+                    visualizacoes: 320,
+                    arquivo: "Video/Analise de dados 1.mp4",
+                    thumbnail: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                    likes: 18,
+                    comentarios: 5
+                },
+                {
+                    id: 3,
+                    titulo: "Gestão Financeira Pessoal: Primeiros Passos",
+                    categoria: "finanças",
+                    descricao: "Dicas práticas para organizar suas finanças pessoais",
+                    duracao: "09:20",
+                    dataPublicacao: "2024-01-22",
+                    visualizacoes: 280,
+                    arquivo: "Video/Analise de dados 1.mp4",
+                    thumbnail: "https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                    likes: 32,
+                    comentarios: 12
+                }
+            ];
+            
+            // VARIÁVEIS DE CONTROLE
+            let videoAtual = null;
+            let videoAtualId = null;
+            let favoritos = JSON.parse(localStorage.getItem('tecacapital_favoritos_videos')) || [];
+            let likes = JSON.parse(localStorage.getItem('tecacapital_likes_videos')) || {};
+            let visualizacoes = JSON.parse(localStorage.getItem('tecacapital_visualizacoes_videos')) || {};
+            let comentarios = JSON.parse(localStorage.getItem('tecacapital_comentarios_videos')) || {};
+            
+            // Inicializar dados
+            videos.forEach(video => {
+                if (!likes[video.id]) likes[video.id] = video.likes;
+                if (!visualizacoes[video.id]) visualizacoes[video.id] = video.visualizacoes;
+                if (!comentarios[video.id]) comentarios[video.id] = video.comentarios;
+            });
+            
+            // ELEMENTOS DO DOM
+            const searchInput = document.getElementById('video-search-input');
+            const searchBtn = document.getElementById('video-search-btn');
+            const categoryFilters = document.querySelectorAll('.video-filter-btn');
+            const videoCards = document.querySelectorAll('.video-card');
+            const watchBtns = document.querySelectorAll('.watch-btn');
+            const detailsBtns = document.querySelectorAll('.details-btn');
+            const favoriteBtns = document.querySelectorAll('.favorite-btn');
+            const shareBtns = document.querySelectorAll('.share-btn');
+            const likeCounters = document.querySelectorAll('.video-stats span span');
+            const viewCounters = document.querySelectorAll('#view-count-1, #view-count-2, #view-count-3');
+            const videoModal = document.getElementById('video-modal');
+            const videoModalClose = document.getElementById('video-modal-close');
+            const videoPlayer = document.getElementById('video-player');
+            const videoModalTitle = document.getElementById('video-modal-title');
+            const modalViewCount = document.getElementById('modal-view-count');
+            const modalLikeBtn = document.getElementById('modal-like-btn');
+            const modalFavoriteBtn = document.getElementById('modal-favorite-btn');
+            const modalShareBtn = document.getElementById('modal-share-btn');
+            const commentInput = document.getElementById('comment-input');
+            const submitCommentBtn = document.getElementById('submit-comment');
+            const commentsList = document.getElementById('comments-list');
+            const recommendationItems = document.querySelectorAll('.recommendation-item');
+            const toast = document.getElementById('toast');
+            const statNumbers = document.querySelectorAll('.video-stat-number');
+            
+            // FUNÇÃO PARA MOSTRAR TOAST (FEEDBACK)
+            function showToast(message, duration = 3000) {
+                toast.textContent = message;
+                toast.classList.add('show');
+                
+                setTimeout(() => {
+                    toast.classList.remove('show');
+                }, duration);
+            }
+            
+            // 1. Controle de player modal (abrir/fechar)
+            function abrirModalVideo(id) {
+                const video = videos.find(v => v.id == id);
+                if (video) {
+                    videoAtualId = id;
+                    videoAtual = video;
+                    
+                    // Atualizar informações do modal
+                    videoModalTitle.textContent = video.titulo;
+                    modalViewCount.textContent = visualizacoes[id];
+                    
+                    // Atualizar src do vídeo
+                    videoPlayer.src = video.arquivo;
+                    
+                    // Atualizar botões do modal
+                    atualizarBotoesModal();
+                    
+                    // Registrar visualização
+                    registrarVisualizacao(id);
+                    
+                    // Abrir modal
+                    videoModal.classList.add('active');
+                    
+                    // Pausar outros vídeos se houver
+                    videoPlayer.pause();
+                }
+            }
+            
+            function fecharModalVideo() {
+                videoModal.classList.remove('active');
+                videoPlayer.pause();
+                videoPlayer.currentTime = 0;
+                videoAtual = null;
+            }
+            
+            // 2. Sistema de favoritos (localStorage)
+            function alternarFavorito(id) {
+                const index = favoritos.indexOf(id);
+                const favoriteBtn = document.querySelector(`.favorite-btn[data-id="${id}"]`);
+                const card = document.querySelector(`.video-card[data-id="${id}"]`);
+                
+                if (index === -1) {
+                    // Adicionar aos favoritos
+                    favoritos.push(id);
+                    if (favoriteBtn) {
+                        favoriteBtn.innerHTML = '<i class="fas fa-heart"></i>';
+                        favoriteBtn.classList.add('active');
+                    }
+                    if (card) {
+                        card.classList.add('favorite');
+                    }
+                    if (modalFavoriteBtn && videoAtualId == id) {
+                        modalFavoriteBtn.innerHTML = '<i class="fas fa-heart"></i>';
+                        modalFavoriteBtn.classList.add('active');
+                    }
+                    showToast('Vídeo adicionado aos favoritos');
+                } else {
+                    // Remover dos favoritos
+                    favoritos.splice(index, 1);
+                    if (favoriteBtn) {
+                        favoriteBtn.innerHTML = '<i class="far fa-heart"></i>';
+                        favoriteBtn.classList.remove('active');
+                    }
+                    if (card) {
+                        card.classList.remove('favorite');
+                    }
+                    if (modalFavoriteBtn && videoAtualId == id) {
+                        modalFavoriteBtn.innerHTML = '<i class="far fa-heart"></i>';
+                        modalFavoriteBtn.classList.remove('active');
+                    }
+                    showToast('Vídeo removido dos favoritos');
+                }
+                
+                localStorage.setItem('tecacapital_favoritos_videos', JSON.stringify(favoritos));
+            }
+            
+            // Inicializar favoritos na página
+            function inicializarFavoritos() {
+                favoritos.forEach(id => {
+                    const favoriteBtn = document.querySelector(`.favorite-btn[data-id="${id}"]`);
+                    const card = document.querySelector(`.video-card[data-id="${id}"]`);
+                    
+                    if (favoriteBtn) {
+                        favoriteBtn.innerHTML = '<i class="fas fa-heart"></i>';
+                        favoriteBtn.classList.add('active');
+                    }
+                    
+                    if (card) {
+                        card.classList.add('favorite');
+                    }
+                });
+            }
+            
+            // Atualizar botões do modal
+            function atualizarBotoesModal() {
+                if (!videoAtualId) return;
+                
+                // Favorito
+                if (favoritos.includes(videoAtualId)) {
+                    modalFavoriteBtn.innerHTML = '<i class="fas fa-heart"></i>';
+                    modalFavoriteBtn.classList.add('active');
+                } else {
+                    modalFavoriteBtn.innerHTML = '<i class="far fa-heart"></i>';
+                    modalFavoriteBtn.classList.remove('active');
+                }
+                
+                // Like
+                if (likes[videoAtualId] > 0) {
+                    modalLikeBtn.innerHTML = '<i class="fas fa-thumbs-up"></i>';
+                    modalLikeBtn.classList.add('active');
+                } else {
+                    modalLikeBtn.innerHTML = '<i class="far fa-thumbs-up"></i>';
+                    modalLikeBtn.classList.remove('active');
+                }
+            }
+            
+            // 3. Contador de visualizações simulado
+            function registrarVisualizacao(id) {
+                if (!visualizacoes[id]) {
+                    visualizacoes[id] = 1;
+                } else {
+                    visualizacoes[id]++;
+                }
+                
+                localStorage.setItem('tecacapital_visualizacoes_videos', JSON.stringify(visualizacoes));
+                
+                // Atualizar contadores na interface
+                const viewCounter = document.getElementById(`view-count-${id}`);
+                if (viewCounter) {
+                    viewCounter.textContent = visualizacoes[id];
+                }
+                
+                if (videoAtualId == id) {
+                    modalViewCount.textContent = visualizacoes[id];
+                }
+                
+                return visualizacoes[id];
+            }
+            
+            // Inicializar visualizações
+            function inicializarVisualizacoes() {
+                viewCounters.forEach(counter => {
+                    const id = counter.id.split('-')[2];
+                    counter.textContent = visualizacoes[id] || 0;
+                });
+            }
+            
+            // 4. Sistema de likes para vídeos (localStorage)
+            function alternarLike(id) {
+                if (!likes[id]) {
+                    likes[id] = 1;
+                } else {
+                    likes[id] = likes[id] === 0 ? 1 : 0;
+                }
+                
+                localStorage.setItem('tecacapital_likes_videos', JSON.stringify(likes));
+                
+                // Atualizar contadores na interface
+                const likeCounter = document.getElementById(`like-count-${id}`);
+                if (likeCounter) {
+                    likeCounter.textContent = likes[id] || 0;
+                }
+                
+                // Atualizar botão no modal se for o vídeo atual
+                if (videoAtualId == id) {
+                    if (likes[id] > 0) {
+                        modalLikeBtn.innerHTML = '<i class="fas fa-thumbs-up"></i>';
+                        modalLikeBtn.classList.add('active');
+                    } else {
+                        modalLikeBtn.innerHTML = '<i class="far fa-thumbs-up"></i>';
+                        modalLikeBtn.classList.remove('active');
+                    }
+                }
+                
+                return likes[id];
+            }
+            
+            // Inicializar likes
+            function inicializarLikes() {
+                likeCounters.forEach((counter, index) => {
+                    const id = index % 2 === 0 ? Math.floor(index / 2) + 1 : null;
+                    if (id && likes[id] !== undefined) {
+                        counter.textContent = likes[id];
+                    }
+                });
+            }
+            
+            // 5. Comentários simulados (adicionar/visualizar)
+            function adicionarComentario(texto) {
+                if (!texto.trim()) {
+                    showToast('Por favor, digite um comentário');
+                    return;
+                }
+                
+                // Simular adição de comentário
+                const novoComentario = {
+                    id: Date.now(),
+                    autor: "Você",
+                    data: "Agora mesmo",
+                    texto: texto,
+                    likes: 0
+                };
+                
+                // Adicionar à lista de comentários
+                const commentItem = document.createElement('div');
+                commentItem.className = 'comment-item';
+                commentItem.innerHTML = `
+                    <div class="comment-header">
+                        <span class="comment-author">${novoComentario.autor}</span>
+                        <span class="comment-date">${novoComentario.data}</span>
+                    </div>
+                    <p class="comment-text">${novoComentario.texto}</p>
+                    <div class="comment-actions">
+                        <div class="comment-action">
+                            <i class="fas fa-thumbs-up"></i>
+                            <span>0</span>
+                        </div>
+                        <div class="comment-action">
+                            <i class="fas fa-thumbs-down"></i>
+                            <span>0</span>
+                        </div>
+                        <div class="comment-action">
+                            <i class="fas fa-reply"></i>
+                            <span>Responder</span>
+                        </div>
+                    </div>
+                `;
+                
+                commentsList.insertBefore(commentItem, commentsList.firstChild);
+                
+                // Limpar campo de entrada
+                commentInput.value = '';
+                
+                // Incrementar contador de comentários
+                if (videoAtualId) {
+                    comentarios[videoAtualId]++;
+                    localStorage.setItem('tecacapital_comentarios_videos', JSON.stringify(comentarios));
+                    
+                    const commentCounter = document.getElementById(`comment-count-${videoAtualId}`);
+                    if (commentCounter) {
+                        commentCounter.textContent = comentarios[videoAtualId];
+                    }
+                }
+                
+                showToast('Comentário publicado com sucesso');
+            }
+            
+            // 6. Filtros por categoria (mostrar/ocultar seções)
+            function filtrarPorCategoria(categoria) {
+                videoCards.forEach(card => {
+                    if (categoria === 'todos' || card.getAttribute('data-category') === categoria) {
+                        card.style.display = 'block';
+                        card.style.animation = 'fadeIn 0.5s ease';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+                
+                // Mostrar/ocultar seções
+                const financasSection = document.getElementById('financas-section');
+                
+                if (categoria === 'finanças') {
+                    financasSection.style.display = 'block';
+                } else if (categoria === 'todos') {
+                    financasSection.style.display = 'block';
+                } else {
+                    financasSection.style.display = 'none';
+                }
+            }
+            
+            // 7. Barra de busca (filtragem em tempo real)
+            function filtrarPorBusca(termo) {
+                if (!termo.trim()) {
+                    // Mostrar todos se busca vazia
+                    const filtroAtivo = document.querySelector('.video-filter-btn.active');
+                    if (filtroAtivo) {
+                        filtrarPorCategoria(filtroAtivo.getAttribute('data-category'));
+                    }
+                    return;
+                }
+                
+                const termoLower = termo.toLowerCase();
+                videoCards.forEach(card => {
+                    const titulo = card.querySelector('.video-title-card').textContent.toLowerCase();
+                    const categoria = card.getAttribute('data-category');
+                    
+                    if (titulo.includes(termoLower) || categoria.includes(termoLower)) {
+                        card.style.display = 'block';
+                        card.style.animation = 'fadeIn 0.5s ease';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            }
+            
+            // 8. Contadores animados
+            function animarContadores() {
+                statNumbers.forEach(stat => {
+                    const target = parseInt(stat.getAttribute('data-target'));
+                    const duration = 1500;
+                    const step = target / (duration / 16);
+                    let current = 0;
+                    
+                    const timer = setInterval(() => {
+                        current += step;
+                        if (current >= target) {
+                            current = target;
+                            clearInterval(timer);
+                        }
+                        stat.textContent = Math.floor(current) + '+';
+                    }, 16);
+                });
+            }
+            
+            // EVENT LISTENERS PARA BOTÕES DE ASSISTIR
+            watchBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const id = this.getAttribute('data-id');
+                    abrirModalVideo(id);
+                });
+            });
+            
+            // EVENT LISTENERS PARA THUMBNAILS
+            document.querySelectorAll('.video-thumbnail, .video-thumbnail-overlay').forEach(thumb => {
+                thumb.addEventListener('click', function() {
+                    const card = this.closest('.video-card');
+                    if (card) {
+                        const id = card.getAttribute('data-id');
+                        abrirModalVideo(id);
+                    }
+                });
+            });
+            
+            // EVENT LISTENERS PARA BOTÕES DE DETALHES
+            detailsBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const id = this.getAttribute('data-id');
+                    const video = videos.find(v => v.id == id);
+                    
+                    if (video) {
+                        alert(`Detalhes do Vídeo:\n\nTítulo: ${video.titulo}\nCategoria: ${video.categoria}\nDuração: ${video.duracao}\nData de Publicação: ${video.dataPublicacao}\nVisualizações: ${visualizacoes[id] || 0}\nLikes: ${likes[id] || 0}\nComentários: ${comentarios[id] || 0}`);
+                    }
+                });
+            });
+            
+            // EVENT LISTENERS PARA BOTÕES DE FAVORITO
+            favoriteBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const id = this.getAttribute('data-id');
+                    alternarFavorito(id);
+                });
+            });
+            
+            // EVENT LISTENERS PARA BOTÕES DE COMPARTILHAR
+            shareBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const id = this.getAttribute('data-id');
+                    const video = videos.find(v => v.id == id);
+                    
+                    if (video) {
+                        const texto = `Estou assistindo "${video.titulo}" na Biblioteca de Vídeos da Teca Capital. Confira também!`;
+                        showToast('Link copiado para compartilhamento!');
+                        
+                        // Simular cópia para área de transferência
+                        navigator.clipboard.writeText(texto).catch(err => {
+                            console.log('Erro ao copiar texto:', err);
+                        });
+                    }
+                });
+            });
+            
+            // EVENT LISTENERS PARA FILTROS DE CATEGORIA
+            categoryFilters.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const categoria = this.getAttribute('data-category');
+                    
+                    // Atualizar botões ativos
+                    categoryFilters.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Aplicar filtro
+                    filtrarPorCategoria(categoria);
+                });
+            });
+            
+            // EVENT LISTENERS PARA BARRA DE BUSCA
+            searchBtn.addEventListener('click', function() {
+                filtrarPorBusca(searchInput.value);
+            });
+            
+            searchInput.addEventListener('keyup', function(e) {
+                if (e.key === 'Enter') {
+                    filtrarPorBusca(searchInput.value);
+                }
+            });
+            
+            searchInput.addEventListener('input', function() {
+                if (this.value.trim() === '') {
+                    // Resetar filtro se busca estiver vazia
+                    const filtroAtivo = document.querySelector('.video-filter-btn.active');
+                    if (filtroAtivo) {
+                        filtrarPorCategoria(filtroAtivo.getAttribute('data-category'));
+                    }
+                }
+            });
+            
+            // EVENT LISTENERS PARA MODAL
+            videoModalClose.addEventListener('click', fecharModalVideo);
+            
+            // Fechar modal ao clicar fora
+            videoModal.addEventListener('click', function(e) {
+                if (e.target === this) {
+                    fecharModalVideo();
+                }
+            });
+            
+            // EVENT LISTENERS PARA BOTÕES DO MODAL
+            modalFavoriteBtn.addEventListener('click', function() {
+                if (videoAtualId) {
+                    alternarFavorito(videoAtualId);
+                }
+            });
+            
+            modalLikeBtn.addEventListener('click', function() {
+                if (videoAtualId) {
+                    alternarLike(videoAtualId);
+                }
+            });
+            
+            modalShareBtn.addEventListener('click', function() {
+                if (videoAtualId) {
+                    const video = videos.find(v => v.id == videoAtualId);
+                    if (video) {
+                        const texto = `Estou assistindo "${video.titulo}" na Biblioteca de Vídeos da Teca Capital. Confira também!`;
+                        showToast('Link copiado para compartilhamento!');
+                        
+                        navigator.clipboard.writeText(texto).catch(err => {
+                            console.log('Erro ao copiar texto:', err);
+                        });
+                    }
+                }
+            });
+            
+            // EVENT LISTENERS PARA RECOMENDAÇÕES
+            recommendationItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    const id = this.getAttribute('data-id');
+                    abrirModalVideo(id);
+                });
+            });
+            
+            // EVENT LISTENERS PARA COMENTÁRIOS
+            submitCommentBtn.addEventListener('click', function() {
+                adicionarComentario(commentInput.value);
+            });
+            
+            commentInput.addEventListener('keyup', function(e) {
+                if (e.key === 'Enter' && e.ctrlKey) {
+                    adicionarComentario(commentInput.value);
+                }
+            });
+            
+            // INICIALIZAÇÃO
+            function inicializarPagina() {
+                // Carregar favoritos
+                inicializarFavoritos();
+                
+                // Carregar visualizações
+                inicializarVisualizacoes();
+                
+                // Carregar likes
+                inicializarLikes();
+                
+                // Iniciar contadores animados
+                animarContadores();
+                
+                // Animações de entrada
+                const fadeElements = document.querySelectorAll('.fade-in');
+                fadeElements.forEach(element => {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                });
+            }
+            
+            // Executar inicialização
+            inicializarPagina();
+            
+            // Fallback para navegadores sem suporte a IntersectionObserver
+            if (!('IntersectionObserver' in window)) {
+                animarContadores();
+            }
+        });
+        
+        // Fallback para JS desabilitado
+        document.documentElement.classList.add('js-enabled');
+    </script>
 </body>
 </html>

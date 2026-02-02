@@ -1,104 +1,837 @@
 <!DOCTYPE html>
-<html lang="pt-ao">
+<html lang="pt-AO">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Teca Capital - Biblioteca</title>
+    <title>Teca Capital - Biblioteca do Saber</title>
     <link rel="icon" href="Icon/Teca Capital favicon.png" type="image/x-icon">
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/biblioteca.css">
 </head>
 <body>
-
-    <header>
-        <div id="logotipo"><img src="Imagem/Teca Capital Logo Atualizado - Copia.png" width="15%" alt="logo da Teca Capital"></div>
-        <nav>
-            <ul>
-                <li><a href="index.html">Página Inicial</a></li>
-                <li><a href="biblioteca.html">Biblioteca</a></li>
-                <li><a href="simuladores.html">Simuladores</a></li>
-                <li><a href="sobre.html">+Sobre</a></li>
-            </ul>
-        </nav>
-    </header>
-    
-    <main>
-        <h1>Biblioteca do Saber</h1>
-        <p>Explore nossa vasta coleção de recursos educacionais, incluindo artigos, e-books, vídeos e muito mais. A Biblioteca do Saber é o seu portal para o conhecimento prático e teórico, projetado para complementar sua jornada de aprendizagem com a Teca Capital.</p>
-
-        <div id="categorias">
-            <h2>Categorias Disponíveis</h2>
-            
-            <div id="audio">
-                <img src="Icon/audio.png" width="2%" alt="Audio Icon">
-                <h3>Áudio</h3> 
-                <p>Podcasts e audiolivros sobre diversos temas educacionais e tecnológicos.</p>
-                <a href="biblioteca-audio.html">Acessar</a>
-            </div>
-
-            <div id="videos">
-                <img src="Icon/video.png" width="2%" alt="Video Icon">
-                <h3>Vídeos</h3> 
-                <p>Conteúdos audiovisuais que facilitam a compreensão de conceitos complexos.</p>
-                <a href="biblioteca-video.html">Acessar</a>
-            </div>
-
-            <div id="ebooks">
-                <img src="Icon/ebook.png" width="2%" alt="Ebook Icon">
-                <h3>E-books</h3> 
-                <p>Recursos digitais em formato de livro, com conteúdo técnico e teórico sobre diversos temas.</p>
-                <a href="biblioteca-ebook.html">Acessar</a>
-            </div>
-
-        </div>
-    </main>
-
-    <footer>
-        <div>
-        <!-- REDES SOCIAIS -->
-        <div id="socialmidia">
-            <h3>Redes Sociais</h3>
-            <div class="social-icons">
-                <a href="https://www.youtube.com/watch?v=_lbwST_xK_E" target="_blank">
-                    <i class="fa-brands fa-youtube"></i>
-                </a>
-                <a href="https://www.tiktok.com/@tecacapital" target="_blank">
-                    <i class="fa-brands fa-tiktok"></i>
-                </a>
-                <a href="https://www.facebook.com/profile.php?id=61579163578380" target="_blank">
-                    <i class="fa-brands fa-facebook"></i>
-                </a>
-                <a href="https://wa.me/message/2X43ZA7RMITSJ1" target="_blank">
-                    <i class="fa-brands fa-whatsapp"></i>
-                </a>
-            </div>
-        </div>
-
-        <!-- CONTATO -->
-        <div id="Contato">
-            <h3>Contato</h3>
-            <div class="contact-info">
-                <div class="contact-item">
-                    <p>Gmail:</p>
-                    <a href="mailto:tecacapitaledtech@gmail.com">
-                        tecacapitaledtech@gmail.com
-                    </a>
-                </div>
-                <div class="contact-item">
-                    <p>Telefone:</p>
-                    <a href="tel:+244974235284">
-                        +244 974 235 284
-                    </a>
-                </div>
-                <div class="contact-item">
-                    <p>Endereço:</p>
-                    <span>Rua Comandante Nzage, Uíge, Angola</span>
-                </div>
-            </div>
+    <!-- HEADER PADRÃO (EXATAMENTE COMO NO CONTEXTO) -->
+    <header class="site-header">
+        <div class="logo-container">
+            <a href="index.html">
+                <img src="Icon/Teca Capital favicon.png" 
+                     alt="Teca Capital" 
+                     class="site-logo">
+            </a>
         </div>
         
-        <p class="timeline">&copy; 2025 Teca Capital | Todos os direitos reservados</p>
-    </div>
+        <nav class="main-nav desktop-nav">
+            <ul class="nav-list">
+                <li><a href="index.html">Página Inicial</a></li>
+                <li><a href="biblioteca.html" class="active">Biblioteca</a></li>
+                <li><a href="simuladores.html">Simuladores</a></li>
+                <li><a href="sobre.html">+Sobre Nós</a></li>
+                <li><a href="login-cadastramento.html">Login/Cadastro</a></li>
+                <li><a href="ranking.html">Ranking</a></li>
+                <li><a href="admin.html">Administrador</a></li>
+            </ul>
+        </nav>
+        
+        <button class="menu-toggle mobile-nav-toggle" aria-label="Menu">
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+        </button>
+        
+        <div class="mobile-nav-overlay">
+            <nav class="mobile-nav">
+                <ul class="mobile-nav-list">
+                    <li><a href="index.html">Página Inicial</a></li>
+                    <li><a href="biblioteca.html" class="active">Biblioteca</a></li>
+                    <li><a href="simuladores.html">Simuladores</a></li>
+                    <li><a href="sobre.html">+Sobre Nós</a></li>
+                    <li><a href="login-cadastramento.html">Login/Cadastro</a></li>
+                    <li><a href="ranking.html">Ranking</a></li>
+                    <li><a href="admin.html">Administrador</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <!-- CONTEÚDO PRINCIPAL DA BIBLIOTECA -->
+    <main class="page-content">
+        <!-- SEÇÃO 1: CABEÇALHO DA BIBLIOTECA -->
+        <section class="library-header fade-in">
+            <div class="container">
+                <h1 class="library-title">Biblioteca <span class="highlight">do Saber</span></h1>
+                <p class="library-description">
+                    Explore nossa vasta coleção de recursos educacionais multimídia. A Biblioteca do Saber da Teca Capital reúne conteúdos de alta qualidade em áudio, vídeo e e-books, cuidadosamente selecionados para promover uma aprendizagem prática e eficaz.
+                </p>
+                
+                <div class="search-container">
+                    <div class="search-box">
+                        <input type="text" class="search-input" id="search-input" placeholder="Buscar recursos por título, autor ou palavra-chave...">
+                        <button class="btn btn-primary" id="search-btn">Buscar</button>
+                    </div>
+                    
+                    <div class="quick-filters">
+                        <button class="filter-btn active" data-filter="todos">Todos</button>
+                        <button class="filter-btn" data-filter="audio">Áudio</button>
+                        <button class="filter-btn" data-filter="video">Vídeo</button>
+                        <button class="filter-btn" data-filter="ebook">E-books</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- SEÇÃO 2: CATEGORIAS PRINCIPAIS -->
+        <section class="categories-section fade-in">
+            <div class="container">
+                <h2 class="section-title text-center">Categorias <span class="highlight">Principais</span></h2>
+                <p class="section-subtitle text-center">Navegue por nossos principais tipos de recursos educacionais</p>
+                
+                <div class="categories-grid">
+                    <!-- Categoria 1: Áudio -->
+                    <div class="category-card">
+                        <div class="category-icon">
+                            <i class="fas fa-headphones"></i>
+                        </div>
+                        <h3 class="category-title">Áudio</h3>
+                        <p class="category-description">
+                            Podcasts e audiolivros sobre diversos temas educacionais e tecnológicos. Perfeito para aprender enquanto realiza outras atividades.
+                        </p>
+                        <div class="category-count">125+ recursos</div>
+                        <a href="biblioteca-audio.html" class="btn btn-primary">Acessar</a>
+                    </div>
+                    
+                    <!-- Categoria 2: Vídeos -->
+                    <div class="category-card">
+                        <div class="category-icon">
+                            <i class="fas fa-video"></i>
+                        </div>
+                        <h3 class="category-title">Vídeos</h3>
+                        <p class="category-description">
+                            Conteúdos audiovisuais que facilitam a compreensão de conceitos complexos. Aulas, tutoriais e demonstrações práticas.
+                        </p>
+                        <div class="category-count">300+ recursos</div>
+                        <a href="biblioteca-video.html" class="btn btn-primary">Acessar</a>
+                    </div>
+                    
+                    <!-- Categoria 3: E-books -->
+                    <div class="category-card">
+                        <div class="category-icon">
+                            <i class="fas fa-book"></i>
+                        </div>
+                        <h3 class="category-title">E-books</h3>
+                        <p class="category-description">
+                            Recursos digitais em formato de livro, com conteúdo técnico e teórico aprofundado. Ideal para estudo detalhado.
+                        </p>
+                        <div class="category-count">75+ recursos</div>
+                        <a href="biblioteca-ebook.html" class="btn btn-primary">Acessar</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- SEÇÃO 3: CONTEÚDOS EM DESTAQUE -->
+        <section class="featured-section fade-in">
+            <div class="container">
+                <div class="results-header">
+                    <h2 class="section-title">Recursos <span class="highlight">em Destaque</span></h2>
+                    <div class="results-count" id="results-count">Mostrando 12 recursos</div>
+                </div>
+                
+                <div class="featured-grid" id="resources-container">
+                    <!-- Os recursos serão carregados dinamicamente via JavaScript -->
+                </div>
+            </div>
+        </section>
+        
+        <!-- SEÇÃO 4: SISTEMA DE BUSCA AVANÇADA -->
+        <section class="advanced-search-section fade-in">
+            <div class="container">
+                <h2 class="section-title text-center">Busca <span class="highlight">Avançada</span></h2>
+                <p class="section-subtitle text-center">Refine sua busca com filtros específicos</p>
+                
+                <div class="filter-panel">
+                    <div class="filter-toggle" id="filter-toggle">
+                        <h3>Filtros de Busca</h3>
+                        <i class="fas fa-chevron-down" id="filter-icon"></i>
+                    </div>
+                    
+                    <div class="filter-content" id="filter-content">
+                        <div class="filter-grid">
+                            <!-- Filtro por Tipo de Conteúdo -->
+                            <div class="filter-group">
+                                <label>Tipo de Conteúdo</label>
+                                <div class="filter-options" id="filter-type">
+                                    <span class="filter-option selected" data-value="todos">Todos</span>
+                                    <span class="filter-option" data-value="audio">Áudio</span>
+                                    <span class="filter-option" data-value="video">Vídeo</span>
+                                    <span class="filter-option" data-value="ebook">E-book</span>
+                                </div>
+                            </div>
+                            
+                            <!-- Filtro por Área do Conhecimento -->
+                            <div class="filter-group">
+                                <label>Área do Conhecimento</label>
+                                <div class="filter-options" id="filter-category">
+                                    <span class="filter-option selected" data-value="todos">Todas</span>
+                                    <span class="filter-option" data-value="economia">Economia</span>
+                                    <span class="filter-option" data-value="tecnologia">Tecnologia</span>
+                                    <span class="filter-option" data-value="gestao">Gestão</span>
+                                    <span class="filter-option" data-value="direito">Direito</span>
+                                    <span class="filter-option" data-value="ciencias">Ciências</span>
+                                </div>
+                            </div>
+                            
+                            <!-- Filtro por Nível de Dificuldade -->
+                            <div class="filter-group">
+                                <label>Nível de Dificuldade</label>
+                                <div class="filter-options" id="filter-level">
+                                    <span class="filter-option selected" data-value="todos">Todos</span>
+                                    <span class="filter-option" data-value="basico">Básico</span>
+                                    <span class="filter-option" data-value="intermediario">Intermediário</span>
+                                    <span class="filter-option" data-value="avancado">Avançado</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="filter-actions">
+                            <button class="btn btn-primary" id="apply-filters">Aplicar Filtros</button>
+                            <button class="btn btn-secondary" id="clear-filters">Limpar Filtros</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- SEÇÃO 5: ESTATÍSTICAS DA BIBLIOTECA -->
+        <section class="stats-section fade-in">
+            <div class="container">
+                <h2 class="section-title text-center">Estatísticas da <span class="highlight">Biblioteca</span></h2>
+                <p class="section-subtitle text-center">Nossa coleção em números</p>
+                
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-number" data-target="500">0</div>
+                        <div class="stat-label">Total de Recursos</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" data-target="250">0</div>
+                        <div class="stat-label">Horas de Conteúdo</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" data-target="50">0</div>
+                        <div class="stat-label">Autores Parceiros</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- SEÇÃO 6: COMO USAR A BIBLIOTECA -->
+        <section class="tutorial-section fade-in">
+            <div class="container">
+                <h2 class="section-title text-center">Como Usar a <span class="highlight">Biblioteca</span></h2>
+                <p class="section-subtitle text-center">Guia rápido em 3 passos simples</p>
+                
+                <div class="tutorial-steps">
+                    <div class="tutorial-step">
+                        <div class="step-number">1</div>
+                        <h3 class="step-title">Explore Categorias</h3>
+                        <p class="step-description">Navegue pelas categorias principais (Áudio, Vídeo, E-books) ou use a barra de busca para encontrar recursos específicos.</p>
+                    </div>
+                    
+                    <div class="tutorial-step">
+                        <div class="step-number">2</div>
+                        <h3 class="step-title">Filtre por Interesse</h3>
+                        <p class="step-description">Use os filtros avançados para refinar sua busca por tipo, área do conhecimento, nível de dificuldade ou idioma.</p>
+                    </div>
+                    
+                    <div class="tutorial-step">
+                        <div class="step-number">3</div>
+                        <h3 class="step-title">Acesse e Aprenda</h3>
+                        <p class="step-description">Clique no recurso desejado para acessar o conteúdo completo. Aprenda no seu próprio ritmo, quando e onde quiser.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <!-- FOOTER PADRÃO (EXATAMENTE COMO NO CONTEXTO) -->
+    <footer class="site-footer">
+        <div class="footer-content container">
+            <div class="footer-section social-section">
+                <h3>Redes Sociais</h3>
+                <div class="social-icons">
+                    <a href="https://www.youtube.com/watch?v=_lbwST_xK_E" target="_blank" aria-label="YouTube">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                    <a href="https://www.tiktok.com/@tecacapital" target="_blank" aria-label="TikTok">
+                        <i class="fab fa-tiktok"></i>
+                    </a>
+                    <a href="https://www.facebook.com/profile.php?id=61579163578380" target="_blank" aria-label="Facebook">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                    <a href="https://wa.me/message/2X43ZA7RMITSJ1" target="_blank" aria-label="WhatsApp">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="footer-section contact-section">
+                <h3>Contato</h3>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <p>Gmail:</p>
+                        <a href="mailto:tecacapitaledtech@gmail.com">
+                            tecacapitaledtech@gmail.com
+                        </a>
+                    </div>
+                    <div class="contact-item">
+                        <p>Telefone:</p>
+                        <a href="tel:+244974235284">
+                            +244 974 235 284
+                        </a>
+                    </div>
+                    <div class="contact-item">
+                        <p>Endereço:</p>
+                        <span>Rua Comandante Nzage, Uíge, Angola</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-section copyright-section">
+                <p class="copyright-text">
+                    &copy; <span id="current-year">2026</span> Teca Capital | Todos os direitos reservados
+                </p>
+            </div>
+        </div>
     </footer>
-
+    
+    <!-- JAVASCRIPT INLINE -->
+    <script>
+        // ============================================
+        // JAVASCRIPT OBRIGATÓRIO EM TODAS AS PÁGINAS
+        // ============================================
+        
+        // 1. Menu mobile toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileToggle = document.querySelector('.mobile-nav-toggle');
+            const mobileOverlay = document.querySelector('.mobile-nav-overlay');
+            const mobileLinks = document.querySelectorAll('.mobile-nav-list a');
+            
+            // Abrir/fechar menu mobile
+            if (mobileToggle) {
+                mobileToggle.addEventListener('click', function() {
+                    mobileOverlay.classList.toggle('active');
+                    
+                    // Animar ícone hamburguer
+                    const lines = this.querySelectorAll('.hamburger-line');
+                    if (mobileOverlay.classList.contains('active')) {
+                        lines[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+                        lines[1].style.opacity = '0';
+                        lines[2].style.transform = 'rotate(-45deg) translate(7px, -6px)';
+                    } else {
+                        lines[0].style.transform = 'rotate(0) translate(0, 0)';
+                        lines[1].style.opacity = '1';
+                        lines[2].style.transform = 'rotate(0) translate(0, 0)';
+                    }
+                });
+            }
+            
+            // Fechar menu ao clicar em um link
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileOverlay.classList.remove('active');
+                    const lines = mobileToggle.querySelectorAll('.hamburger-line');
+                    lines[0].style.transform = 'rotate(0) translate(0, 0)';
+                    lines[1].style.opacity = '1';
+                    lines[2].style.transform = 'rotate(0) translate(0, 0)';
+                });
+            });
+            
+            // 2. Atualizar ano no footer
+            const yearSpan = document.getElementById('current-year');
+            if (yearSpan) {
+                yearSpan.textContent = new Date().getFullYear();
+            }
+            
+            // 3. Destacar link ativo no menu
+            const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+            const navLinks = document.querySelectorAll('.nav-list a, .mobile-nav-list a');
+            
+            navLinks.forEach(link => {
+                const linkPage = link.getAttribute('href');
+                if (linkPage === currentPage || (currentPage === '' && linkPage === 'index.html')) {
+                    link.classList.add('active');
+                } else {
+                    link.classList.remove('active');
+                }
+            });
+            
+            // 4. Tratamento básico de erros
+            window.addEventListener('error', function(e) {
+                console.error('Erro detectado:', e.error);
+            });
+            
+            // ============================================
+            // JAVASCRIPT ESPECÍFICO PARA BIBLIOTECA
+            // ============================================
+            
+            // ESTRUTURA DE DADOS SIMULADA - RECURSOS DA BIBLIOTECA
+            const recursos = [
+                { id: 1, titulo: "Introdução à Economia Angolana", tipo: "video", categoria: "economia", nivel: "basico", autor: "Dr. João Silva", duracao: "45 min", icone: "fas fa-chart-line" },
+                { id: 2, titulo: "Podcast: Tecnologia na Educação", tipo: "audio", categoria: "tecnologia", nivel: "intermediario", autor: "Prof. Maria Costa", duracao: "30 min", icone: "fas fa-podcast" },
+                { id: 3, titulo: "Gestão Financeira para PMEs", tipo: "ebook", categoria: "gestao", nivel: "intermediario", autor: "Eng. Pedro Santos", duracao: "120 págs", icone: "fas fa-file-alt" },
+                { id: 4, titulo: "Direito Comercial em Angola", tipo: "video", categoria: "direito", nivel: "avancado", autor: "Dra. Ana Pereira", duracao: "60 min", icone: "fas fa-balance-scale" },
+                { id: 5, titulo: "Ciência de Dados Básica", tipo: "ebook", categoria: "tecnologia", nivel: "basico", autor: "Dr. Carlos Mendes", duracao: "80 págs", icone: "fas fa-database" },
+                { id: 6, titulo: "Audio-livro: História Económica", tipo: "audio", categoria: "economia", nivel: "intermediario", autor: "Prof. José Fernandes", duracao: "90 min", icone: "fas fa-history" },
+                { id: 7, titulo: "Marketing Digital para Iniciantes", tipo: "video", categoria: "gestao", nivel: "basico", autor: "Esp. Sofia Lima", duracao: "50 min", icone: "fas fa-bullhorn" },
+                { id: 8, titulo: "E-book: Legislação Trabalhista", tipo: "ebook", categoria: "direito", nivel: "avancado", autor: "Dr. Miguel Rocha", duracao: "150 págs", icone: "fas fa-gavel" },
+                { id: 9, titulo: "Podcast: Inovação Tecnológica", tipo: "audio", categoria: "tecnologia", nivel: "intermediario", autor: "Eng. Teresa Sousa", duracao: "40 min", icone: "fas fa-lightbulb" },
+                { id: 10, titulo: "Vídeo-aula: Contabilidade Básica", tipo: "video", categoria: "economia", nivel: "basico", autor: "Cont. Rui Martins", duracao: "55 min", icone: "fas fa-calculator" },
+                { id: 11, titulo: "E-book: Gestão de Projetos", tipo: "ebook", categoria: "gestao", nivel: "intermediario", autor: "PM. Catarina Nunes", duracao: "100 págs", icone: "fas fa-tasks" },
+                { id: 12, titulo: "Podcast: Direito Digital", tipo: "audio", categoria: "direito", nivel: "avancado", autor: "Dra. Inês Oliveira", duracao: "35 min", icone: "fas fa-laptop-code" }
+            ];
+            
+            // VARIÁVEIS DE CONTROLE DE FILTROS
+            let filtroAtivo = 'todos';
+            let filtroCategoria = 'todos';
+            let filtroNivel = 'todos';
+            let termoBusca = '';
+            
+            // ELEMENTOS DO DOM
+            const resourcesContainer = document.getElementById('resources-container');
+            const resultsCount = document.getElementById('results-count');
+            const searchInput = document.getElementById('search-input');
+            const searchBtn = document.getElementById('search-btn');
+            const filterToggle = document.getElementById('filter-toggle');
+            const filterContent = document.getElementById('filter-content');
+            const filterIcon = document.getElementById('filter-icon');
+            const applyFiltersBtn = document.getElementById('apply-filters');
+            const clearFiltersBtn = document.getElementById('clear-filters');
+            const quickFilters = document.querySelectorAll('.quick-filters .filter-btn');
+            const filterTypeOptions = document.querySelectorAll('#filter-type .filter-option');
+            const filterCategoryOptions = document.querySelectorAll('#filter-category .filter-option');
+            const filterLevelOptions = document.querySelectorAll('#filter-level .filter-option');
+            
+            // FUNÇÃO PARA RENDERIZAR RECURSOS
+            function renderizarRecursos() {
+                // Filtrar recursos
+                let recursosFiltrados = recursos.filter(recurso => {
+                    // Filtrar por tipo
+                    if (filtroAtivo !== 'todos' && recurso.tipo !== filtroAtivo) {
+                        return false;
+                    }
+                    
+                    // Filtrar por categoria
+                    if (filtroCategoria !== 'todos' && recurso.categoria !== filtroCategoria) {
+                        return false;
+                    }
+                    
+                    // Filtrar por nível
+                    if (filtroNivel !== 'todos' && recurso.nivel !== filtroNivel) {
+                        return false;
+                    }
+                    
+                    // Filtrar por busca
+                    if (termoBusca && !recurso.titulo.toLowerCase().includes(termoBusca.toLowerCase())) {
+                        return false;
+                    }
+                    
+                    return true;
+                });
+                
+                // Atualizar contador
+                resultsCount.textContent = `Mostrando ${recursosFiltrados.length} recurso${recursosFiltrados.length !== 1 ? 's' : ''}`;
+                
+                // Limpar container
+                resourcesContainer.innerHTML = '';
+                
+                // Verificar se há resultados
+                if (recursosFiltrados.length === 0) {
+                    resourcesContainer.innerHTML = `
+                        <div class="no-results">
+                            <div class="no-results-icon">
+                                <i class="fas fa-search"></i>
+                            </div>
+                            <h3>Nenhum recurso encontrado</h3>
+                            <p>Tente ajustar seus filtros ou termos de busca.</p>
+                        </div>
+                    `;
+                    return;
+                }
+                
+                // Renderizar recursos
+                recursosFiltrados.forEach(recurso => {
+                    const resourceCard = document.createElement('div');
+                    resourceCard.className = 'resource-card';
+                    
+                    // Determinar ícone baseado no tipo
+                    let typeIcon, typeText;
+                    if (recurso.tipo === 'audio') {
+                        typeIcon = 'fas fa-headphones';
+                        typeText = 'Áudio';
+                    } else if (recurso.tipo === 'video') {
+                        typeIcon = 'fas fa-video';
+                        typeText = 'Vídeo';
+                    } else {
+                        typeIcon = 'fas fa-book';
+                        typeText = 'E-book';
+                    }
+                    
+                    // Determinar nível
+                    let nivelText;
+                    if (recurso.nivel === 'basico') {
+                        nivelText = 'Básico';
+                    } else if (recurso.nivel === 'intermediario') {
+                        nivelText = 'Intermediário';
+                    } else {
+                        nivelText = 'Avançado';
+                    }
+                    
+                    // Determinar categoria
+                    let categoriaText;
+                    switch(recurso.categoria) {
+                        case 'economia': categoriaText = 'Economia'; break;
+                        case 'tecnologia': categoriaText = 'Tecnologia'; break;
+                        case 'gestao': categoriaText = 'Gestão'; break;
+                        case 'direito': categoriaText = 'Direito'; break;
+                        case 'ciencias': categoriaText = 'Ciências'; break;
+                        default: categoriaText = recurso.categoria;
+                    }
+                    
+                    resourceCard.innerHTML = `
+                        <div class="resource-thumbnail">
+                            <i class="${recurso.icone}"></i>
+                        </div>
+                        <div class="resource-content">
+                            <div class="resource-header">
+                                <h3 class="resource-title">${recurso.titulo}</h3>
+                                <span class="resource-type">${typeText}</span>
+                            </div>
+                            <div class="resource-meta">
+                                <span><i class="fas fa-user"></i> ${recurso.autor}</span>
+                                <span><i class="fas fa-clock"></i> ${recurso.duracao}</span>
+                                <span><i class="fas fa-layer-group"></i> ${nivelText}</span>
+                            </div>
+                            <div class="resource-meta mb-20">
+                                <span><i class="fas fa-tag"></i> ${categoriaText}</span>
+                            </div>
+                            <button class="btn btn-primary btn-small visualizar-btn" data-id="${recurso.id}">Visualizar</button>
+                        </div>
+                    `;
+                    
+                    resourcesContainer.appendChild(resourceCard);
+                });
+                
+                // Adicionar event listeners aos botões de visualizar
+                document.querySelectorAll('.visualizar-btn').forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        const id = this.getAttribute('data-id');
+                        const recurso = recursos.find(r => r.id == id);
+                        alert(`Visualizando: ${recurso.titulo}\nAutor: ${recurso.autor}\nTipo: ${recurso.tipo}\nDuração: ${recurso.duracao}`);
+                    });
+                });
+            }
+            
+            // FUNÇÃO PARA APLICAR FILTROS
+            function aplicarFiltros() {
+                renderizarRecursos();
+            }
+            
+            // FUNÇÃO PARA LIMPAR FILTROS
+            function limparFiltros() {
+                filtroAtivo = 'todos';
+                filtroCategoria = 'todos';
+                filtroNivel = 'todos';
+                termoBusca = '';
+                searchInput.value = '';
+                
+                // Resetar botões de filtro rápido
+                quickFilters.forEach(btn => {
+                    if (btn.getAttribute('data-filter') === 'todos') {
+                        btn.classList.add('active');
+                    } else {
+                        btn.classList.remove('active');
+                    }
+                });
+                
+                // Resetar opções de filtro avançado
+                resetFilterOptions();
+                
+                aplicarFiltros();
+            }
+            
+            // FUNÇÃO PARA RESETAR OPÇÕES DE FILTRO
+            function resetFilterOptions() {
+                filterTypeOptions.forEach(opt => {
+                    if (opt.getAttribute('data-value') === 'todos') {
+                        opt.classList.add('selected');
+                    } else {
+                        opt.classList.remove('selected');
+                    }
+                });
+                
+                filterCategoryOptions.forEach(opt => {
+                    if (opt.getAttribute('data-value') === 'todos') {
+                        opt.classList.add('selected');
+                    } else {
+                        opt.classList.remove('selected');
+                    }
+                });
+                
+                filterLevelOptions.forEach(opt => {
+                    if (opt.getAttribute('data-value') === 'todos') {
+                        opt.classList.add('selected');
+                    } else {
+                        opt.classList.remove('selected');
+                    }
+                });
+            }
+            
+            // FUNÇÃO PARA ATUALIZAR FILTRO RÁPIDO
+            function atualizarFiltroRapido(tipo) {
+                filtroAtivo = tipo;
+                
+                // Atualizar botões ativos
+                quickFilters.forEach(btn => {
+                    if (btn.getAttribute('data-filter') === tipo) {
+                        btn.classList.add('active');
+                    } else {
+                        btn.classList.remove('active');
+                    }
+                });
+                
+                // Atualizar filtro de tipo no painel avançado
+                filterTypeOptions.forEach(opt => {
+                    if (opt.getAttribute('data-value') === tipo) {
+                        opt.classList.add('selected');
+                    } else if (opt.getAttribute('data-value') !== 'todos') {
+                        opt.classList.remove('selected');
+                    }
+                });
+                
+                // Marcar "todos" como não selecionado se outro filtro estiver ativo
+                if (tipo !== 'todos') {
+                    filterTypeOptions.forEach(opt => {
+                        if (opt.getAttribute('data-value') === 'todos') {
+                            opt.classList.remove('selected');
+                        }
+                    });
+                }
+                
+                aplicarFiltros();
+            }
+            
+            // 1. Sistema de filtros rápidos
+            quickFilters.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const tipo = this.getAttribute('data-filter');
+                    atualizarFiltroRapido(tipo);
+                });
+            });
+            
+            // 2. Barra de busca simulada
+            searchBtn.addEventListener('click', function() {
+                termoBusca = searchInput.value.trim();
+                aplicarFiltros();
+            });
+            
+            searchInput.addEventListener('keyup', function(e) {
+                if (e.key === 'Enter') {
+                    termoBusca = searchInput.value.trim();
+                    aplicarFiltros();
+                }
+            });
+            
+            // 3. Painel de filtros expansível
+            filterToggle.addEventListener('click', function() {
+                filterContent.classList.toggle('active');
+                filterIcon.classList.toggle('fa-chevron-down');
+                filterIcon.classList.toggle('fa-chevron-up');
+            });
+            
+            // 4. Filtros avançados
+            filterTypeOptions.forEach(opt => {
+                opt.addEventListener('click', function() {
+                    const valor = this.getAttribute('data-value');
+                    
+                    // Atualizar seleção
+                    filterTypeOptions.forEach(o => o.classList.remove('selected'));
+                    this.classList.add('selected');
+                    
+                    // Atualizar filtro rápido correspondente
+                    filtroAtivo = valor;
+                    quickFilters.forEach(btn => {
+                        if (btn.getAttribute('data-filter') === valor) {
+                            btn.classList.add('active');
+                        } else {
+                            btn.classList.remove('active');
+                        }
+                    });
+                });
+            });
+            
+            filterCategoryOptions.forEach(opt => {
+                opt.addEventListener('click', function() {
+                    const valor = this.getAttribute('data-value');
+                    
+                    // Se clicar em "todas", desmarcar outras
+                    if (valor === 'todos') {
+                        filterCategoryOptions.forEach(o => o.classList.remove('selected'));
+                        this.classList.add('selected');
+                        filtroCategoria = 'todos';
+                    } else {
+                        // Desmarcar "todas" se selecionar outra
+                        filterCategoryOptions.forEach(o => {
+                            if (o.getAttribute('data-value') === 'todos') {
+                                o.classList.remove('selected');
+                            }
+                        });
+                        
+                        // Alternar seleção da opção clicada
+                        this.classList.toggle('selected');
+                        
+                        // Atualizar filtro de categoria
+                        const selecionadas = Array.from(filterCategoryOptions)
+                            .filter(o => o.classList.contains('selected') && o.getAttribute('data-value') !== 'todos')
+                            .map(o => o.getAttribute('data-value'));
+                        
+                        // Se nenhuma selecionada, marcar "todas"
+                        if (selecionadas.length === 0) {
+                            filterCategoryOptions.forEach(o => {
+                                if (o.getAttribute('data-value') === 'todos') {
+                                    o.classList.add('selected');
+                                    filtroCategoria = 'todos';
+                                }
+                            });
+                        } else {
+                            filtroCategoria = selecionadas.join(',');
+                        }
+                    }
+                });
+            });
+            
+            filterLevelOptions.forEach(opt => {
+                opt.addEventListener('click', function() {
+                    const valor = this.getAttribute('data-value');
+                    
+                    // Se clicar em "todos", desmarcar outras
+                    if (valor === 'todos') {
+                        filterLevelOptions.forEach(o => o.classList.remove('selected'));
+                        this.classList.add('selected');
+                        filtroNivel = 'todos';
+                    } else {
+                        // Desmarcar "todos" se selecionar outra
+                        filterLevelOptions.forEach(o => {
+                            if (o.getAttribute('data-value') === 'todos') {
+                                o.classList.remove('selected');
+                            }
+                        });
+                        
+                        // Alternar seleção da opção clicada
+                        this.classList.toggle('selected');
+                        
+                        // Atualizar filtro de nível
+                        const selecionadas = Array.from(filterLevelOptions)
+                            .filter(o => o.classList.contains('selected') && o.getAttribute('data-value') !== 'todos')
+                            .map(o => o.getAttribute('data-value'));
+                        
+                        // Se nenhuma selecionada, marcar "todos"
+                        if (selecionadas.length === 0) {
+                            filterLevelOptions.forEach(o => {
+                                if (o.getAttribute('data-value') === 'todos') {
+                                    o.classList.add('selected');
+                                    filtroNivel = 'todos';
+                                }
+                            });
+                        } else {
+                            filtroNivel = selecionadas.join(',');
+                        }
+                    }
+                });
+            });
+            
+            // 5. Botões de aplicar e limpar filtros
+            applyFiltersBtn.addEventListener('click', aplicarFiltros);
+            clearFiltersBtn.addEventListener('click', limparFiltros);
+            
+            // 6. Contadores animados nas estatísticas
+            const statNumbers = document.querySelectorAll('.stat-number');
+            
+            if (statNumbers.length > 0) {
+                const observerOptions = {
+                    threshold: 0.5,
+                    rootMargin: '0px 0px -50px 0px'
+                };
+                
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const statNumber = entry.target;
+                            const target = parseInt(statNumber.getAttribute('data-target'));
+                            const duration = 1500;
+                            const step = target / (duration / 16);
+                            let current = 0;
+                            
+                            const timer = setInterval(() => {
+                                current += step;
+                                if (current >= target) {
+                                    current = target;
+                                    clearInterval(timer);
+                                }
+                                statNumber.textContent = Math.floor(current) + '+';
+                            }, 16);
+                            
+                            observer.unobserve(statNumber);
+                        }
+                    });
+                }, observerOptions);
+                
+                statNumbers.forEach(stat => observer.observe(stat));
+            }
+            
+            // 7. Animações de entrada
+            const fadeElements = document.querySelectorAll('.fade-in');
+            const fadeObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                        fadeObserver.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            });
+            
+            fadeElements.forEach(element => {
+                element.style.opacity = '0';
+                element.style.transform = 'translateY(20px)';
+                element.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+                fadeObserver.observe(element);
+            });
+            
+            // Inicializar renderização
+            renderizarRecursos();
+            
+            // Fallback para navegadores sem suporte a IntersectionObserver
+            if (!('IntersectionObserver' in window)) {
+                fadeElements.forEach(element => {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                });
+                
+                // Contadores fallback
+                statNumbers.forEach(stat => {
+                    const target = parseInt(stat.getAttribute('data-target'));
+                    stat.textContent = target + '+';
+                });
+            }
+        });
+        
+        // Fallback para JS desabilitado
+        document.documentElement.classList.add('js-enabled');
+    </script>
 </body>
 </html>

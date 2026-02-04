@@ -56,6 +56,1541 @@
     </header>
     
     <main>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+    <div id="app-container">
+        <!-- Tela de Introdução -->
+        <div id="intro-screen" class="intro-screen fade-in">
+            <div class="logo-container">
+                <div class="logo-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <h1 class="intro-title">TECA CAPITAL</h1>
+                <h2>Faça a Sua Prova</h2>
+            </div>
+            
+            <div class="message-box">
+                <h4><i class="fas fa-lightbulb"></i> Filosofia Educacional</h4>
+                <p>Este simulador foi desenvolvido com foco na <strong>compreensão profunda</strong> dos conceitos contabilísticos, não na simples memorização. Acreditamos que o verdadeiro domínio da contabilidade angolana vem da capacidade de aplicar os conhecimentos em situações reais e complexas.</p>
+            </div>
+            
+            <div class="rules-box">
+                <h4><i class="fas fa-exclamation-circle"></i> Regra de Aprovação</h4>
+                <p>Para ser aprovado no simulador, é necessário alcançar um mínimo de <strong>50% de acertos</strong>. Esta regra garante que o participante demonstre compreensão sólida dos conceitos fundamentais.</p>
+            </div>
+            
+            <div class="mt-4">
+                <button id="start-btn" class="btn btn-large pulse-subtle">
+                    <i class="fas fa-play-circle mr-2"></i> Iniciar Simulador
+                </button>
+            </div>
+            
+            <div class="mt-5">
+                <small>Desenvolvido para profissionais, gestores e estudantes angolanos</small>
+            </div>
+        </div>
+
+        <!-- Tela de Cadastro -->
+        <div id="registration-screen" class="registration-screen hidden">
+            <div class="registration-header">
+                <h1>Cadastro do Participante</h1>
+                <p>Preencha os dados abaixo para personalizar sua experiência</p>
+            </div>
+            
+            <div class="card form-container">
+                <form id="registration-form">
+                    <div class="input-group">
+                        <label class="input-label" for="nome">
+                            <i class="fas fa-user mr-1"></i> Nome Completo *
+                        </label>
+                        <input type="text" id="nome" class="input-field" placeholder="Digite seu nome completo" required>
+                        <div class="validation-message" id="nome-validation"></div>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label class="input-label" for="sexo">
+                            <i class="fas fa-venus-mars mr-1"></i> Sexo *
+                        </label>
+                        <select id="sexo" class="input-field" required>
+                            <option value="">Selecione</option>
+                            <option value="Homem">Homem</option>
+                            <option value="Mulher">Mulher</option>
+                            <option value="Prefiro não dizer">Prefiro não dizer</option>
+                        </select>
+                        <div class="validation-message" id="sexo-validation"></div>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label class="input-label" for="regiao">
+                            <i class="fas fa-map-marker-alt mr-1"></i> Região *
+                        </label>
+                        <input type="text" id="regiao" class="input-field" placeholder="Ex: Uíge, Luanda, Benguela..." required>
+                        <div class="validation-message" id="regiao-validation"></div>
+                    </div>
+                    
+                    <div class="input-group">
+                        <p><small>* Campos obrigatórios</small></p>
+                    </div>
+                    
+                    <div class="input-group text-center">
+                        <button type="submit" class="btn btn-large" id="submit-btn" disabled>
+                            <i class="fas fa-graduation-cap mr-2"></i> Escolher Nível da Prova
+                        </button>
+                    </div>
+                </form>
+            </div>
+            
+            <div class="text-center mt-4">
+                <button id="back-to-intro" class="btn btn-secondary">
+                    <i class="fas fa-arrow-left mr-2"></i> Voltar
+                </button>
+            </div>
+        </div>
+
+        <!-- Tela de Seleção de Nível -->
+        <div id="level-selection-screen" class="level-selection-screen hidden">
+            <div class="level-selection-header">
+                <h1>Escolha o Nível da Prova</h1>
+                <p>Selecione o nível que corresponde ao seu conhecimento atual em contabilidade</p>
+            </div>
+            
+            <div class="levels-grid">
+                <!-- Nível Iniciante -->
+                <div class="card level-card iniciante">
+                    <div class="level-icon">
+                        <i class="fas fa-seedling"></i>
+                    </div>
+                    <span class="level-difficulty">Nível Básico</span>
+                    <h3>Iniciante</h3>
+                    <p>Fundamentos da contabilidade angolana: equação patrimonial, método das partidas dobradas, estrutura do PGCA.</p>
+                    
+                    <div class="level-stats">
+                        <div class="stat-item">
+                            <div class="stat-value">10</div>
+                            <div class="stat-label">Questões</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">40 min</div>
+                            <div class="stat-label">Tempo</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">50%</div>
+                            <div class="stat-label">Aprovação</div>
+                        </div>
+                    </div>
+                    
+                    <button class="btn mt-3" data-level="iniciante">
+                        <i class="fas fa-play mr-2"></i> Iniciar Prova
+                    </button>
+                </div>
+                
+                <!-- Nível Intermediário -->
+                <div class="card level-card intermediario">
+                    <div class="level-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <span class="level-difficulty">Nível Médio</span>
+                    <h3>Intermediário</h3>
+                    <p>Aplicação prática: ciclo contabilístico, demonstrações financeiras, tributação básica e métodos de inventários.</p>
+                    
+                    <div class="level-stats">
+                        <div class="stat-item">
+                            <div class="stat-value">10</div>
+                            <div class="stat-label">Questões</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">50 min</div>
+                            <div class="stat-label">Tempo</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">50%</div>
+                            <div class="stat-label">Aprovação</div>
+                        </div>
+                    </div>
+                    
+                    <button class="btn mt-3" data-level="intermediario">
+                        <i class="fas fa-play mr-2"></i> Iniciar Prova
+                    </button>
+                </div>
+                
+                <!-- Nível Avançado -->
+                <div class="card level-card avancado">
+                    <div class="level-icon">
+                        <i class="fas fa-chess-queen"></i>
+                    </div>
+                    <span class="level-difficulty">Nível Avançado</span>
+                    <h3>Avançado</h3>
+                    <p>Conformidade e análise: PGCA vs. IFRS, auditoria, questões fiscais complexas e futuro da contabilidade.</p>
+                    
+                    <div class="level-stats">
+                        <div class="stat-item">
+                            <div class="stat-value">10</div>
+                            <div class="stat-label">Questões</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">60 min</div>
+                            <div class="stat-label">Tempo</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">50%</div>
+                            <div class="stat-label">Aprovação</div>
+                        </div>
+                    </div>
+                    
+                    <button class="btn mt-3" data-level="avancado">
+                        <i class="fas fa-play mr-2"></i> Iniciar Prova
+                    </button>
+                </div>
+            </div>
+            
+            <div class="text-center mt-4">
+                <button id="back-to-registration" class="btn btn-secondary">
+                    <i class="fas fa-arrow-left mr-2"></i> Voltar
+                </button>
+            </div>
+        </div>
+
+        <!-- Interface da Prova -->
+        <div id="quiz-screen" class="quiz-screen hidden">
+            <div class="quiz-header">
+                <div class="quiz-progress">
+                    <div class="progress-info">
+                        <span id="current-question">Questão 1 de 10</span>
+                        <span id="time-remaining">40:00</span>
+                    </div>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar" id="progress-bar" style="width: 10%;"></div>
+                    </div>
+                    <small>Progresso: <span id="progress-text">10%</span></small>
+                </div>
+                
+                <div class="timer-container">
+                    <i class="fas fa-clock timer-icon"></i>
+                    <span id="timer">40:00</span>
+                </div>
+            </div>
+            
+            <div class="question-container card">
+                <div class="question-header">
+                    <div class="question-number">
+                        <i class="fas fa-question-circle"></i>
+                        <span id="question-type">Teórica</span>
+                    </div>
+                    <div class="question-type" id="question-category">
+                        PGCA • Partidas Dobradas
+                    </div>
+                </div>
+                
+                <div class="question-text" id="question-text">
+                    Carregando questão...
+                </div>
+                
+                <div class="options-container" id="options-container">
+                    <!-- As opções serão inseridas via JavaScript -->
+                </div>
+                
+                <div class="quiz-navigation">
+                    <button id="prev-btn" class="btn btn-secondary" disabled>
+                        <i class="fas fa-arrow-left mr-2"></i> Anterior
+                    </button>
+                    
+                    <div>
+                        <button id="skip-btn" class="btn btn-secondary mr-2">
+                            Pular <i class="fas fa-forward ml-2"></i>
+                        </button>
+                        <button id="next-btn" class="btn">
+                            Próxima <i class="fas fa-arrow-right ml-2"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-4">
+                <button id="quit-quiz" class="btn btn-secondary">
+                    <i class="fas fa-sign-out-alt mr-2"></i> Sair da Prova
+                </button>
+            </div>
+        </div>
+
+        <!-- Feedback de Resposta -->
+        <div id="feedback-container" class="feedback-container hidden">
+            <div class="feedback-content">
+                <div class="feedback-icon">
+                    <i id="feedback-icon"></i>
+                </div>
+                <div class="feedback-text" id="feedback-text"></div>
+                <button class="feedback-close" id="close-feedback">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Tela de Resultados -->
+        <div id="results-screen" class="results-screen hidden">
+            <div class="results-header">
+                <h1>Resultados da Prova</h1>
+                <p>Confira seu desempenho no simulador</p>
+            </div>
+            
+            <div class="results-summary">
+                <div class="card result-card">
+                    <div class="result-value text-primary" id="score-percentage">0%</div>
+                    <div class="result-label">Pontuação</div>
+                </div>
+                
+                <div class="card result-card">
+                    <div class="result-value" id="correct-answers">0</div>
+                    <div class="result-label">Acertos</div>
+                </div>
+                
+                <div class="card result-card">
+                    <div class="result-value" id="time-taken">00:00</div>
+                    <div class="result-label">Tempo</div>
+                </div>
+                
+                <div class="card result-card">
+                    <div class="result-value" id="approval-status">-</div>
+                    <div class="result-label">Status</div>
+                </div>
+            </div>
+            
+            <div class="score-circle">
+                <div class="score-circle-bg"></div>
+                <div class="score-circle-inner">
+                    <div class="score-percentage" id="circle-score">0%</div>
+                    <div class="score-text" id="circle-text">Aprovação</div>
+                </div>
+            </div>
+            
+            <div class="motivational-message hidden" id="motivational-message">
+                <h3 id="message-title">Título da Mensagem</h3>
+                <p id="message-text">Texto da mensagem motivacional</p>
+            </div>
+            
+            <div class="questions-review">
+                <h3 class="mb-3">Revisão das Questões</h3>
+                <div id="questions-review-list">
+                    <!-- A lista de questões será inserida via JavaScript -->
+                </div>
+            </div>
+            
+            <div class="results-actions">
+                <button id="export-pdf" class="btn btn-secondary">
+                    <i class="fas fa-file-pdf mr-2"></i> Exportar PDF
+                </button>
+                <button id="export-image" class="btn btn-secondary">
+                    <i class="fas fa-download mr-2"></i> Exportar Imagem
+                </button>
+                <button id="restart-simulator" class="btn">
+                    <i class="fas fa-redo mr-2"></i> Nova Prova
+                </button>
+            </div>
+            
+            <div class="text-center mt-4">
+                <button id="back-to-levels" class="btn btn-secondary">
+                    <i class="fas fa-arrow-left mr-2"></i> Voltar para Níveis
+                </button>
+            </div>
+        </div>
+
+        <!-- Modal de Exportação -->
+        <div id="export-modal" class="export-modal hidden">
+            <div class="export-content">
+                <div class="export-header">
+                    <h3>Exportar Resultados</h3>
+                </div>
+                <div class="export-body">
+                    <div class="export-preview" id="export-preview">
+                        <p>Pré-visualização do certificado</p>
+                    </div>
+                    <p class="text-center"><small>O arquivo será gerado com fundo branco para melhor impressão</small></p>
+                </div>
+                <div class="export-footer">
+                    <button id="cancel-export" class="btn btn-secondary">Cancelar</button>
+                    <button id="confirm-export" class="btn">Confirmar</button>
+                </div>
+            </div>
+            <button class="close-modal" id="close-export-modal">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // ============================
+        // BANCO DE QUESTÕES
+        // ============================
+        const questionBank = {
+            iniciante: [
+                {
+                    id: 1,
+                    tipo: "Teórica",
+                    pergunta: "Qual é a equação fundamental do património na contabilidade?",
+                    opcoes: [
+                        "Ativo = Passivo - Património Líquido",
+                        "Ativo + Passivo = Património Líquido",
+                        "Ativo = Passivo + Património Líquido",
+                        "Património Líquido = Ativo × Passivo"
+                    ],
+                    resposta: "C",
+                    categoria: "Fundamentos • Equação Patrimonial"
+                },
+                {
+                    id: 2,
+                    tipo: "Teórica",
+                    pergunta: "Quem sistematizou o Método das Partidas Dobradas em 1494?",
+                    opcoes: [
+                        "Warren Buffett",
+                        "Luca Pacioli",
+                        "Adam Smith",
+                        "Karl Marx"
+                    ],
+                    resposta: "B",
+                    categoria: "História • Partidas Dobradas"
+                },
+                {
+                    id: 3,
+                    tipo: "Teórica",
+                    pergunta: "Qual Classe do PGCA contém as contas de 'Meios Monetários' como caixa e bancos?",
+                    opcoes: [
+                        "Classe 1",
+                        "Classe 2",
+                        "Classe 3",
+                        "Classe 4"
+                    ],
+                    resposta: "D",
+                    categoria: "PGCA • Estrutura de Classes"
+                },
+                {
+                    id: 4,
+                    tipo: "Teórica",
+                    pergunta: "Em Angola, qual diploma legal aprovou o atual Plano Geral de Contabilidade Angolano (PGCA)?",
+                    opcoes: [
+                        "Lei n.º 30/11",
+                        "Decreto n.º 82/01",
+                        "Decreto Presidencial n.º 232/10",
+                        "Código Comercial"
+                    ],
+                    resposta: "B",
+                    categoria: "Legislação • PGCA"
+                },
+                {
+                    id: 5,
+                    tipo: "Teórica",
+                    pergunta: "Qual o princípio do Método das Partidas Dobradas?",
+                    opcoes: [
+                        "'Não há credor sem devedor'",
+                        "'Não há devedor sem credor'",
+                        "'Débito sempre aumenta, crédito sempre diminui'",
+                        "'Ativo aumenta pelo crédito'"
+                    ],
+                    resposta: "B",
+                    categoria: "Partidas Dobradas • Princípios"
+                },
+                {
+                    id: 6,
+                    tipo: "Teórica",
+                    pergunta: "Segundo a classificação por dimensão em Angola (Lei n.º 30/11), uma Microempresa tem faturamento anual até:",
+                    opcoes: [
+                        "Kz 750 milhões",
+                        "Kz 25 milhões",
+                        "Kz 25 milhões",
+                        "Kz 3.000 milhões"
+                    ],
+                    resposta: "C",
+                    categoria: "Legislação • Classificação Empresarial"
+                },
+                {
+                    id: 7,
+                    tipo: "Teórica",
+                    pergunta: "Qual Classe do PGCA é mista, contendo tanto contas a receber (Ativo) como a pagar (Passivo)?",
+                    opcoes: [
+                        "Classe 1",
+                        "Classe 3",
+                        "Classe 5",
+                        "Classe 7"
+                    ],
+                    resposta: "B",
+                    categoria: "PGCA • Classes"
+                },
+                {
+                    id: 8,
+                    tipo: "Teórica",
+                    pergunta: "Qual entidade regula e supervisiona a profissão contabilística em Angola, criada em 2014?",
+                    opcoes: [
+                        "AGT",
+                        "OCPCA",
+                        "Ministério das Finanças",
+                        "Banco Nacional de Angola"
+                    ],
+                    resposta: "B",
+                    categoria: "Profissão • Regulação"
+                },
+                {
+                    id: 9,
+                    tipo: "Prática",
+                    pergunta: "O Sr. João investe Kz 100.000 do seu património pessoal para abrir uma mercearia. Qual o lançamento correto?",
+                    opcoes: [
+                        "Débito: Capital Social (Cl.5) Kz 100.000; Crédito: Caixa (Cl.4) Kz 100.000",
+                        "Débito: Caixa (Cl.4) Kz 100.000; Crédito: Capital Social (Cl.5) Kz 100.000",
+                        "Débito: Fornecedores (Cl.3) Kz 100.000; Crédito: Caixa (Cl.4) Kz 100.000",
+                        "Débito: Caixa (Cl.4) Kz 100.000; Crédito: Capital Social (Cl.5) Kz 100.000"
+                    ],
+                    resposta: "D",
+                    categoria: "Partidas Dobradas • Lançamentos"
+                },
+                {
+                    id: 10,
+                    tipo: "Prática",
+                    pergunta: "Uma padaria paga a conta de água de Kz 15.000 por transferência bancária. Qual o lançamento?",
+                    opcoes: [
+                        "Débito: Bancos (Cl.4) Kz 15.000; Crédito: Água (Cl.7) Kz 15.000",
+                        "Débito: Fornecimentos e Serviços de Terceiros (Cl.7) Kz 15.000; Crédito: Depósitos à Ordem (Cl.4) Kz 15.000",
+                        "Débito: Água (Cl.7) Kz 15.000; Crédito: Fornecedores (Cl.3) Kz 15.000",
+                        "Débito: Custos Operacionais (Cl.7) Kz 15.000; Crédito: Caixa (Cl.4) Kz 15.000"
+                    ],
+                    resposta: "B",
+                    categoria: "PGCA • Lançamentos"
+                }
+            ],
+            intermediario: [
+                {
+                    id: 1,
+                    tipo: "Teórica",
+                    pergunta: "No PGCA, a conta 34.5 refere-se a qual imposto?",
+                    opcoes: [
+                        "Imposto Industrial (II)",
+                        "Imposto sobre o Rendimento do Trabalho (IRT)",
+                        "Imposto sobre o Valor Acrescentado (IVA)",
+                        "Imposto de Circulação"
+                    ],
+                    resposta: "C",
+                    categoria: "Tributação • IVA"
+                },
+                {
+                    id: 2,
+                    tipo: "Teórica",
+                    pergunta: "Qual a sequência CORRETA das etapas do ciclo contabilístico?",
+                    opcoes: [
+                        "Razão → Diário → Balancete → Ajustes → Demonstrações Financeiras",
+                        "Diário → Razão → Balancete → Ajustes → Demonstrações Financeiras",
+                        "Balancete → Diário → Razão → Ajustes → Demonstrações Financeiras",
+                        "Ajustes → Diário → Razão → Balancete → Demonstrações Financeiras"
+                    ],
+                    resposta: "B",
+                    categoria: "Ciclo Contabilístico • Etapas"
+                },
+                {
+                    id: 3,
+                    tipo: "Teórica",
+                    pergunta: "O Balancete de Teste (pré-ajustes) tem como principal função:",
+                    opcoes: [
+                        "Calcular o lucro líquido",
+                        "Validar o equilíbrio matemático (Débitos = Créditos)",
+                        "Regularizar as receitas e custos",
+                        "Elaborar o balanço final"
+                    ],
+                    resposta: "B",
+                    categoria: "Ciclo Contabilístico • Balancete"
+                },
+                {
+                    id: 4,
+                    tipo: "Teórica",
+                    pergunta: "Em Angola, o método LIFO para avaliação de inventários é:",
+                    opcoes: [
+                        "Obrigatório para todas as empresas",
+                        "Desaconselhado pelas IFRS, podendo ser proibido",
+                        "O método mais utilizado pelas grandes empresas",
+                        "Exigido pela AGT para fins fiscais"
+                    ],
+                    resposta: "B",
+                    categoria: "Inventários • Métodos"
+                },
+                {
+                    id: 5,
+                    tipo: "Teórica",
+                    pergunta: "Qual das seguintes NÃO é uma Demonstração Financeira obrigatória pelo PGCA?",
+                    opcoes: [
+                        "Balanço",
+                        "Demonstração dos Resultados",
+                        "Demonstração do Valor Adicionado",
+                        "Demonstração dos Fluxos de Caixa"
+                    ],
+                    resposta: "C",
+                    categoria: "Demonstrações Financeiras • PGCA"
+                },
+                {
+                    id: 6,
+                    tipo: "Teórica",
+                    pergunta: "A conta 38.1 do PGCA (Classe 3) refere-se a:",
+                    opcoes: [
+                        "Fornecedores-correntes",
+                        "Provisões para Clientes (cobranças duvidosas)",
+                        "Empréstimos bancários",
+                        "Imposto sobre os lucros"
+                    ],
+                    resposta: "B",
+                    categoria: "PGCA • Contas"
+                },
+                {
+                    id: 7,
+                    tipo: "Prática",
+                    pergunta: "Uma empresa tem: Estoque Inicial=Kz 50.000 (100 unid. a Kz 500); Compra=Kz 120.000 (200 unid. a Kz 600). Vende 250 unidades. Qual o Custo das Mercadorias Vendidas (CMV) pelo método FIFO?",
+                    opcoes: [
+                        "Kz 140.000",
+                        "Kz 140.000",
+                        "Kz 145.000",
+                        "Kz 141.667,50"
+                    ],
+                    resposta: "B",
+                    categoria: "Inventários • FIFO"
+                },
+                {
+                    id: 8,
+                    tipo: "Prática",
+                    pergunta: "Um restaurante no Lobito, em Regime Geral de IVA, tem: IVA Liquidado (sobre vendas) = Kz 140.000; IVA Suportado Dedutível (sobre compras) = Kz 56.000. Qual o valor do IVA a pagar à AGT?",
+                    opcoes: [
+                        "Kz 140.000",
+                        "Kz 56.000",
+                        "Kz 84.000",
+                        "Kz 196.000"
+                    ],
+                    resposta: "C",
+                    categoria: "Tributação • IVA"
+                },
+                {
+                    id: 9,
+                    tipo: "Prática",
+                    pergunta: "A 'TechSolutions, Lda' teve Proveitos (Cl.6) de Kz 5.000.000 e Custos Operacionais (Cl.7) de Kz 3.700.000. Considerando uma taxa de Imposto Industrial de 25%, qual o Resultado Líquido?",
+                    opcoes: [
+                        "Kz 1.300.000",
+                        "Kz 975.000",
+                        "Kz 975.000",
+                        "Kz 325.000"
+                    ],
+                    resposta: "C",
+                    categoria: "Resultados • Imposto Industrial"
+                },
+                {
+                    id: 10,
+                    tipo: "Prática",
+                    pergunta: "Uma empresa compra uma viatura (Ativo) por Kz 800.000, pagando 50% à vista por cheque e 50% a prazo. O lançamento correto é:",
+                    opcoes: [
+                        "Débito: Viaturas (Cl.1) Kz 800.000; Crédito: Bancos (Cl.4) Kz 800.000",
+                        "Débito: Viaturas (Cl.1) Kz 800.000; Crédito: Bancos (Cl.4) Kz 400.000 e Caixa (Cl.4) Kz 400.000",
+                        "Débito: Viaturas (Cl.1) Kz 800.000; Crédito: Depósitos à Ordem (Cl.4) Kz 400.000 e Fornecedores (Cl.3) Kz 400.000",
+                        "Débito: Equipamento de Transporte (Cl.1) Kz 800.000; Crédito: Empréstimos (Cl.3) Kz 800.000"
+                    ],
+                    resposta: "C",
+                    categoria: "Lançamentos • Partidas Dobradas"
+                }
+            ],
+            avancado: [
+                {
+                    id: 1,
+                    tipo: "Teórica",
+                    pergunta: "Qual a principal diferença entre o PGCA (2001) e as IFRS quanto à base de mensuração de ativos?",
+                    opcoes: [
+                        "IFRS usa apenas custo histórico; PGCA usa justo valor",
+                        "PGCA enfatiza custo histórico; IFRS usa extensivamente justo valor",
+                        "Ambios usam exclusivamente justo valor",
+                        "Não há diferença significativa"
+                    ],
+                    resposta: "B",
+                    categoria: "PGCA vs IFRS • Mensuração"
+                },
+                {
+                    id: 2,
+                    tipo: "Teórica",
+                    pergunta: "Segundo a IAS 36, o que deve ser testado anualmente para verificar possíveis perdas por desvalorização irreversível?",
+                    opcoes: [
+                        "O Capital Social",
+                        "O valor contabilístico dos ativos",
+                        "As receitas do exercício",
+                        "O passivo circulante"
+                    ],
+                    resposta: "B",
+                    categoria: "IFRS • IAS 36"
+                },
+                {
+                    id: 3,
+                    tipo: "Teórica",
+                    pergunta: "O parecer de auditoria 'Adverso' indica que:",
+                    opcoes: [
+                        "As contas refletem fielmente a posição financeira",
+                        "Existem desvios menores mas não materiais",
+                        "As contas não refletem a verdadeira posição (distorção material)",
+                        "O auditor não conseguiu obter evidências suficientes"
+                    ],
+                    resposta: "C",
+                    categoria: "Auditoria • Pareceres"
+                },
+                {
+                    id: 4,
+                    tipo: "Teórica",
+                    pergunta: "A criação de um 'Ativo por Impostos Diferidos' ocorre quando:",
+                    opcoes: [
+                        "Uma receita é reconhecida fiscalmente antes da contabilística",
+                        "Uma despesa é reconhecida contabilisticamente antes da fiscal",
+                        "O lucro contabilístico é igual ao lucro tributável",
+                        "A empresa paga impostos em atraso"
+                    ],
+                    resposta: "B",
+                    categoria: "Impostos Diferidos • Conceito"
+                },
+                {
+                    id: 5,
+                    tipo: "Prática",
+                    pergunta: "Uma empresa aplica depreciação acelerada para um equipamento (custo Kz 1.000.000). Contabilisticamente deprecia 20% no Ano 1 (Kz 200.000), mas fiscalmente só é aceite 10% (Kz 100.000). Considerando taxa de II de 25%, qual o valor do Ativo por Impostos Diferidos criado?",
+                    opcoes: [
+                        "Kz 25.000",
+                        "Kz 25.000",
+                        "Kz 50.000",
+                        "Kz 200.000"
+                    ],
+                    resposta: "B",
+                    categoria: "Impostos Diferidos • Cálculo"
+                },
+                {
+                    id: 6,
+                    tipo: "Prática",
+                    pergunta: "Uma empresa angolana com contratos de leasing (arrendamento) precisará, na convergência para IFRS 16, reconhecer no balanço:",
+                    opcoes: [
+                        "Apenas a despesa mensal no resultado",
+                        "Um Ativo ('Right-of-Use') e um Passivo ('Lease Liability')",
+                        "Apenas notas explicativas",
+                        "Nada, mantém off-balance sheet"
+                    ],
+                    resposta: "B",
+                    categoria: "IFRS 16 • Leasing"
+                },
+                {
+                    id: 7,
+                    tipo: "Prática",
+                    pergunta: "Uma empresa estima que 5% dos seus créditos a clientes (Kz 2.000.000) são incobráveis. Qual o lançamento de ajuste para constituição da Provisão para Cobranças Duvidosas?",
+                    opcoes: [
+                        "Débito: Provisões p/ Clientes (Cl.3) Kz 100.000; Crédito: Clientes (Cl.3) Kz 100.000",
+                        "Débito: Outros Custos Não Operacionais (Cl.7) Kz 100.000; Crédito: Provisões p/ Clientes (Cl.3) Kz 100.000",
+                        "Débito: Custos Financeiros (Cl.7) Kz 100.000; Crédito: Bancos (Cl.4) Kz 100.000",
+                        "Débito: Resultados (Cl.8) Kz 100.000; Crédito: Provisões (Cl.3) Kz 100.000"
+                    ],
+                    resposta: "B",
+                    categoria: "Provisões • Lançamentos"
+                },
+                {
+                    id: 8,
+                    tipo: "Prática",
+                    pergunta: "Um imóvel adquirido em 2005 por Kz 50.000.000 tem, em 2024, um valor de mercado (justo valor) de Kz 250.000.000. Pelo PGCA (custo histórico), como é apresentado no balanço?",
+                    opcoes: [
+                        "Por Kz 250.000.000 com ajuste no PL",
+                        "Por Kz 50.000.000 (ou valor amortizado)",
+                        "Por Kz 0, pois já foi totalmente depreciado",
+                        "Por Kz 200.000.000 como ganho não realizado"
+                    ],
+                    resposta: "B",
+                    categoria: "PGCA • Custo Histórico"
+                },
+                {
+                    id: 9,
+                    tipo: "Prática",
+                    pergunta: "Para um projeto de construção de longo prazo, onde a receita é reconhecida conforme o grau de conclusão (IFRS 15), em contraste com o PGCA (focado na data da fatura), isso impacta principalmente:",
+                    opcoes: [
+                        "A Demonstração dos Fluxos de Caixa",
+                        "A Demonstração dos Resultados no reconhecimento do lucro ao longo do tempo",
+                        "O Balanço Patrimonial apenas",
+                        "A Classe 0 - Contas de Ordem"
+                    ],
+                    resposta: "B",
+                    categoria: "IFRS 15 • Receitas"
+                },
+                {
+                    id: 10,
+                    tipo: "Prática",
+                    pergunta: "Uma empresa tem Lucro Contabilístico antes de impostos de Kz 10.000.000. Inclui uma multa (não dedutível fiscalmente) de Kz 1.000.000 e depreciação acelerada (diferença temporária) que gera despesa contabilística adicional de Kz 500.000 não aceite agora pelo fisco. Qual o Lucro Tributável?",
+                    opcoes: [
+                        "Kz 10.000.000",
+                        "Kz 11.500.000 (10.000.000 + 1.000.000 + 500.000)",
+                        "Kz 8.500.000",
+                        "Kz 9.000.000"
+                    ],
+                    resposta: "B",
+                    categoria: "Lucro Tributável • Cálculo"
+                }
+            ]
+        };
+
+        // ============================
+        // ESTADO DA APLICAÇÃO
+        // ============================
+        const AppState = {
+            // Dados do usuário
+            userData: {
+                nome: '',
+                sexo: '',
+                regiao: ''
+            },
+            
+            // Estado atual da aplicação
+            currentScreen: 'intro', // intro, registration, level-selection, quiz, results
+            
+            // Dados da prova atual
+            currentQuiz: {
+                level: null,
+                questions: [],
+                currentQuestionIndex: 0,
+                userAnswers: [],
+                startTime: null,
+                endTime: null,
+                timer: null,
+                timeRemaining: 2400, // 40 minutos em segundos (padrão para iniciante)
+                timeLimit: 2400
+            },
+            
+            // Resultados
+            results: {
+                score: 0,
+                correctAnswers: 0,
+                totalQuestions: 0,
+                timeTaken: 0,
+                passed: false,
+                percentage: 0
+            },
+            
+            // Inicializar aplicação
+            init() {
+                this.loadFromLocalStorage();
+                this.showScreen('intro');
+                this.bindEvents();
+            },
+            
+            // Carregar dados do localStorage
+            loadFromLocalStorage() {
+                const saved = localStorage.getItem('tecaQuizData');
+                if (saved) {
+                    const data = JSON.parse(saved);
+                    this.userData = data.userData || this.userData;
+                }
+            },
+            
+            // Salvar dados no localStorage
+            saveToLocalStorage() {
+                const data = {
+                    userData: this.userData
+                };
+                localStorage.setItem('tecaQuizData', JSON.stringify(data));
+            },
+            
+            // Mostrar tela específica
+            showScreen(screenName) {
+                // Esconder todas as telas
+                document.querySelectorAll('[id$="-screen"]').forEach(screen => {
+                    screen.classList.add('hidden');
+                });
+                
+                // Mostrar tela solicitada
+                document.getElementById(`${screenName}-screen`).classList.remove('hidden');
+                
+                // Atualizar estado
+                this.currentScreen = screenName;
+                
+                // Executar ações específicas para cada tela
+                switch(screenName) {
+                    case 'intro':
+                        this.prepareIntroScreen();
+                        break;
+                    case 'registration':
+                        this.prepareRegistrationScreen();
+                        break;
+                    case 'level-selection':
+                        this.prepareLevelSelectionScreen();
+                        break;
+                    case 'quiz':
+                        this.prepareQuizScreen();
+                        break;
+                    case 'results':
+                        this.prepareResultsScreen();
+                        break;
+                }
+            },
+            
+            // Preparar tela de introdução
+            prepareIntroScreen() {
+                // Nada específico necessário
+            },
+            
+            // Preparar tela de cadastro
+            prepareRegistrationScreen() {
+                // Preencher campos se já existirem dados
+                if (this.userData.nome) {
+                    document.getElementById('nome').value = this.userData.nome;
+                }
+                if (this.userData.sexo) {
+                    document.getElementById('sexo').value = this.userData.sexo;
+                }
+                if (this.userData.regiao) {
+                    document.getElementById('regiao').value = this.userData.regiao;
+                }
+                
+                // Validar formulário
+                this.validateRegistrationForm();
+            },
+            
+            // Preparar tela de seleção de nível
+            prepareLevelSelectionScreen() {
+                // Nada específico necessário
+            },
+            
+            // Preparar tela de prova
+            prepareQuizScreen() {
+                // Configurar tempo baseado no nível
+                switch(this.currentQuiz.level) {
+                    case 'iniciante':
+                        this.currentQuiz.timeRemaining = 2400; // 40 minutos
+                        break;
+                    case 'intermediario':
+                        this.currentQuiz.timeRemaining = 3000; // 50 minutos
+                        break;
+                    case 'avancado':
+                        this.currentQuiz.timeRemaining = 3600; // 60 minutos
+                        break;
+                }
+                
+                this.currentQuiz.timeLimit = this.currentQuiz.timeRemaining;
+                this.currentQuiz.startTime = new Date();
+                this.currentQuiz.currentQuestionIndex = 0;
+                this.currentQuiz.userAnswers = [];
+                
+                // Iniciar timer
+                this.startTimer();
+                
+                // Carregar primeira questão
+                this.loadQuestion(this.currentQuiz.currentQuestionIndex);
+            },
+            
+            // Preparar tela de resultados
+            prepareResultsScreen() {
+                this.calculateResults();
+                this.displayResults();
+                this.displayQuestionsReview();
+                this.displayMotivationalMessage();
+            },
+            
+            // Validar formulário de cadastro
+            validateRegistrationForm() {
+                const nome = document.getElementById('nome').value.trim();
+                const sexo = document.getElementById('sexo').value;
+                const regiao = document.getElementById('regiao').value.trim();
+                const submitBtn = document.getElementById('submit-btn');
+                
+                const isValid = nome.length >= 3 && sexo && regiao.length >= 2;
+                
+                submitBtn.disabled = !isValid;
+                
+                return isValid;
+            },
+            
+            // Iniciar timer da prova
+            startTimer() {
+                // Parar timer anterior se existir
+                if (this.currentQuiz.timer) {
+                    clearInterval(this.currentQuiz.timer);
+                }
+                
+                // Atualizar display inicial
+                this.updateTimerDisplay();
+                
+                // Iniciar novo timer
+                this.currentQuiz.timer = setInterval(() => {
+                    this.currentQuiz.timeRemaining--;
+                    
+                    // Atualizar display
+                    this.updateTimerDisplay();
+                    
+                    // Verificar se o tempo acabou
+                    if (this.currentQuiz.timeRemaining <= 0) {
+                        clearInterval(this.currentQuiz.timer);
+                        this.finishQuiz();
+                    }
+                }, 1000);
+            },
+            
+            // Atualizar display do timer
+            updateTimerDisplay() {
+                const minutes = Math.floor(this.currentQuiz.timeRemaining / 60);
+                const seconds = this.currentQuiz.timeRemaining % 60;
+                
+                const timerDisplay = document.getElementById('timer');
+                const timeRemainingDisplay = document.getElementById('time-remaining');
+                
+                if (timerDisplay) {
+                    timerDisplay.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+                }
+                
+                if (timeRemainingDisplay) {
+                    timeRemainingDisplay.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+                }
+            },
+            
+            // Carregar questão
+            loadQuestion(questionIndex) {
+                const question = this.currentQuiz.questions[questionIndex];
+                
+                if (!question) return;
+                
+                // Atualizar número da questão
+                document.getElementById('current-question').textContent = `Questão ${questionIndex + 1} de ${this.currentQuiz.questions.length}`;
+                
+                // Atualizar barra de progresso
+                const progress = ((questionIndex + 1) / this.currentQuiz.questions.length) * 100;
+                document.getElementById('progress-bar').style.width = `${progress}%`;
+                document.getElementById('progress-text').textContent = `${Math.round(progress)}%`;
+                
+                // Atualizar tipo e categoria
+                document.getElementById('question-type').textContent = question.tipo;
+                document.getElementById('question-category').textContent = question.categoria;
+                
+                // Atualizar texto da questão
+                document.getElementById('question-text').textContent = question.pergunta;
+                
+                // Limpar opções anteriores
+                const optionsContainer = document.getElementById('options-container');
+                optionsContainer.innerHTML = '';
+                
+                // Adicionar novas opções
+                const letters = ['A', 'B', 'C', 'D'];
+                letters.forEach((letter, index) => {
+                    const optionDiv = document.createElement('div');
+                    optionDiv.className = 'option';
+                    optionDiv.dataset.option = letter;
+                    
+                    // Verificar se o usuário já respondeu esta questão
+                    const userAnswer = this.currentQuiz.userAnswers[questionIndex];
+                    if (userAnswer) {
+                        if (userAnswer === letter) {
+                            optionDiv.classList.add('selected');
+                        }
+                        if (question.resposta === letter) {
+                            optionDiv.classList.add('correct');
+                        } else if (userAnswer === letter && userAnswer !== question.resposta) {
+                            optionDiv.classList.add('incorrect');
+                        }
+                    }
+                    
+                    optionDiv.innerHTML = `
+                        <div class="option-letter">${letter}</div>
+                        <div class="option-text">${question.opcoes[index]}</div>
+                    `;
+                    
+                    optionsContainer.appendChild(optionDiv);
+                });
+                
+                // Atualizar botões de navegação
+                const prevBtn = document.getElementById('prev-btn');
+                const nextBtn = document.getElementById('next-btn');
+                
+                prevBtn.disabled = questionIndex === 0;
+                nextBtn.textContent = questionIndex === this.currentQuiz.questions.length - 1 ? 'Finalizar' : 'Próxima';
+                nextBtn.innerHTML = questionIndex === this.currentQuiz.questions.length - 1 ? 
+                    'Finalizar <i class="fas fa-flag-checkered ml-2"></i>' : 
+                    'Próxima <i class="fas fa-arrow-right ml-2"></i>';
+            },
+            
+            // Selecionar opção
+            selectOption(optionLetter) {
+                const questionIndex = this.currentQuiz.currentQuestionIndex;
+                const question = this.currentQuiz.questions[questionIndex];
+                
+                // Registrar resposta do usuário
+                this.currentQuiz.userAnswers[questionIndex] = optionLetter;
+                
+                // Mostrar feedback
+                this.showFeedback(optionLetter === question.resposta, question.resposta);
+                
+                // Recarregar questão para atualizar estilos
+                this.loadQuestion(questionIndex);
+                
+                // Se for a última questão, habilitar botão de finalizar
+                if (questionIndex === this.currentQuiz.questions.length - 1) {
+                    document.getElementById('next-btn').disabled = false;
+                }
+            },
+            
+            // Mostrar feedback
+            showFeedback(isCorrect, correctAnswer) {
+                const feedbackContainer = document.getElementById('feedback-container');
+                const feedbackIcon = document.getElementById('feedback-icon');
+                const feedbackText = document.getElementById('feedback-text');
+                
+                if (isCorrect) {
+                    feedbackContainer.className = 'feedback-container correct visible';
+                    feedbackIcon.className = 'fas fa-check-circle';
+                    feedbackText.textContent = 'Resposta correta! Parabéns!';
+                } else {
+                    feedbackContainer.className = 'feedback-container incorrect visible';
+                    feedbackIcon.className = 'fas fa-times-circle';
+                    feedbackText.textContent = `Resposta incorreta. A resposta correta é: ${correctAnswer}`;
+                }
+                
+                // Auto-esconder após 3 segundos
+                setTimeout(() => {
+                    feedbackContainer.classList.remove('visible');
+                }, 3000);
+            },
+            
+            // Ir para próxima questão
+            nextQuestion() {
+                const currentIndex = this.currentQuiz.currentQuestionIndex;
+                
+                // Verificar se o usuário respondeu a questão atual
+                if (!this.currentQuiz.userAnswers[currentIndex]) {
+                    alert('Por favor, selecione uma opção antes de continuar.');
+                    return;
+                }
+                
+                // Se for a última questão, finalizar prova
+                if (currentIndex === this.currentQuiz.questions.length - 1) {
+                    this.finishQuiz();
+                    return;
+                }
+                
+                // Ir para próxima questão
+                this.currentQuiz.currentQuestionIndex++;
+                this.loadQuestion(this.currentQuiz.currentQuestionIndex);
+            },
+            
+            // Ir para questão anterior
+            prevQuestion() {
+                if (this.currentQuiz.currentQuestionIndex > 0) {
+                    this.currentQuiz.currentQuestionIndex--;
+                    this.loadQuestion(this.currentQuiz.currentQuestionIndex);
+                }
+            },
+            
+            // Pular questão
+            skipQuestion() {
+                const currentIndex = this.currentQuiz.currentQuestionIndex;
+                
+                // Marcar como não respondida
+                this.currentQuiz.userAnswers[currentIndex] = null;
+                
+                // Se for a última questão, finalizar
+                if (currentIndex === this.currentQuiz.questions.length - 1) {
+                    this.finishQuiz();
+                    return;
+                }
+                
+                // Ir para próxima questão
+                this.currentQuiz.currentQuestionIndex++;
+                this.loadQuestion(this.currentQuiz.currentQuestionIndex);
+            },
+            
+            // Finalizar prova
+            finishQuiz() {
+                // Parar timer
+                if (this.currentQuiz.timer) {
+                    clearInterval(this.currentQuiz.timer);
+                }
+                
+                // Registrar tempo final
+                this.currentQuiz.endTime = new Date();
+                
+                // Ir para tela de resultados
+                this.showScreen('results');
+            },
+            
+            // Calcular resultados
+            calculateResults() {
+                let correctAnswers = 0;
+                const totalQuestions = this.currentQuiz.questions.length;
+                
+                // Contar respostas corretas
+                this.currentQuiz.userAnswers.forEach((answer, index) => {
+                    if (answer === this.currentQuiz.questions[index].resposta) {
+                        correctAnswers++;
+                    }
+                });
+                
+                // Calcular porcentagem
+                const percentage = (correctAnswers / totalQuestions) * 100;
+                
+                // Calcular tempo gasto
+                const timeTaken = this.currentQuiz.timeLimit - this.currentQuiz.timeRemaining;
+                const minutes = Math.floor(timeTaken / 60);
+                const seconds = timeTaken % 60;
+                
+                // Determinar se passou
+                const passed = percentage >= 50;
+                
+                // Armazenar resultados
+                this.results = {
+                    score: percentage,
+                    correctAnswers,
+                    totalQuestions,
+                    timeTaken: `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`,
+                    passed,
+                    percentage
+                };
+            },
+            
+            // Exibir resultados
+            displayResults() {
+                // Atualizar valores
+                document.getElementById('score-percentage').textContent = `${this.results.percentage.toFixed(1)}%`;
+                document.getElementById('correct-answers').textContent = `${this.results.correctAnswers}/${this.results.totalQuestions}`;
+                document.getElementById('time-taken').textContent = this.results.timeTaken;
+                document.getElementById('approval-status').textContent = this.results.passed ? 'Aprovado' : 'Reprovado';
+                document.getElementById('approval-status').className = this.results.passed ? 'result-value text-success' : 'result-value text-error';
+                
+                // Atualizar círculo de pontuação
+                document.getElementById('circle-score').textContent = `${this.results.percentage.toFixed(1)}%`;
+                document.getElementById('circle-text').textContent = this.results.passed ? 'Aprovado' : 'Reprovado';
+                
+                // Atualizar círculo de progresso
+                const circleBg = document.querySelector('.score-circle-bg');
+                circleBg.style.background = `conic-gradient(
+                    ${this.results.passed ? 'var(--success)' : 'var(--error)'} 0% ${this.results.percentage}%,
+                    rgba(255, 255, 255, 0.1) ${this.results.percentage}% 100%
+                )`;
+            },
+            
+            // Exibir revisão de questões
+            displayQuestionsReview() {
+                const reviewList = document.getElementById('questions-review-list');
+                reviewList.innerHTML = '';
+                
+                this.currentQuiz.questions.forEach((question, index) => {
+                    const userAnswer = this.currentQuiz.userAnswers[index];
+                    const isCorrect = userAnswer === question.resposta;
+                    
+                    const questionResult = document.createElement('div');
+                    questionResult.className = `question-result ${isCorrect ? 'correct' : 'incorrect'}`;
+                    
+                    questionResult.innerHTML = `
+                        <div class="question-result-icon">
+                            <i class="fas fa-${isCorrect ? 'check' : 'times'}"></i>
+                        </div>
+                        <div class="question-result-text">
+                            <strong>Questão ${index + 1}:</strong> ${question.pergunta.substring(0, 60)}...
+                        </div>
+                    `;
+                    
+                    reviewList.appendChild(questionResult);
+                });
+            },
+            
+            // Exibir mensagem motivacional
+            displayMotivationalMessage() {
+                const messageContainer = document.getElementById('motivational-message');
+                const messageTitle = document.getElementById('message-title');
+                const messageText = document.getElementById('message-text');
+                
+                let messageClass = '';
+                let title = '';
+                let text = '';
+                
+                if (this.results.percentage < 50) {
+                    messageClass = 'poor';
+                    title = 'Continue Estudando!';
+                    text = 'Você ainda não atingiu a pontuação mínima para aprovação. Recomendamos revisar os conceitos fundamentais antes de tentar novamente. Foco na compreensão, não na memorização!';
+                } else if (this.results.percentage < 70) {
+                    messageClass = 'average';
+                    title = 'Aprovado com Margem de Melhoria';
+                    text = 'Parabéns, você foi aprovado! No entanto, há espaço para melhorar seu desempenho. Continue estudando para solidificar seus conhecimentos.';
+                } else if (this.results.percentage < 90) {
+                    messageClass = 'good';
+                    title = 'Desempenho Acima da Média';
+                    text = 'Excelente trabalho! Seu desempenho demonstra boa compreensão dos conceitos contabilísticos. Continue assim para alcançar a excelência.';
+                } else {
+                    messageClass = 'excellent';
+                    title = 'Excelência e Domínio do Conteúdo';
+                    text = 'Resultado impressionante! Você demonstrou domínio completo dos conceitos avaliados. Está preparado para os desafios da contabilidade angolana.';
+                }
+                
+                messageContainer.className = `motivational-message ${messageClass} visible`;
+                messageTitle.textContent = title;
+                messageText.textContent = text;
+            },
+            
+            // Exportar resultados como PDF
+            exportAsPDF() {
+                // Criar conteúdo para exportação
+                const exportContent = this.createExportContent();
+                
+                // Usar html2canvas para capturar o conteúdo
+                html2canvas(exportContent, {
+                    scale: 2,
+                    backgroundColor: '#FFFFFF',
+                    useCORS: true
+                }).then(canvas => {
+                    const imgData = canvas.toDataURL('image/png');
+                    const pdf = new jspdf.jsPDF('p', 'mm', 'a4');
+                    const imgWidth = 190; // A4 width in mm minus margins
+                    const imgHeight = (canvas.height * imgWidth) / canvas.width;
+                    
+                    // Adicionar imagem
+                    pdf.addImage(imgData, 'PNG', 10, 10, imgWidth, imgHeight);
+                    
+                    // Adicionar footer
+                    const currentYear = new Date().getFullYear();
+                    pdf.setFontSize(10);
+                    pdf.setTextColor(128, 128, 128);
+                    pdf.text(`Teca Capital Investimentos © ${currentYear}`, 105, 285, { align: 'center' });
+                    pdf.text('Desenvolvido por Alberto Teca Tomás', 105, 290, { align: 'center' });
+                    
+                    // Salvar PDF
+                    pdf.save(`Resultados-Contabilidade-${this.userData.nome.replace(/\s+/g, '-')}.pdf`);
+                });
+            },
+            
+            // Exportar resultados como imagem
+            exportAsImage() {
+                // Criar conteúdo para exportação
+                const exportContent = this.createExportContent();
+                
+                // Usar html2canvas para capturar o conteúdo
+                html2canvas(exportContent, {
+                    scale: 2,
+                    backgroundColor: '#FFFFFF',
+                    useCORS: true
+                }).then(canvas => {
+                    // Criar link de download
+                    const link = document.createElement('a');
+                    link.download = `Resultados-Contabilidade-${this.userData.nome.replace(/\s+/g, '-')}.png`;
+                    link.href = canvas.toDataURL('image/png');
+                    link.click();
+                });
+            },
+            
+            // Criar conteúdo para exportação
+            createExportContent() {
+                // Criar elemento temporário
+                const exportDiv = document.createElement('div');
+                exportDiv.style.cssText = `
+                    width: 800px;
+                    padding: 40px;
+                    background: white;
+                    color: #333;
+                    font-family: 'Segoe UI', sans-serif;
+                `;
+                
+                // Adicionar conteúdo
+                const currentDate = new Date().toLocaleDateString('pt-AO');
+                const nivelMap = {
+                    'iniciante': 'Iniciante',
+                    'intermediario': 'Intermediário',
+                    'avancado': 'Avançado'
+                };
+                
+                exportDiv.innerHTML = `
+                    <div style="text-align: center; margin-bottom: 30px; border-bottom: 2px solid #D6AE64; padding-bottom: 20px;">
+                        <h1 style="color: #D6AE64; margin: 0;">TECA CAPITAL INVESTIMENTOS</h1>
+                        <h2 style="color: #333; margin: 10px 0;">Simulador de Contabilidade</h2>
+                        <p style="color: #666;">Certificado de Resultados</p>
+                    </div>
+                    
+                    <div style="margin-bottom: 30px;">
+                        <h3 style="color: #333; border-left: 4px solid #D6AE64; padding-left: 10px;">Dados do Participante</h3>
+                        <table style="width: 100%; border-collapse: collapse; margin-top: 10px;">
+                            <tr>
+                                <td style="padding: 8px 0; border-bottom: 1px solid #eee;"><strong>Nome:</strong></td>
+                                <td style="padding: 8px 0; border-bottom: 1px solid #eee;">${this.userData.nome}</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 8px 0; border-bottom: 1px solid #eee;"><strong>Sexo:</strong></td>
+                                <td style="padding: 8px 0; border-bottom: 1px solid #eee;">${this.userData.sexo}</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 8px 0; border-bottom: 1px solid #eee;"><strong>Região:</strong></td>
+                                <td style="padding: 8px 0; border-bottom: 1px solid #eee;">${this.userData.regiao}</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 8px 0; border-bottom: 1px solid #eee;"><strong>Data:</strong></td>
+                                <td style="padding: 8px 0; border-bottom: 1px solid #eee;">${currentDate}</td>
+                            </tr>
+                        </table>
+                    </div>
+                    
+                    <div style="margin-bottom: 30px;">
+                        <h3 style="color: #333; border-left: 4px solid #D6AE64; padding-left: 10px;">Resultados da Prova</h3>
+                        <div style="display: flex; justify-content: space-around; text-align: center; margin-top: 20px;">
+                            <div>
+                                <div style="font-size: 36px; font-weight: bold; color: ${this.results.passed ? '#00FF00' : '#FF0000'};">${this.results.percentage.toFixed(1)}%</div>
+                                <div style="color: #666;">Pontuação</div>
+                            </div>
+                            <div>
+                                <div style="font-size: 36px; font-weight: bold; color: #333;">${this.results.correctAnswers}/${this.results.totalQuestions}</div>
+                                <div style="color: #666;">Acertos</div>
+                            </div>
+                            <div>
+                                <div style="font-size: 36px; font-weight: bold; color: #333;">${this.results.timeTaken}</div>
+                                <div style="color: #666;">Tempo</div>
+                            </div>
+                            <div>
+                                <div style="font-size: 36px; font-weight: bold; color: ${this.results.passed ? '#00FF00' : '#FF0000'};">${this.results.passed ? 'Aprovado' : 'Reprovado'}</div>
+                                <div style="color: #666;">Status</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div style="margin-bottom: 30px;">
+                        <h3 style="color: #333; border-left: 4px solid #D6AE64; padding-left: 10px;">Detalhes da Prova</h3>
+                        <table style="width: 100%; border-collapse: collapse; margin-top: 10px;">
+                            <tr>
+                                <td style="padding: 8px 0; border-bottom: 1px solid #eee;"><strong>Nível:</strong></td>
+                                <td style="padding: 8px 0; border-bottom: 1px solid #eee;">${nivelMap[this.currentQuiz.level]}</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 8px 0; border-bottom: 1px solid #eee;"><strong>Data da Prova:</strong></td>
+                                <td style="padding: 8px 0; border-bottom: 1px solid #eee;">${currentDate}</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 8px 0; border-bottom: 1px solid #eee;"><strong>Mínimo para Aprovação:</strong></td>
+                                <td style="padding: 8px 0; border-bottom: 1px solid #eee;">50%</td>
+                            </tr>
+                        </table>
+                    </div>
+                    
+                    <div style="text-align: center; margin-top: 40px; padding-top: 20px; border-top: 1px solid #eee; color: #666;">
+                        <p>Teca Capital Investimentos © ${new Date().getFullYear()}</p>
+                        <p>Desenvolvido por Alberto Teca Tomás</p>
+                    </div>
+                `;
+                
+                return exportDiv;
+            },
+            
+            // Vincular eventos
+            bindEvents() {
+                // Navegação entre telas
+                document.getElementById('start-btn').addEventListener('click', () => {
+                    this.showScreen('registration');
+                });
+                
+                document.getElementById('back-to-intro').addEventListener('click', () => {
+                    this.showScreen('intro');
+                });
+                
+                document.getElementById('back-to-registration').addEventListener('click', () => {
+                    this.showScreen('registration');
+                });
+                
+                document.getElementById('back-to-levels').addEventListener('click', () => {
+                    this.showScreen('level-selection');
+                });
+                
+                // Formulário de cadastro
+                const registrationForm = document.getElementById('registration-form');
+                registrationForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    
+                    // Coletar dados
+                    this.userData = {
+                        nome: document.getElementById('nome').value.trim(),
+                        sexo: document.getElementById('sexo').value,
+                        regiao: document.getElementById('regiao').value.trim()
+                    };
+                    
+                    // Salvar dados
+                    this.saveToLocalStorage();
+                    
+                    // Ir para seleção de nível
+                    this.showScreen('level-selection');
+                });
+                
+                // Validação em tempo real do formulário
+                const formInputs = ['nome', 'sexo', 'regiao'];
+                formInputs.forEach(inputId => {
+                    document.getElementById(inputId).addEventListener('input', () => {
+                        this.validateRegistrationForm();
+                    });
+                });
+                
+                // Seleção de nível
+                document.querySelectorAll('[data-level]').forEach(button => {
+                    button.addEventListener('click', (e) => {
+                        const level = e.target.closest('[data-level]').dataset.level;
+                        
+                        // Configurar prova
+                        this.currentQuiz.level = level;
+                        this.currentQuiz.questions = [...questionBank[level]]; // Copiar array
+                        
+                        // Embaralhar questões (opcional)
+                        this.shuffleArray(this.currentQuiz.questions);
+                        
+                        // Iniciar prova
+                        this.showScreen('quiz');
+                    });
+                });
+                
+                // Navegação da prova
+                document.getElementById('prev-btn').addEventListener('click', () => {
+                    this.prevQuestion();
+                });
+                
+                document.getElementById('next-btn').addEventListener('click', () => {
+                    this.nextQuestion();
+                });
+                
+                document.getElementById('skip-btn').addEventListener('click', () => {
+                    this.skipQuestion();
+                });
+                
+                document.getElementById('quit-quiz').addEventListener('click', () => {
+                    if (confirm('Deseja realmente sair da prova? Seu progresso será perdido.')) {
+                        this.showScreen('level-selection');
+                    }
+                });
+                
+                // Seleção de opções
+                document.addEventListener('click', (e) => {
+                    if (e.target.closest('.option') && !e.target.closest('.option').classList.contains('selected')) {
+                        const option = e.target.closest('.option');
+                        this.selectOption(option.dataset.option);
+                    }
+                });
+                
+                // Fechar feedback
+                document.getElementById('close-feedback').addEventListener('click', () => {
+                    document.getElementById('feedback-container').classList.remove('visible');
+                });
+                
+                // Exportação
+                document.getElementById('export-pdf').addEventListener('click', () => {
+                    this.exportAsPDF();
+                });
+                
+                document.getElementById('export-image').addEventListener('click', () => {
+                    this.exportAsImage();
+                });
+                
+                // Reiniciar simulador
+                document.getElementById('restart-simulator').addEventListener('click', () => {
+                    if (confirm('Deseja iniciar uma nova prova?')) {
+                        this.showScreen('level-selection');
+                    }
+                });
+            },
+            
+            // Embaralhar array (Fisher-Yates)
+            shuffleArray(array) {
+                for (let i = array.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [array[i], array[j]] = [array[j], array[i]];
+                }
+                return array;
+            }
+        };
+
+        // ============================
+        // INICIALIZAÇÃO
+        // ============================
+        document.addEventListener('DOMContentLoaded', () => {
+            AppState.init();
+        });
+    </script>
+
 
        <a href="simulador-de-contabilidade.html">Voltar para o simulador principal de contabilidade</a>
     </main>

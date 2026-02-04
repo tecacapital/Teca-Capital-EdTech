@@ -3,14 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Teca Capital - Simulador de Contabilidade</title>
+    <title>Teca Capital - Simuladores de Contabilidade | Aprenda Praticando</title>
     <link rel="icon" href="Icon/Teca Capital favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/contabilidade.css">
 </head>
+
 <body>
     <!-- HEADER PADRÃO (EXATAMENTE COMO NO CONTEXTO) -->
     <header class="site-header">
@@ -26,8 +27,8 @@
             <ul class="nav-list">
                 <li><a href="index.html">Página Inicial</a></li>
                 <li><a href="biblioteca.html">Biblioteca</a></li>
-                <li><a href="simuladores.html">Simuladores</a></li>
-                <li><a href="sobre.html" class="active">+Sobre Nós</a></li>
+                <li><a href="simuladores-home.html" class="active">Simuladores</a></li>
+                <li><a href="sobre.html">+Sobre Nós</a></li>
                 <li><a href="login-cadastramento.html">Login/Cadastro</a></li>
                 <li><a href="ranking.html">Ranking</a></li>
                 <li><a href="admin.html">Administrador</a></li>
@@ -45,8 +46,8 @@
                 <ul class="mobile-nav-list">
                     <li><a href="index.html">Página Inicial</a></li>
                     <li><a href="biblioteca.html">Biblioteca</a></li>
-                    <li><a href="simuladores.html">Simuladores</a></li>
-                    <li><a href="sobre.html" class="active">+Sobre Nós</a></li>
+                    <li><a href="simuladores-home.html" class="active">Simuladores</a></li>
+                    <li><a href="sobre.html">+Sobre Nós</a></li>
                     <li><a href="login-cadastramento.html">Login/Cadastro</a></li>
                     <li><a href="ranking.html">Ranking</a></li>
                     <li><a href="admin.html">Administrador</a></li>
@@ -55,43 +56,490 @@
         </div>
     </header>
     
-    <main>
-
-        <h1>Nossas Ferramentas</h1>
-
-        <p>Acessa um dos nossos simuladores de contabilidade e tenha uma experieência de aprendizado incrível:</p>
-
-        <div id="simuladores-contabilidade">
-            <div id="simulador-curso">
-                <h2>Mini-curso</h2>
-                <p>Faça o nosso mini curso, aprenda sobre as bases da contabilidade, normas, classificações das empresas, descobre o que a OCPCA é para essa profissão e como fazer pra ser um contabilista</p>
-                <a href="simulador-de-contabilidade-curso.html">Fazer o curso</a>
+    <!-- CONTEÚDO PRINCIPAL DA HOME DE SIMULADORES -->
+    <main class="page-content">
+        <!-- SEÇÃO 1: CABEÇALHO HERO COM MENSAGEM INSPIRADORA -->
+        <section class="hero-section fade-in">
+            <div class="container">
+                <div class="hero-content">
+                    <h1 class="hero-title">
+                        Domine a <span class="gradient-text">Contabilidade Angolana</span><br>
+                        com Simuladores Interativos
+                    </h1>
+                    
+                    <p class="hero-subtitle">
+                        Aprenda, pratique e torne-se um profissional de excelência. 
+                        Transforme conhecimento teórico em habilidades práticas através 
+                        de experiências simuladas realistas.
+                    </p>
+                    
+                    <div class="hero-highlight pulse">
+                        <i class="fas fa-star"></i>
+                        Transformando teoria em prática: seja o protagonista do seu aprendizado
+                    </div>
+                    
+                    <div class="hero-cta">
+                        <a href="#simuladores" class="btn btn-primary">
+                            <i class="fas fa-rocket"></i>
+                            Explorar Simuladores
+                        </a>
+                    </div>
+                    
+                    <div class="hero-stats">
+                        <div class="hero-stat">
+                            <div class="hero-stat-number" id="stat-alunos">+500</div>
+                            <div class="hero-stat-label">Alunos Capacitados</div>
+                        </div>
+                        <div class="hero-stat">
+                            <div class="hero-stat-number" id="stat-aprovacao">+95%</div>
+                            <div class="hero-stat-label">Taxa de Aprovação</div>
+                        </div>
+                        <div class="hero-stat">
+                            <div class="hero-stat-number" id="stat-simulacoes">+30</div>
+                            <div class="hero-stat-label">Operações Simuladas</div>
+                        </div>
+                    </div>
+                </div>
             </div>
-
-            <div id="simulador-prova">
-                <h2>Prova</h2>
-                <p>Faça uma das nossas provas, e testa o seu conhecimento em diferentes níveis:
+        </section>
+        
+        <!-- SEÇÃO 2: CARDS DOS 3 SIMULADORES PRINCIPAIS -->
+        <section id="simuladores" class="simulators-section fade-in">
+            <div class="container">
+                <h2 class="section-title text-center">Nossos <span class="highlight">Simuladores</span></h2>
+                <p class="section-subtitle text-center">
+                    Escolha o caminho que melhor se adapta ao seu objetivo de aprendizado. 
+                    Cada simulador oferece uma experiência única e complementar.
                 </p>
-                <ul>
-                    <li>Iniciante</li>
-                    <li>Intermediário</li>
-                    <li>Avançado</li>
-                </ul>
-                <a href="simulador-de-contabilidade-prova.html">Fazer a prova</a>
+                
+                <div class="simulators-grid">
+                    <!-- Card 1: Mini-curso -->
+                    <div class="simulator-card featured">
+                        <div class="simulator-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        
+                        <h3 class="simulator-title">Mini-curso Completo</h3>
+                        
+                        <p class="simulator-description">
+                            Aprenda as bases da contabilidade, normas, classificações das empresas, 
+                            descubra o que a OCPCA representa para a profissão e como se tornar um 
+                            contabilista certificado.
+                        </p>
+                        
+                        <div class="simulator-features">
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>15 sessões estruturadas</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-chart-line"></i>
+                                <span>Progressão por níveis</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-certificate"></i>
+                                <span>Certificado digital</span>
+                            </div>
+                        </div>
+                        
+                        <div class="simulator-card-footer">
+                            <a href="simulador-de-contabilidade-curso.html" class="btn btn-primary btn-small" style="width: 100%;">
+                                <i class="fas fa-play-circle"></i>
+                                Iniciar Curso
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Card 2: Sistema de Provas -->
+                    <div class="simulator-card">
+                        <div class="simulator-icon">
+                            <i class="fas fa-clipboard-check"></i>
+                        </div>
+                        
+                        <h3 class="simulator-title">Teste Seu Conhecimento</h3>
+                        
+                        <p class="simulator-description">
+                            Avalie seu domínio com provas em três níveis de dificuldade. 
+                            Receba feedback imediato e relatórios detalhados do seu desempenho.
+                        </p>
+                        
+                        <div class="simulator-features">
+                            <div class="feature-item">
+                                <i class="fas fa-layer-group"></i>
+                                <span>3 níveis: Iniciante, Intermediário, Avançado</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-clock"></i>
+                                <span>Temporizador realista</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-chart-bar"></i>
+                                <span>Resultados com análise</span>
+                            </div>
+                        </div>
+                        
+                        <div class="simulator-card-footer">
+                            <a href="simulador-de-contabilidade-prova.html" class="btn btn-primary btn-small" style="width: 100%;">
+                                <i class="fas fa-file-alt"></i>
+                                Fazer Prova
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Card 3: Simulador Prático -->
+                    <div class="simulator-card">
+                        <div class="simulator-icon">
+                            <i class="fas fa-calculator"></i>
+                        </div>
+                        
+                        <h3 class="simulator-title">Exercícios na Prática</h3>
+                        
+                        <p class="simulator-description">
+                            Simule +30 operações contábeis reais. Veja como resolver, quais contas 
+                            movimentar, contrapartidas, e gere automaticamente balanço, DRE, 
+                            fluxo de caixa e balancete.
+                        </p>
+                        
+                        <div class="simulator-features">
+                            <div class="feature-item">
+                                <i class="fas fa-database"></i>
+                                <span>PGCA integrado</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-robot"></i>
+                                <span>Lançamentos automáticos</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-file-invoice-dollar"></i>
+                                <span>Demonstrações financeiras instantâneas</span>
+                            </div>
+                        </div>
+                        
+                        <div class="simulator-card-footer">
+                            <a href="simulador-de-contabilidade-pratico.html" class="btn btn-primary btn-small" style="width: 100%;">
+                                <i class="fas fa-bolt"></i>
+                                Simular Agora
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
-
-            <div id="simulador-pratico">
-                <h2>Simula exercício na Prática</h2>
-                <p>Nesta ferramenta poderá inserir +30 operações e ver de forma prática como resolver, que contas movimentar,contrapartidas, ver o que entre no balanço, DRL, Fluxo de Caixa, Balancete.</p>
-                <a href="simulador-de-contabilidade-pratico.html">Fazer os exercícios</a>
+        </section>
+        
+        <!-- SEÇÃO 3: COMO FUNCIONA (PASSO A PASSO) -->
+        <section class="how-it-works-section fade-in">
+            <div class="container">
+                <h2 class="section-title text-center">Em <span class="highlight">4 Passos Simples</span></h2>
+                <p class="section-subtitle text-center">
+                    Uma jornada estruturada que transforma aprendizado em resultados
+                </p>
+                
+                <div class="steps-container">
+                    <div class="steps-grid">
+                        <!-- Passo 1 -->
+                        <div class="step-card">
+                            <div class="step-number">1</div>
+                            <h3 class="step-title">Escolha</h3>
+                            <p class="step-description">
+                                Selecione seu objetivo entre curso, prova ou prática. 
+                                Cada caminho oferece uma abordagem única para seu aprendizado.
+                            </p>
+                        </div>
+                        
+                        <!-- Passo 2 -->
+                        <div class="step-card">
+                            <div class="step-number">2</div>
+                            <h3 class="step-title">Interaja</h3>
+                            <p class="step-description">
+                                Mergulhe em conteúdo multimídia rico - vídeos explicativos, 
+                                áudios complementares e textos detalhados.
+                            </p>
+                        </div>
+                        
+                        <!-- Passo 3 -->
+                        <div class="step-card">
+                            <div class="step-number">3</div>
+                            <h3 class="step-title">Pratique</h3>
+                            <p class="step-description">
+                                Aplique seu conhecimento com exercícios realistas baseados 
+                                em situações contábeis autênticas de Angola.
+                            </p>
+                        </div>
+                        
+                        <!-- Passo 4 -->
+                        <div class="step-card">
+                            <div class="step-number">4</div>
+                            <h3 class="step-title">Receba</h3>
+                            <p class="step-description">
+                                Obtenha feedback detalhado, acompanhe seu progresso e conquiste 
+                                certificação reconhecida.
+                            </p>
+                        </div>
+                    </div>
+                </div>
             </div>
-
-            <p>Tranformando teoria em prática, seja você o protagonista do teu aprendizado junto da Teca Capital</p>
-        </div>
-
+        </section>
+        
+        <!-- SEÇÃO 4: ESTATÍSTICAS DE IMPACTO -->
+        <section class="stats-section fade-in">
+            <div class="container">
+                <h2 class="section-title text-center">Resultados que <span class="highlight">Transformam</span></h2>
+                <p class="section-subtitle text-center">
+                    Números que comprovam a eficácia da nossa metodologia
+                </p>
+                
+                <div class="stats-grid">
+                    <!-- Estatística 1 -->
+                    <div class="stat-card">
+                        <div class="stat-number" data-target="500">0</div>
+                        <div class="stat-label">Alunos Capacitados</div>
+                    </div>
+                    
+                    <!-- Estatística 2 -->
+                    <div class="stat-card">
+                        <div class="stat-number" data-target="95">0</div>
+                        <div class="stat-label">Taxa de Aprovação</div>
+                    </div>
+                    
+                    <!-- Estatística 3 -->
+                    <div class="stat-card">
+                        <div class="stat-number" data-target="30">0</div>
+                        <div class="stat-label">Operações Simuladas</div>
+                    </div>
+                    
+                    <!-- Estatística 4 -->
+                    <div class="stat-card">
+                        <div class="stat-number" data-target="100">0</div>
+                        <div class="stat-label">Foco na Realidade Angolana</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- SEÇÃO 5: DEPOIMENTOS SIMULADOS -->
+        <section class="testimonials-section fade-in">
+            <div class="container">
+                <h2 class="section-title text-center">O que dizem <span class="highlight">nossos usuários</span></h2>
+                <p class="section-subtitle text-center">
+                    Histórias reais de transformação e sucesso
+                </p>
+                
+                <div class="testimonials-slider">
+                    <!-- Depoimento 1 -->
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            "Como estudante de contabilidade, sempre tive dificuldade em entender 
+                            o PGCA na prática. Os simuladores da Teca Capital mudaram completamente 
+                            minha perspectiva. Agora vejo a contabilidade como algo tangível e aplicável."
+                        </div>
+                        
+                        <div class="testimonial-author">
+                            <div class="author-avatar">
+                                <i class="fas fa-user-graduate"></i>
+                            </div>
+                            <div class="author-info">
+                                <h4>Carlos Mendes</h4>
+                                <p>Estudante Universitário</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Depoimento 2 -->
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            "Estava em transição de carreira quando conheci os simuladores. 
+                            As provas simuladas me prepararam perfeitamente para a certificação 
+                            OCPCA. O feedback detalhado me mostrou exatamente onde precisava melhorar."
+                        </div>
+                        
+                        <div class="testimonial-author">
+                            <div class="author-avatar">
+                                <i class="fas fa-briefcase"></i>
+                            </div>
+                            <div class="author-info">
+                                <h4>Ana Pereira</h4>
+                                <p>Profissional em Transição</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Depoimento 3 -->
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            "Como gestor sem formação contábil, sempre dependia dos meus contadores 
+                            para entender os relatórios. Com os simuladores práticos, finalmente 
+                            compreendo as demonstrações financeiras e tomo decisões mais informadas."
+                        </div>
+                        
+                        <div class="testimonial-author">
+                            <div class="author-avatar">
+                                <i class="fas fa-user-tie"></i>
+                            </div>
+                            <div class="author-info">
+                                <h4>Miguel Santos</h4>
+                                <p>Gestor Empresarial</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- SEÇÃO 6: FAQ - PERGUNTAS FREQUENTES -->
+        <section class="faq-section fade-in">
+            <div class="container">
+                <h2 class="section-title text-center">Tire suas <span class="highlight">dúvidas</span></h2>
+                <p class="section-subtitle text-center">
+                    Respostas para as perguntas mais frequentes
+                </p>
+                
+                <div class="faq-container">
+                    <!-- FAQ 1 -->
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>Preciso ter conhecimento prévio de contabilidade?</h3>
+                            <div class="faq-toggle">
+                                <i class="fas fa-plus"></i>
+                            </div>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Não! Nossos simuladores são projetados para todos os níveis. O mini-curso parte do zero, 
+                            enquanto as provas e exercícios práticos oferecem diferentes níveis de dificuldade para 
+                            atender tanto iniciantes quanto profissionais experientes.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- FAQ 2 -->
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>Os simuladores seguem o PGCA atual?</h3>
+                            <div class="faq-toggle">
+                                <i class="fas fa-plus"></i>
+                            </div>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Sim! Todos os nossos simuladores são baseados no Plano Geral de Contabilidade Angolano 
+                            mais recente. Mantemos constante atualização para garantir conformidade com todas as 
+                            normas e regulamentações vigentes em Angola.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- FAQ 3 -->
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>Posso acessar de qualquer dispositivo?</h3>
+                            <div class="faq-toggle">
+                                <i class="fas fa-plus"></i>
+                            </div>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Com certeza! Nossa plataforma é 100% responsiva e funciona perfeitamente em computadores, 
+                            tablets e smartphones. Você pode estudar e praticar onde estiver, sem necessidade de 
+                            instalação de software adicional.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- FAQ 4 -->
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>Há certificado ao final dos simuladores?</h3>
+                            <div class="faq-toggle">
+                                <i class="fas fa-plus"></i>
+                            </div>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Sim, oferecemos certificado digital para o mini-curso completo e para cada nível de 
+                            prova concluído com aproveitamento mínimo de 70%. Os certificados são emitidos em PDF 
+                            e podem ser compartilhados em seu LinkedIn ou portfólio profissional.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- FAQ 5 -->
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>É gratuito?</h3>
+                            <div class="faq-toggle">
+                                <i class="fas fa-plus"></i>
+                            </div>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Oferecemos acesso gratuito ao primeiro nível de cada simulador para que você conheça 
+                            nossa metodologia. Para acesso completo a todos os conteúdos, níveis avançados e 
+                            certificação, temos planos de assinatura acessíveis que podem ser cancelados a qualquer momento.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- SEÇÃO 7: CALL-TO-ACTION FINAL -->
+        <section class="cta-section fade-in">
+            <div class="container">
+                <div class="cta-content">
+                    <h2 class="cta-title">
+                        Pronto para <span class="highlight">transformar</span><br>
+                        seu conhecimento?
+                    </h2>
+                    
+                    <p class="cta-subtitle">
+                        Junte-se a centenas de profissionais que já dominam a contabilidade 
+                        angolana através da prática inteligente.
+                    </p>
+                    
+                    <div class="cta-buttons">
+                        <a href="login-cadastramento.html" class="btn btn-primary">
+                            <i class="fas fa-user-plus"></i>
+                            Começar Agora
+                        </a>
+                        
+                        <button class="btn btn-secondary" id="demo-btn">
+                            <i class="fas fa-play-circle"></i>
+                            Ver Demonstração
+                        </button>
+                    </div>
+                    
+                    <div class="guarantee-badge">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>100% focado na realidade contábil angolana</span>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
-
-   <!-- FOOTER PADRÃO (EXATAMENTE COMO NO CONTEXTO) -->
+    
+    <!-- MODAL DE DEMONSTRAÇÃO -->
+    <div class="demo-modal" id="demo-modal">
+        <div class="demo-modal-content">
+            <div class="demo-modal-header">
+                <h3 class="demo-modal-title">Demonstração dos Simuladores</h3>
+                <button class="demo-modal-close" id="demo-modal-close" aria-label="Fechar">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <div class="demo-modal-body">
+                <div class="demo-video-container">
+                    <div class="demo-video-placeholder">
+                        <i class="fas fa-play-circle"></i>
+                        <p>Demonstração dos simuladores em ação</p>
+                    </div>
+                </div>
+                
+                <p class="demo-modal-description">
+                    Veja como nossos simuladores transformam aprendizado teórico em prática real. 
+                    Nesta demonstração você verá: navegação intuitiva, feedback em tempo real, 
+                    geração automática de relatórios e muito mais.
+                </p>
+                
+                <a href="login-cadastramento.html" class="btn btn-primary">
+                    <i class="fas fa-rocket"></i>
+                    Experimente Grátis
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- FOOTER PADRÃO (EXATAMENTE COMO NO CONTEXTO) -->
     <footer class="site-footer">
         <div class="footer-content container">
             <div class="footer-section social-section">
@@ -142,19 +590,21 @@
         </div>
     </footer>
     
+    <!-- TOAST PARA MENSAGENS -->
+    <div class="toast" id="toast"></div>
+    
     <!-- JAVASCRIPT INLINE -->
     <script>
         // ============================================
         // JAVASCRIPT OBRIGATÓRIO EM TODAS AS PÁGINAS
         // ============================================
         
-        // 1. Menu mobile toggle
         document.addEventListener('DOMContentLoaded', function() {
+            // 1. Menu mobile toggle
             const mobileToggle = document.querySelector('.mobile-nav-toggle');
             const mobileOverlay = document.querySelector('.mobile-nav-overlay');
             const mobileLinks = document.querySelectorAll('.mobile-nav-list a');
             
-            // Abrir/fechar menu mobile
             if (mobileToggle) {
                 mobileToggle.addEventListener('click', function() {
                     mobileOverlay.classList.toggle('active');
@@ -209,13 +659,51 @@
             });
             
             // ============================================
-            // JAVASCRIPT ESPECÍFICO PARA A HOME
+            // JAVASCRIPT ESPECÍFICO PARA HOME DE SIMULADORES
             // ============================================
             
-            // 1. Contadores animados nas estatísticas
+            // ELEMENTOS DO DOM
+            const demoModal = document.getElementById('demo-modal');
+            const demoModalClose = document.getElementById('demo-modal-close');
+            const demoBtn = document.getElementById('demo-btn');
+            const faqItems = document.querySelectorAll('.faq-item');
+            const faqToggles = document.querySelectorAll('.faq-toggle');
             const statNumbers = document.querySelectorAll('.stat-number');
+            const heroStatNumbers = document.querySelectorAll('.hero-stat-number');
+            const toast = document.getElementById('toast');
+            const simulatorCards = document.querySelectorAll('.simulator-card');
             
-            if (statNumbers.length > 0) {
+            // VARIÁVEIS DE CONTROLE
+            let favoriteSimulators = JSON.parse(localStorage.getItem('tecacapital_favorite_simulators')) || [];
+            
+            // FUNÇÃO PARA MOSTRAR TOAST (FEEDBACK)
+            function showToast(message, duration = 3000) {
+                toast.textContent = message;
+                toast.classList.add('show');
+                
+                setTimeout(() => {
+                    toast.classList.remove('show');
+                }, duration);
+            }
+            
+            // 1. Contadores animados para estatísticas
+            function animateCounter(element, target, suffix = '') {
+                const duration = 2000;
+                const step = target / (duration / 16);
+                let current = 0;
+                
+                const timer = setInterval(() => {
+                    current += step;
+                    if (current >= target) {
+                        current = target;
+                        clearInterval(timer);
+                    }
+                    element.textContent = suffix + Math.floor(current) + (suffix === '+' ? '' : suffix === '%' ? '%' : '');
+                }, 16);
+            }
+            
+            // 2. Sistema de observação para contadores
+            function initCounters() {
                 const observerOptions = {
                     threshold: 0.5,
                     rootMargin: '0px 0px -50px 0px'
@@ -224,117 +712,240 @@
                 const observer = new IntersectionObserver((entries) => {
                     entries.forEach(entry => {
                         if (entry.isIntersecting) {
-                            const statNumber = entry.target;
-                            const target = parseInt(statNumber.getAttribute('data-target'));
-                            const duration = 2000; // 2 segundos
-                            const step = target / (duration / 16); // 60fps
-                            let current = 0;
+                            const element = entry.target;
+                            const target = parseInt(element.getAttribute('data-target'));
+                            const suffix = element.textContent.includes('%') ? '' : 
+                                         element.textContent.includes('+') ? '+' : '';
                             
-                            const timer = setInterval(() => {
-                                current += step;
-                                if (current >= target) {
-                                    current = target;
-                                    clearInterval(timer);
-                                }
-                                statNumber.textContent = Math.floor(current).toLocaleString('pt-AO');
-                            }, 16);
-                            
-                            observer.unobserve(statNumber);
+                            animateCounter(element, target, suffix);
+                            observer.unobserve(element);
                         }
                     });
                 }, observerOptions);
                 
                 statNumbers.forEach(stat => observer.observe(stat));
-            }
-            
-            // 2. Carrossel de simuladores
-            const carousel = document.getElementById('simulators-carousel');
-            const prevBtn = document.getElementById('prev-btn');
-            const nextBtn = document.getElementById('next-btn');
-            
-            if (carousel && prevBtn && nextBtn) {
-                const cardWidth = 280; // Largura do card + gap
-                const scrollAmount = cardWidth * 2; // Rolagem de 2 cards por vez
                 
-                prevBtn.addEventListener('click', () => {
-                    carousel.scrollBy({
-                        left: -scrollAmount,
-                        behavior: 'smooth'
-                    });
-                });
-                
-                nextBtn.addEventListener('click', () => {
-                    carousel.scrollBy({
-                        left: scrollAmount,
-                        behavior: 'smooth'
-                    });
+                // Animar contadores do hero imediatamente
+                heroStatNumbers.forEach(stat => {
+                    const target = parseInt(stat.textContent.replace(/[^0-9]/g, ''));
+                    const suffix = stat.textContent.includes('%') ? '' : 
+                                 stat.textContent.includes('+') ? '+' : '';
+                    animateCounter(stat, target, suffix);
                 });
             }
             
-            // 3. Scroll suave para âncoras internas
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
-                    const href = this.getAttribute('href');
-                    
-                    // Apenas para âncoras internas
-                    if (href !== '#' && href.startsWith('#')) {
-                        e.preventDefault();
-                        const targetId = href.substring(1);
-                        const targetElement = document.getElementById(targetId);
+            // 3. Acordeão FAQ interativo
+            function initFAQ() {
+                faqToggles.forEach((toggle, index) => {
+                    toggle.addEventListener('click', () => {
+                        const faqItem = toggle.closest('.faq-item');
+                        const answer = faqItem.querySelector('.faq-answer');
                         
-                        if (targetElement) {
-                            window.scrollTo({
-                                top: targetElement.offsetTop - 80, // Ajuste para header fixo
-                                behavior: 'smooth'
-                            });
+                        // Fechar outros itens abertos
+                        faqItems.forEach((item, idx) => {
+                            if (idx !== index) {
+                                item.classList.remove('active');
+                                item.querySelector('.faq-answer').classList.remove('active');
+                            }
+                        });
+                        
+                        // Alternar item atual
+                        faqItem.classList.toggle('active');
+                        answer.classList.toggle('active');
+                    });
+                });
+            }
+            
+            // 4. Modal de demonstração
+            function initDemoModal() {
+                if (demoBtn && demoModal && demoModalClose) {
+                    demoBtn.addEventListener('click', () => {
+                        demoModal.classList.add('active');
+                        document.body.style.overflow = 'hidden';
+                    });
+                    
+                    demoModalClose.addEventListener('click', () => {
+                        demoModal.classList.remove('active');
+                        document.body.style.overflow = 'auto';
+                    });
+                    
+                    demoModal.addEventListener('click', (e) => {
+                        if (e.target === demoModal) {
+                            demoModal.classList.remove('active');
+                            document.body.style.overflow = 'auto';
                         }
+                    });
+                }
+            }
+            
+            // 5. Scroll suave para âncoras
+            function initSmoothScroll() {
+                document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                    anchor.addEventListener('click', function(e) {
+                        const href = this.getAttribute('href');
+                        
+                        if (href !== '#' && href.startsWith('#')) {
+                            e.preventDefault();
+                            const targetId = href.substring(1);
+                            const targetElement = document.getElementById(targetId);
+                            
+                            if (targetElement) {
+                                window.scrollTo({
+                                    top: targetElement.offsetTop - 80,
+                                    behavior: 'smooth'
+                                });
+                                
+                                // Fechar menu mobile se aberto
+                                if (mobileOverlay.classList.contains('active')) {
+                                    mobileOverlay.classList.remove('active');
+                                    const lines = mobileToggle.querySelectorAll('.hamburger-line');
+                                    lines[0].style.transform = 'rotate(0) translate(0, 0)';
+                                    lines[1].style.opacity = '1';
+                                    lines[2].style.transform = 'rotate(0) translate(0, 0)';
+                                }
+                            }
+                        }
+                    });
+                });
+            }
+            
+            // 6. Sistema de favoritos para simuladores
+            function initFavorites() {
+                // Marcar favoritos salvos
+                simulatorCards.forEach(card => {
+                    const link = card.querySelector('a');
+                    const href = link.getAttribute('href');
+                    if (favoriteSimulators.includes(href)) {
+                        card.classList.add('favorite');
+                        const favoriteIcon = document.createElement('i');
+                        favoriteIcon.className = 'fas fa-star favorite-icon';
+                        favoriteIcon.style.position = 'absolute';
+                        favoriteIcon.style.top = '15px';
+                        favoriteIcon.style.right = '15px';
+                        favoriteIcon.style.color = 'rgb(214, 174, 100)';
+                        favoriteIcon.style.fontSize = '1.2rem';
+                        card.appendChild(favoriteIcon);
                     }
                 });
-            });
-            
-            // 4. Animações de entrada
-            const fadeElements = document.querySelectorAll('.fade-in');
-            const fadeObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.style.opacity = '1';
-                        entry.target.style.transform = 'translateY(0)';
-                        fadeObserver.unobserve(entry.target);
+                
+                // Adicionar funcionalidade de favoritar
+                simulatorCards.forEach(card => {
+                    const favoriteBtn = document.createElement('button');
+                    favoriteBtn.className = 'btn-icon';
+                    favoriteBtn.style.position = 'absolute';
+                    favoriteBtn.style.top = '15px';
+                    favoriteBtn.style.right = '15px';
+                    favoriteBtn.innerHTML = '<i class="far fa-star"></i>';
+                    favoriteBtn.setAttribute('aria-label', 'Adicionar aos favoritos');
+                    
+                    const link = card.querySelector('a');
+                    const href = link.getAttribute('href');
+                    
+                    if (!favoriteSimulators.includes(href)) {
+                        card.appendChild(favoriteBtn);
                     }
+                    
+                    favoriteBtn.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        
+                        if (favoriteSimulators.includes(href)) {
+                            // Remover dos favoritos
+                            favoriteSimulators = favoriteSimulators.filter(item => item !== href);
+                            favoriteBtn.remove();
+                            showToast('Removido dos favoritos');
+                        } else {
+                            // Adicionar aos favoritos
+                            favoriteSimulators.push(href);
+                            favoriteBtn.remove();
+                            
+                            const favoriteIcon = document.createElement('i');
+                            favoriteIcon.className = 'fas fa-star';
+                            favoriteIcon.style.position = 'absolute';
+                            favoriteIcon.style.top = '15px';
+                            favoriteIcon.style.right = '15px';
+                            favoriteIcon.style.color = 'rgb(214, 174, 100)';
+                            favoriteIcon.style.fontSize = '1.2rem';
+                            card.appendChild(favoriteIcon);
+                            
+                            showToast('Adicionado aos favoritos');
+                        }
+                        
+                        localStorage.setItem('tecacapital_favorite_simulators', JSON.stringify(favoriteSimulators));
+                    });
                 });
-            }, {
-                threshold: 0.1,
-                rootMargin: '0px 0px -50px 0px'
-            });
+            }
             
-            fadeElements.forEach(element => {
-                element.style.opacity = '0';
-                element.style.transform = 'translateY(20px)';
-                element.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
-                fadeObserver.observe(element);
-            });
+            // 7. Animações de entrada
+            function initAnimations() {
+                const fadeElements = document.querySelectorAll('.fade-in');
+                const fadeObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.style.opacity = '1';
+                            entry.target.style.transform = 'translateY(0)';
+                            fadeObserver.unobserve(entry.target);
+                        }
+                    });
+                }, {
+                    threshold: 0.1,
+                    rootMargin: '0px 0px -50px 0px'
+                });
+                
+                fadeElements.forEach(element => {
+                    element.style.opacity = '0';
+                    element.style.transform = 'translateY(30px)';
+                    element.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+                    fadeObserver.observe(element);
+                });
+            }
+            
+            // 8. Validação simulada de formulários
+            function initFormValidation() {
+                const forms = document.querySelectorAll('form');
+                forms.forEach(form => {
+                    form.addEventListener('submit', function(e) {
+                        e.preventDefault();
+                        showToast('Funcionalidade de cadastro em desenvolvimento');
+                        // Aqui seria implementada a validação real
+                    });
+                });
+            }
+            
+            // INICIALIZAÇÃO DA PÁGINA
+            function initPage() {
+                initCounters();
+                initFAQ();
+                initDemoModal();
+                initSmoothScroll();
+                initFavorites();
+                initAnimations();
+                initFormValidation();
+            }
+            
+            // Executar inicialização
+            initPage();
             
             // Fallback para navegadores sem suporte a IntersectionObserver
             if (!('IntersectionObserver' in window)) {
-                fadeElements.forEach(element => {
+                statNumbers.forEach(stat => {
+                    const target = parseInt(stat.getAttribute('data-target'));
+                    const suffix = stat.textContent.includes('%') ? '' : 
+                                 stat.textContent.includes('+') ? '+' : '';
+                    stat.textContent = suffix + target + (suffix === '+' ? '' : suffix === '%' ? '%' : '');
+                });
+                
+                document.querySelectorAll('.fade-in').forEach(element => {
                     element.style.opacity = '1';
                     element.style.transform = 'translateY(0)';
                 });
-                
-                // Contadores fallback
-                statNumbers.forEach(stat => {
-                    const target = parseInt(stat.getAttribute('data-target'));
-                    stat.textContent = target.toLocaleString('pt-AO');
-                });
             }
             
-            // Prevenir envio de formulários inexistentes (para validação futura)
-            document.querySelectorAll('form').forEach(form => {
-                form.addEventListener('submit', function(e) {
+            // Prevenir clique direito em imagens
+            document.addEventListener('contextmenu', function(e) {
+                if (e.target.tagName === 'IMG') {
                     e.preventDefault();
-                    console.log('Formulário submetido (demonstração)');
-                    // Aqui seria implementada a validação real
-                });
+                }
             });
         });
         

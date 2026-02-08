@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="pt-AO">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teca Capital - Login/Cadastramento</title>
+    <link rel="icon" href="frontend/public/Icon/Teca Capital favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="frontend/public/css/logion/logion-cadastro.css">
+</head>
+<body>
+    <!-- HEADER PADRÃO (EXATAMENTE COMO NO CONTEXTO) -->
+    <header class="site-header">
+        <div class="logo-container">
+            <a href="index.html">
+                <img src="frontend/public/Icon/Teca Capital favicon.png" 
+                     alt="Teca Capital" 
+                     class="site-logo">
+            </a>
+        </div>
+        
+        <nav class="main-nav desktop-nav">
+            <ul class="nav-list">
+                <li><a href="index.html" class="active">Página Inicial</a></li>
+                <li><a href="biblioteca.html">Biblioteca</a></li>
+                <li><a href="simuladores.html">Simuladores</a></li>
+                <li><a href="sobre.html">+Sobre Nós</a></li>
+                <li><a href="login-cadastramento.html">Login/Cadastro</a></li>
+                <li><a href="raking.html">Ranking</a></li>
+                <li><a href="admin.html">Administrador</a></li>
+            </ul>
+        </nav>
+        
+        <button class="menu-toggle mobile-nav-toggle" aria-label="Menu">
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+        </button>
+        
+        <div class="mobile-nav-overlay">
+            <nav class="mobile-nav">
+                <ul class="mobile-nav-list">
+                    <li><a href="index.html" class="active">Página Inicial</a></li>
+                    <li><a href="biblioteca.html">Biblioteca</a></li>
+                    <li><a href="simuladores.html">Simuladores</a></li>
+                    <li><a href="sobre.html">+Sobre Nós</a></li>
+                    <li><a href="login-cadastramento.html">Login/Cadastro</a></li>
+                    <li><a href="raking.html">Ranking</a></li>
+                    <li><a href="admin.html">Administrador</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <main>
+
+
+    </main>
+    
+    <!-- FOOTER PADRÃO (EXATAMENTE COMO NO CONTEXTO) -->
+    <footer class="site-footer">
+        <div class="footer-content container">
+            <div class="footer-section social-section">
+                <h3>Redes Sociais</h3>
+                <div class="social-icons">
+                    <a href="https://www.youtube.com/watch?v=_lbwST_xK_E" target="_blank" aria-label="YouTube">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                    <a href="https://www.tiktok.com/@tecacapital" target="_blank" aria-label="TikTok">
+                        <i class="fab fa-tiktok"></i>
+                    </a>
+                    <a href="https://www.facebook.com/profile.php?id=61579163578380" target="_blank" aria-label="Facebook">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                    <a href="https://wa.me/message/2X43ZA7RMITSJ1" target="_blank" aria-label="WhatsApp">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="footer-section contact-section">
+                <h3>Contato</h3>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <p>Gmail:</p>
+                        <a href="mailto:tecacapitaledtech@gmail.com">
+                            tecacapitaledtech@gmail.com
+                        </a>
+                    </div>
+                    <div class="contact-item">
+                        <p>Telefone:</p>
+                        <a href="tel:+244974235284">
+                            +244 974 235 284
+                        </a>
+                    </div>
+                    <div class="contact-item">
+                        <p>Endereço:</p>
+                        <span>Rua Comandante Nzage, Uíge, Angola</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-section copyright-section">
+                <p class="copyright-text">
+                    &copy; <span id="current-year">2026</span> Teca Capital | Todos os direitos reservados
+                </p>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- JAVASCRIPT INLINE -->
+    <script>
+        // ============================================
+        // JAVASCRIPT OBRIGATÓRIO EM TODAS AS PÁGINAS
+        // ============================================
+        
+        // 1. Menu mobile toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileToggle = document.querySelector('.mobile-nav-toggle');
+            const mobileOverlay = document.querySelector('.mobile-nav-overlay');
+            const mobileLinks = document.querySelectorAll('.mobile-nav-list a');
+            
+            // Abrir/fechar menu mobile
+            if (mobileToggle) {
+                mobileToggle.addEventListener('click', function() {
+                    mobileOverlay.classList.toggle('active');
+                    
+                    // Animar ícone hamburguer
+                    const lines = this.querySelectorAll('.hamburger-line');
+                    if (mobileOverlay.classList.contains('active')) {
+                        lines[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+                        lines[1].style.opacity = '0';
+                        lines[2].style.transform = 'rotate(-45deg) translate(7px, -6px)';
+                    } else {
+                        lines[0].style.transform = 'rotate(0) translate(0, 0)';
+                        lines[1].style.opacity = '1';
+                        lines[2].style.transform = 'rotate(0) translate(0, 0)';
+                    }
+                });
+            }
+            
+            // Fechar menu ao clicar em um link
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileOverlay.classList.remove('active');
+                    const lines = mobileToggle.querySelectorAll('.hamburger-line');
+                    lines[0].style.transform = 'rotate(0) translate(0, 0)';
+                    lines[1].style.opacity = '1';
+                    lines[2].style.transform = 'rotate(0) translate(0, 0)';
+                });
+            });
+            
+            // 2. Atualizar ano no footer
+            const yearSpan = document.getElementById('current-year');
+            if (yearSpan) {
+                yearSpan.textContent = new Date().getFullYear();
+            }
+            
+            // 3. Destacar link ativo no menu
+            const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+            const navLinks = document.querySelectorAll('.nav-list a, .mobile-nav-list a');
+            
+            navLinks.forEach(link => {
+                const linkPage = link.getAttribute('href');
+                if (linkPage === currentPage || (currentPage === '' && linkPage === 'index.html')) {
+                    link.classList.add('active');
+                } else {
+                    link.classList.remove('active');
+                }
+            });
+            
+            // 4. Tratamento básico de erros
+            window.addEventListener('error', function(e) {
+                console.error('Erro detectado:', e.error);
+            });
+            
+            // ============================================
+            // JAVASCRIPT ESPECÍFICO PARA A HOME
+            // ============================================
+            
+            // 1. Contadores animados nas estatísticas
+            const statNumbers = document.querySelectorAll('.stat-number');
+            
+            if (statNumbers.length > 0) {
+                const observerOptions = {
+                    threshold: 0.5,
+                    rootMargin: '0px 0px -50px 0px'
+                };
+                
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const statNumber = entry.target;
+                            const target = parseInt(statNumber.getAttribute('data-target'));
+                            const duration = 2000; // 2 segundos
+                            const step = target / (duration / 16); // 60fps
+                            let current = 0;
+                            
+                            const timer = setInterval(() => {
+                                current += step;
+                                if (current >= target) {
+                                    current = target;
+                                    clearInterval(timer);
+                                }
+                                statNumber.textContent = Math.floor(current).toLocaleString('pt-AO');
+                            }, 16);
+                            
+                            observer.unobserve(statNumber);
+                        }
+                    });
+                }, observerOptions);
+                
+                statNumbers.forEach(stat => observer.observe(stat));
+            }
+            
+            // 2. Carrossel de simuladores
+            const carousel = document.getElementById('simulators-carousel');
+            const prevBtn = document.getElementById('prev-btn');
+            const nextBtn = document.getElementById('next-btn');
+            
+            if (carousel && prevBtn && nextBtn) {
+                const cardWidth = 280; // Largura do card + gap
+                const scrollAmount = cardWidth * 2; // Rolagem de 2 cards por vez
+                
+                prevBtn.addEventListener('click', () => {
+                    carousel.scrollBy({
+                        left: -scrollAmount,
+                        behavior: 'smooth'
+                    });
+                });
+                
+                nextBtn.addEventListener('click', () => {
+                    carousel.scrollBy({
+                        left: scrollAmount,
+                        behavior: 'smooth'
+                    });
+                });
+            }
+            
+            // 3. Scroll suave para âncoras internas
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    const href = this.getAttribute('href');
+                    
+                    // Apenas para âncoras internas
+                    if (href !== '#' && href.startsWith('#')) {
+                        e.preventDefault();
+                        const targetId = href.substring(1);
+                        const targetElement = document.getElementById(targetId);
+                        
+                        if (targetElement) {
+                            window.scrollTo({
+                                top: targetElement.offsetTop - 80, // Ajuste para header fixo
+                                behavior: 'smooth'
+                            });
+                        }
+                    }
+                });
+            });
+            
+            // 4. Animações de entrada
+            const fadeElements = document.querySelectorAll('.fade-in');
+            const fadeObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                        fadeObserver.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            });
+            
+            fadeElements.forEach(element => {
+                element.style.opacity = '0';
+                element.style.transform = 'translateY(20px)';
+                element.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+                fadeObserver.observe(element);
+            });
+            
+            // Fallback para navegadores sem suporte a IntersectionObserver
+            if (!('IntersectionObserver' in window)) {
+                fadeElements.forEach(element => {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                });
+                
+                // Contadores fallback
+                statNumbers.forEach(stat => {
+                    const target = parseInt(stat.getAttribute('data-target'));
+                    stat.textContent = target.toLocaleString('pt-AO');
+                });
+            }
+            
+            // Prevenir envio de formulários inexistentes (para validação futura)
+            document.querySelectorAll('form').forEach(form => {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    console.log('Formulário submetido (demonstração)');
+                    // Aqui seria implementada a validação real
+                });
+            });
+        });
+        
+        // Fallback para JS desabilitado
+        document.documentElement.classList.add('js-enabled');
+    </script>
+</body>
+</html>

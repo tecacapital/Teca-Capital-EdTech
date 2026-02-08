@@ -1,0 +1,360 @@
+/* CSS COMPLETO - HEADER, NAV, FOOTER */
+
+/* ============================================
+   VARIÁVEIS DE CORES E FONTES (PADRÃO)
+   ============================================ */
+:root {
+    /* PALETA DE CORES PRINCIPAL */
+    --color-primary: #000000;
+    --color-secondary: #0a0a0a;
+    --color-tertiary: #1a1a1a;
+    --color-accent: rgb(214, 174, 100);
+    --color-accent-rgba: rgba(214, 174, 100, 0.1);
+    --color-accent-dark: rgba(214, 174, 100, 0.8);
+    
+    /* CORES DE TEXTO */
+    --text-primary: #FFFFFF;
+    --text-secondary: #CCCCCC;
+    --text-muted: #999999;
+    
+    /* CORES DE BORDA */
+    --border-light: rgba(255, 255, 255, 0.1);
+    --border-medium: rgba(255, 255, 255, 0.2);
+    --border-accent: rgba(214, 174, 100, 0.3);
+    --border-accent-solid: rgb(214, 174, 100);
+    
+    /* FONTES */
+    --font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+    --font-weight-light: 300;
+    --font-weight-regular: 400;
+    --font-weight-medium: 500;
+    --font-weight-semibold: 600;
+    --font-weight-bold: 700;
+    
+    /* TRANSITIONS */
+    --transition-fast: 0.2s ease;
+    --transition-normal: 0.3s ease;
+    --transition-slow: 0.5s ease;
+    
+    /* BORDER RADIUS */
+    --radius-small: 4px;
+    --radius-medium: 8px;
+    --radius-large: 12px;
+    --radius-full: 50%;
+}
+
+/* ============================================
+   RESET E CONFIGURAÇÕES GERAIS
+   ============================================ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-family);
+    background-color: var(--color-primary);
+    color: var(--text-primary);
+    line-height: 1.6;
+    overflow-x: hidden;
+    min-height: 100vh;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: color var(--transition-normal);
+}
+
+ul, ol {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* ============================================
+   CONTAINER PADRÃO
+   ============================================ */
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* ============================================
+   HEADER PADRÃO
+   ============================================ */
+.site-header {
+    background-color: var(--color-primary);
+    padding: 15px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--border-light);
+}
+
+.logo-container {
+    flex: 0 0 auto;
+}
+
+.site-logo {
+    height: 50px;
+    width: auto;
+}
+
+/* ============================================
+   MENU DE NAVEGAÇÃO DESKTOP
+   ============================================ */
+.main-nav {
+    display: none;
+}
+
+.nav-list {
+    display: flex;
+    gap: 25px;
+}
+
+.nav-list a {
+    color: var(--text-primary);
+    font-weight: var(--font-weight-medium);
+    padding: 5px 0;
+    position: relative;
+}
+
+.nav-list a:hover {
+    color: var(--color-accent);
+}
+
+.nav-list a.active {
+    color: var(--color-accent);
+}
+
+.nav-list a.active::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--color-accent);
+}
+
+/* ============================================
+   MENU MOBILE (COMPLETO)
+   ============================================ */
+.mobile-nav-toggle {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 21px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 1001;
+}
+
+.hamburger-line {
+    width: 100%;
+    height: 3px;
+    background-color: var(--text-primary);
+    transition: all var(--transition-normal);
+}
+
+.mobile-nav-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.95);
+    z-index: 999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: all var(--transition-normal);
+}
+
+.mobile-nav-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.mobile-nav {
+    width: 100%;
+    padding: 20px;
+}
+
+.mobile-nav-list {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    text-align: center;
+}
+
+.mobile-nav-list a {
+    font-size: 1.5rem;
+    color: var(--text-primary);
+    font-weight: var(--font-weight-medium);
+    padding: 10px 0;
+    display: block;
+}
+
+.mobile-nav-list a:hover,
+.mobile-nav-list a.active {
+    color: var(--color-accent);
+}
+
+/* ============================================
+   FOOTER PADRÃO
+   ============================================ */
+.site-footer {
+    background-color: var(--color-secondary);
+    padding: 40px 20px 20px;
+    margin-top: 60px;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.footer-section {
+    text-align: center;
+}
+
+.footer-section h3 {
+    color: var(--color-accent);
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+    font-weight: var(--font-weight-semibold);
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    font-size: 1.8rem;
+}
+
+.social-icons a {
+    color: var(--text-primary);
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-full);
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.social-icons a:hover {
+    color: var(--color-accent);
+    background-color: var(--color-accent-rgba);
+}
+
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.contact-item {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.contact-item p {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.contact-item a, .contact-item span {
+    color: var(--text-primary);
+    font-weight: var(--font-weight-medium);
+}
+
+.contact-item a:hover {
+    color: var(--color-accent);
+}
+
+.copyright-text {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid var(--border-light);
+}
+
+/* ============================================
+   RESPONSIVIDADE
+   ============================================ */
+
+/* TABLET (768px+) - Mostra menu desktop, esconde toggle mobile */
+@media (min-width: 768px) {
+    .mobile-nav-toggle {
+        display: none;
+    }
+    
+    .main-nav {
+        display: block;
+    }
+    
+    /* Footer responsivo para tablet/desktop */
+    .footer-content {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-start;
+    }
+    
+    .footer-section {
+        text-align: left;
+        flex: 1;
+    }
+    
+    .social-icons {
+        justify-content: flex-start;
+    }
+    
+    .contact-info {
+        align-items: flex-start;
+    }
+}
+
+/* DESKTOP (1024px+) */
+@media (min-width: 1024px) {
+    .container {
+        padding: 0 40px;
+    }
+}
+
+/* MOBILE ONLY (até 767px) */
+@media (max-width: 767px) {
+    .site-header {
+        padding: 12px 15px;
+    }
+    
+    .site-logo {
+        height: 40px;
+    }
+}

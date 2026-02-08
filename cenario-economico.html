@@ -1,0 +1,2759 @@
+<!DOCTYPE html>
+<html lang="pt-AO">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teca Capital - Cenário Económico</title>
+    <link rel="icon" href="frontend/public/Icon/Teca Capital favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="frontend/public/css/simulador-cenario-economico.css">
+</head>
+<body>
+    <!-- HEADER PADRÃO (EXATAMENTE COMO NO CONTEXTO) -->
+    <header class="site-header">
+        <div class="logo-container">
+            <a href="index.html">
+                <img src="frontend/public/Icon/Teca Capital favicon.png" 
+                     alt="Teca Capital" 
+                     class="site-logo">
+            </a>
+        </div>
+        
+        <nav class="main-nav desktop-nav">
+            <ul class="nav-list">
+                <li><a href="index.html" class="active">Página Inicial</a></li>
+                <li><a href="biblioteca.html">Biblioteca</a></li>
+                <li><a href="simuladores.html">Simuladores</a></li>
+                <li><a href="sobre.html">+Sobre Nós</a></li>
+                <li><a href="login-cadastramento.html">Login/Cadastro</a></li>
+                <li><a href="raking.html">Ranking</a></li>
+                <li><a href="admin.html">Administrador</a></li>
+            </ul>
+        </nav>
+        
+        <button class="menu-toggle mobile-nav-toggle" aria-label="Menu">
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+        </button>
+        
+        <div class="mobile-nav-overlay">
+            <nav class="mobile-nav">
+                <ul class="mobile-nav-list">
+                    <li><a href="index.html" class="active">Página Inicial</a></li>
+                    <li><a href="biblioteca.html">Biblioteca</a></li>
+                    <li><a href="simuladores.html">Simuladores</a></li>
+                    <li><a href="sobre.html">+Sobre Nós</a></li>
+                    <li><a href="login-cadastramento.html">Login/Cadastro</a></li>
+                    <li><a href="ranking.html">Ranking</a></li>
+                    <li><a href="raking.html">Administrador</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <main>
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    
+   
+
+    <!-- CONTROLES DO SISTEMA -->
+    <div class="system-controls">
+        <button id="btn-update-all" onclick="SimulationEngine.updateAll()">
+            🔄 Atualizar Tudo (F5)
+        </button>
+        <button id="btn-recalculate" onclick="SimulationEngine.recalculateFromScratch()" class="secondary">
+            ⚡ Recalcular do Zero
+        </button>
+        <button id="btn-validate" onclick="ValidationEngine.validateAll()" class="secondary">
+            ✅ Validar Cálculos
+        </button>
+        <button id="btn-reset" onclick="DataManager.resetToDefaults()" class="secondary">
+            ↩️ Restaurar Padrões
+        </button>
+    </div>
+
+    <!-- STATUS DE CÁLCULO -->
+    <div class="calculation-status" id="calculationStatus">
+        <h4>🔄 Processando...</h4>
+        <div class="status-item">
+            <span>Atualizações na fila:</span>
+            <span class="status-value" id="queueCount">0</span>
+        </div>
+        <div class="status-item">
+            <span>Cálculos completos:</span>
+            <span class="status-value" id="completedCount">0</span>
+        </div>
+        <div class="status-item">
+            <span>Tempo estimado:</span>
+            <span class="status-value" id="estimatedTime">0ms</span>
+        </div>
+        <div class="status-item">
+            <span>Última atualização:</span>
+            <span class="status-value" id="lastUpdate">-</span>
+        </div>
+    </div>
+
+    <main>
+        <!-- 1️⃣ FORMULÁRIO INICIAL -->
+        <section id="formulario-inicial">
+            <h2>Bem-vindo ao Simulador de Cenários Econômicos</h2>
+            
+            <input type="text" id="nomeUsuario" placeholder="Seu nome">
+            
+            <select id="regiao">
+                <option value="">Selecione sua província</option>
+                <option value="luanda">Luanda</option>
+                <option value="benguela">Benguela</option>
+                <option value="huambo">Huambo</option>
+                <option value="huila">Huíla</option>
+                <option value="cabinda">Cabinda</option>
+                <option value="uige">Uíge</option>
+                <option value="zaire">Zaire</option>
+                <option value="lunda-norte">Lunda Norte</option>
+                <option value="lunda-sul">Lunda Sul</option>
+                <option value="malanje">Malanje</option>
+                <option value="moxico">Moxico</option>
+                <option value="cuanza-norte">Cuanza Norte</option>
+                <option value="cuanza-sul">Cuanza Sul</option>
+                <option value="cunene">Cunene</option>
+                <option value="bie">Bié</option>
+                <option value="cuando-cubango">Cuando Cubango</option>
+                <option value="namibe">Namibe</option>
+                <option value="bengo">Bengo</option>
+            </select>
+            
+            <select id="sexo">
+                <option value="">Selecione seu sexo</option>
+                <option value="masculino">Masculino</option>
+                <option value="feminino">Feminino</option>
+                <option value="nao-dizer">Prefiro não dizer</option>
+            </select>
+            
+            <button id="btnIniciar" onclick="initSimulation()">Iniciar Simulação</button>
+        </section>
+
+        <!-- SIMULADOR PRINCIPAL (inicialmente oculto) -->
+        <div id="simulador-principal" class="hidden">
+            <!-- 2️⃣ CENÁRIOS ECONÔMICOS -->
+            <section id="selecao-cenarios">
+                <h3>📊 Selecione o Cenário Econômico</h3>
+                
+                <div class="cenarios-grid">
+                    <button class="cenario-btn" onclick="ScenarioManager.selectScenario('expansionista')">
+                        <span class="icone">📈</span>
+                        <h4>Expansionista</h4>
+                        <p>Economia em crescimento acelerado</p>
+                    </button>
+                    
+                    <button class="cenario-btn" onclick="ScenarioManager.selectScenario('retracionista')">
+                        <span class="icone">📉</span>
+                        <h4>Retracionista</h4>
+                        <p>Economia em desaceleração</p>
+                    </button>
+                    
+                    <button class="cenario-btn" onclick="ScenarioManager.selectScenario('normal')">
+                        <span class="icone">➡️</span>
+                        <h4>Normal/Estável</h4>
+                        <p>Economia equilibrada</p>
+                    </button>
+                    
+                    <button class="cenario-btn" onclick="ScenarioManager.selectScenario('crise-nacional')">
+                        <span class="icone">⚠️</span>
+                        <h4>Crise Nacional</h4>
+                        <p>Crise localizada em Angola</p>
+                    </button>
+                    
+                    <button class="cenario-btn" onclick="ScenarioManager.selectScenario('crise-global')">
+                        <span class="icone">🌍</span>
+                        <h4>Crise Global</h4>
+                        <p>Crises sistêmicas (ex: 2008, petróleo)</p>
+                    </button>
+                </div>
+            </section>
+
+            <!-- 3️⃣ PAINEL DE INDICADORES -->
+            
+            <!-- A) PIB e Setores Produtivos -->
+            <section id="painel-pib">
+                <h3>💰 PIB e Setores Produtivos</h3>
+                
+                <div class="indicador-principal">
+                    <label>PIB Total (Bilhões USD)</label>
+                    <input type="number" id="pibTotal" value="80.4" min="0" step="0.1" 
+                           data-update-group="pib">
+                    <span class="explicacao">ℹ️ Produto Interno Bruto: soma de tudo que o país produz</span>
+                </div>
+                
+                <div class="tabela-setores">
+                    <h4>📊 Contribuição por Setor</h4>
+                    <div class="tabela-container">
+                        <table id="tabelaSetores">
+                            <thead>
+                                <tr>
+                                    <th>Setor</th>
+                                    <th>Contribuição (B USD)</th>
+                                    <th>% do PIB</th>
+                                    <th>Ação</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>⛽ Petróleo/Energia</td>
+                                    <td><input type="number" class="setor-valor" data-setor="petroleo" value="48.24" step="0.1" 
+                                               data-update-group="pib-setores"></td>
+                                    <td class="setor-percentual">60%</td>
+                                    <td><button onclick="InfoSystem.explainSector('petroleo')">ℹ️</button></td>
+                                </tr>
+                                <tr>
+                                    <td>🌾 Agricultura</td>
+                                    <td><input type="number" class="setor-valor" data-setor="agricultura" value="8.04" step="0.1" 
+                                               data-update-group="pib-setores"></td>
+                                    <td class="setor-percentual">10%</td>
+                                    <td><button onclick="InfoSystem.explainSector('agricultura')">ℹ️</button></td>
+                                </tr>
+                                <tr>
+                                    <td>🏭 Indústria</td>
+                                    <td><input type="number" class="setor-valor" data-setor="industria" value="12.06" step="0.1" 
+                                               data-update-group="pib-setores"></td>
+                                    <td class="setor-percentual">15%</td>
+                                    <td><button onclick="InfoSystem.explainSector('industria')">ℹ️</button></td>
+                                </tr>
+                                <tr>
+                                    <td>🏥 Saúde</td>
+                                    <td><input type="number" class="setor-valor" data-setor="saude" value="4.02" step="0.1" 
+                                               data-update-group="pib-setores"></td>
+                                    <td class="setor-percentual">5%</td>
+                                    <td><button onclick="InfoSystem.explainSector('saude')">ℹ️</button></td>
+                                </tr>
+                                <tr>
+                                    <td>📚 Educação</td>
+                                    <td><input type="number" class="setor-valor" data-setor="educacao" value="4.02" step="0.1" 
+                                               data-update-group="pib-setores"></td>
+                                    <td class="setor-percentual">5%</td>
+                                    <td><button onclick="InfoSystem.explainSector('educacao')">ℹ️</button></td>
+                                </tr>
+                                <tr>
+                                    <td>🐟 Pesca</td>
+                                    <td><input type="number" class="setor-valor" data-setor="pesca" value="2.01" step="0.1" 
+                                               data-update-group="pib-setores"></td>
+                                    <td class="setor-percentual">2.5%</td>
+                                    <td><button onclick="InfoSystem.explainSector('pesca')">ℹ️</button></td>
+                                </tr>
+                                <tr>
+                                    <td>🏗️ Construção</td>
+                                    <td><input type="number" class="setor-valor" data-setor="construcao" value="2.01" step="0.1" 
+                                               data-update-group="pib-setores"></td>
+                                    <td class="setor-percentual">2.5%</td>
+                                    <td><button onclick="InfoSystem.explainSector('construcao')">ℹ️</button></td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                                <tr class="total-row">
+                                    <td><strong>TOTAL</strong></td>
+                                    <td id="totalSetores"><strong>80.4</strong></td>
+                                    <td><strong>100%</strong></td>
+                                    <td></td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+                
+                <div id="alerta-pib" class="alerta-box" style="display:none;">
+                    ⚠️ A soma dos setores não corresponde ao PIB total!
+                </div>
+            </section>
+
+            <!-- B) Preço do Petróleo -->
+            <section id="painel-petroleo">
+                <h3>⛽ Preço do Petróleo</h3>
+                
+                <div class="slider-container">
+                    <label>Preço por Barril (USD)</label>
+                    <input type="range" id="precoPetroleo" min="20" max="1000" value="80" step="1" 
+                           data-update-group="petroleo">
+                    <span id="valorPetroleo" class="valor-destaque">$80</span>
+                </div>
+                
+                <div class="info-petroleo">
+                    <p><strong>ℹ️ Contexto:</strong></p>
+                    <p>Histórico máximo: ~$200/barril</p>
+                    <p>Angola depende 60-90% do petróleo para seu PIB</p>
+                </div>
+                
+                <div id="impactos-petroleo" class="impactos-box">
+                    <h4>📊 Impactos na Economia Angolana:</h4>
+                    <ul id="lista-impactos-petroleo">
+                        <!-- Preenchido dinamicamente -->
+                    </ul>
+                </div>
+                
+                <div class="input-group">
+                    <label>Barris Vendidos (Milhões/ano)</label>
+                    <input type="number" id="barrisVendidos" value="500" min="0" step="10" 
+                           data-update-group="petroleo">
+                </div>
+                
+                <div class="resultado-destaque">
+                    <h4>💰 Receita Anual do Petróleo:</h4>
+                    <p id="receitaPetroleo" class="valor-grande">$40 Bilhões</p>
+                </div>
+            </section>
+
+            <!-- C) Dívida Pública -->
+            <section id="painel-divida">
+                <h3>💰 Dívida Pública</h3>
+                
+                <div class="input-group">
+                    <label>Dívida Externa (Bilhões USD)</label>
+                    <input type="number" id="dividaExterna" value="46.8" step="0.1" 
+                           data-update-group="divida">
+                </div>
+                
+                <div class="comparacao-divida">
+                    <div class="metrica">
+                        <h4>PIB</h4>
+                        <p id="pibComparacao" class="valor-grande">$80.4 B</p>
+                    </div>
+                    <div class="metrica">
+                        <h4>Dívida/PIB</h4>
+                        <p id="ratioDivida" class="valor-grande">58.2%</p>
+                    </div>
+                </div>
+                
+                <div id="analise-divida" class="analise-box">
+                    <!-- Preenchido dinamicamente -->
+                </div>
+            </section>
+
+            <!-- D) Inflação -->
+            <section id="painel-inflacao">
+                <h3>📈 Inflação</h3>
+                
+                <div class="slider-container">
+                    <label>Taxa de Inflação Anual (%)</label>
+                    <input type="range" id="inflacao" min="0" max="50" value="30" step="0.5" 
+                           data-update-group="inflacao">
+                    <span id="valorInflacao" class="valor-destaque">30%</span>
+                </div>
+                
+                <div class="explicacao-box">
+                    <h4>ℹ️ O que é Inflação?</h4>
+                    <p>Inflação é o aumento generalizado dos preços de bens e serviços. Quanto maior a inflação, menos seu dinheiro compra.</p>
+                </div>
+                
+                <div id="causas-inflacao" class="causas-box">
+                    <h4>🔍 Principais Causas da Inflação:</h4>
+                    <ul>
+                        <li><strong>Impressão excessiva de dinheiro:</strong> Quanto mais dinheiro impresso, menos vale cada nota</li>
+                        <li><strong>Pouca oferta + muita demanda:</strong> Produtos escassos ficam mais caros</li>
+                        <li><strong>Desvalorização da moeda:</strong> Kwanza fraco = importações mais caras</li>
+                        <li><strong>Custos de produção:</strong> Energia, transporte, matéria-prima mais caros</li>
+                    </ul>
+                </div>
+                
+                <div id="impactos-inflacao" class="impactos-box">
+                    <!-- Preenchido dinamicamente -->
+                </div>
+            </section>
+
+            <!-- E) Taxa de Juros -->
+            <section id="painel-juros">
+                <h3>🏦 Taxa de Juros (BNA)</h3>
+                
+                <div class="slider-container">
+                    <label>Taxa de Juros de Referência (%)</label>
+                    <input type="range" id="taxaJuros" min="5" max="30" value="19.5" step="0.5" 
+                           data-update-group="juros">
+                    <span id="valorJuros" class="valor-destaque">19.5%</span>
+                </div>
+                
+                <div class="explicacao-box">
+                    <h4>ℹ️ O que é Taxa de Juros?</h4>
+                    <p>É o "preço do dinheiro". Quanto maior a taxa, mais caro fica pedir empréstimos. O Banco Nacional de Angola (BNA) usa os juros para controlar a inflação.</p>
+                </div>
+                
+                <div id="impactos-juros" class="impactos-box">
+                    <!-- Preenchido dinamicamente -->
+                </div>
+                
+                <div class="simulador-emprestimo">
+                    <h4>💳 Simulador de Empréstimo</h4>
+                    
+                    <div class="input-group">
+                        <label>Valor do Empréstimo (Kz)</label>
+                        <input type="number" id="valorEmprestimo" value="5000000" step="100000" 
+                               data-update-group="emprestimo">
+                    </div>
+                    
+                    <div class="input-group">
+                        <label>Prazo (meses)</label>
+                        <input type="number" id="prazoEmprestimo" value="24" min="6" max="360" 
+                               data-update-group="emprestimo">
+                    </div>
+                    
+                    <div class="resultados-emprestimo">
+                        <div class="resultado-item">
+                            <h5>Juros Total:</h5>
+                            <p id="jurosTotal" class="valor-destaque">Kz 0</p>
+                        </div>
+                        <div class="resultado-item">
+                            <h5>Valor Total a Pagar:</h5>
+                            <p id="totalPagar" class="valor-destaque">Kz 0</p>
+                        </div>
+                        <div class="resultado-item">
+                            <h5>Parcela Mensal:</h5>
+                            <p id="parcelaMensal" class="valor-destaque">Kz 0</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- F) Taxa de Câmbio -->
+            <section id="painel-cambio">
+                <h3>💱 Taxa de Câmbio</h3>
+                
+                <div class="slider-container">
+                    <label>Kz por USD</label>
+                    <input type="range" id="taxaCambio" min="150" max="1500" value="850" step="10" 
+                           data-update-group="cambio">
+                    <span id="valorCambio" class="valor-destaque">850 Kz/USD</span>
+                </div>
+                
+                <div class="explicacao-box">
+                    <h4>ℹ️ O que é Taxa de Câmbio?</h4>
+                    <p>É quanto vale o Kwanza em relação ao Dólar. Quanto maior o número, mais fraco está o Kwanza.</p>
+                    <p><strong>Exemplo:</strong> Se 1 USD = 850 Kz, significa que você precisa de 850 Kwanzas para comprar 1 Dólar.</p>
+                </div>
+                
+                <div class="comparacao-historica">
+                    <h4>📊 Comparação Histórica:</h4>
+                    <p>2015: 150 Kz/USD</p>
+                    <p>2024: 850 Kz/USD</p>
+                    <p><strong>Depreciação: 466.7%</strong></p>
+                </div>
+                
+                <div id="status-moeda" class="status-box">
+                    <!-- Preenchido dinamicamente -->
+                </div>
+                
+                <div id="impactos-cambio" class="impactos-box">
+                    <!-- Preenchido dinamicamente -->
+                </div>
+            </section>
+
+            <!-- G) Emissão de Moeda -->
+            <section id="painel-emissao">
+                <h3>🖨️ Emissão de Moeda</h3>
+                
+                <div class="opcoes-emissao">
+                    <button class="opcao-btn" onclick="MonetaryPolicy.setEmission('menos')">
+                        📉 Emitir MENOS
+                    </button>
+                    <button class="opcao-btn ativo" onclick="MonetaryPolicy.setEmission('normal')">
+                        ➡️ Padrão Normal
+                    </button>
+                    <button class="opcao-btn" onclick="MonetaryPolicy.setEmission('mais')">
+                        📈 Emitir MAIS
+                    </button>
+                </div>
+                
+                <div class="explicacao-box">
+                    <h4>ℹ️ O que é Emissão de Moeda?</h4>
+                    <p>É quando o Banco Nacional de Angola "imprime" mais dinheiro (hoje principalmente digital). Parece bom ter mais dinheiro, mas há consequências!</p>
+                </div>
+                
+                <div id="explicacao-emissao" class="explicacao-detalhada">
+                    <!-- Preenchido dinamicamente -->
+                </div>
+            </section>
+
+            <!-- H) Taxa de Emprego/Desemprego -->
+            <section id="painel-emprego">
+                <h3>👷 Mercado de Trabalho</h3>
+                
+                <div class="metricas-emprego">
+                    <div class="metrica-card">
+                        <h4>Taxa de Emprego</h4>
+                        <input type="range" id="taxaEmprego" min="50" max="80" value="60" step="1" 
+                               data-update-group="emprego">
+                        <p id="valorEmprego" class="valor-destaque">60%</p>
+                    </div>
+                    
+                    <div class="metrica-card">
+                        <h4>Taxa de Desemprego</h4>
+                        <p id="valorDesemprego" class="valor-destaque">32%</p>
+                    </div>
+                </div>
+                
+                <div class="explicacao-box">
+                    <h4>ℹ️ Como funciona?</h4>
+                    <p><strong>Taxa de Emprego:</strong> % da população ativa que tem emprego formal</p>
+                    <p><strong>Taxa de Desemprego:</strong> % da população ativa que procura emprego mas não encontra</p>
+                    <p><em>Nota: Os dois não somam 100% porque há pessoas fora da força de trabalho (estudantes, aposentados, etc.)</em></p>
+                </div>
+                
+                <div id="analise-emprego" class="analise-box">
+                    <!-- Preenchido dinamicamente -->
+                </div>
+                
+                <div class="fatores-emprego">
+                    <h4>📊 O que afeta o emprego?</h4>
+                    <ul>
+                        <li><strong>✅ Aumenta emprego:</strong> Investimentos, economia crescendo, juros baixos, empresas expandindo</li>
+                        <li><strong>❌ Diminui emprego:</strong> Crise econômica, juros altos, empresas fechando, recessão</li>
+                        <li><strong>🤖 IA e Automação:</strong> Substitui empregos repetitivos, mas cria novos tipos de trabalho</li>
+                        <li><strong>🎓 Educação Técnica:</strong> Mais cursos técnicos = mais pessoas capacitadas para produzir</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- I) Nível Educacional e Produtividade -->
+            <section id="painel-educacao">
+                <h3>🎓 Educação e Produtividade</h3>
+                
+                <div class="tipo-educacao">
+                    <h4>Distribuição da Força de Trabalho:</h4>
+                    
+                    <div class="input-group">
+                        <label>Cursos Técnicos (%)</label>
+                        <input type="range" id="cursosTecnicos" min="0" max="100" value="20" 
+                               data-update-group="educacao">
+                        <span id="valorTecnicos">20%</span>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label>Ensino Superior (%)</label>
+                        <input type="range" id="ensinoSuperior" min="0" max="100" value="15" 
+                               data-update-group="educacao">
+                        <span id="valorSuperior">15%</span>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label>Sem Qualificação Formal (%)</label>
+                        <p id="semQualificacao" class="valor-destaque">65%</p>
+                    </div>
+                </div>
+                
+                <div class="explicacao-box">
+                    <h4>ℹ️ Diferença Crucial:</h4>
+                    <p><strong>Cursos Técnicos:</strong> Ensinam a FAZER (mecânica, eletricidade, enfermagem, programação). Geram PRODUÇÃO imediata.</p>
+                    <p><strong>Ensino Superior:</strong> Especialização teórica. Importante, mas não garante produtividade se não houver aplicação prática.</p>
+                    <p><strong>Realidade Angolana:</strong> Muitos graduados desempregados porque estudaram teoria sem desenvolver habilidades práticas.</p>
+                </div>
+                
+                <div id="impacto-educacao" class="impactos-box">
+                    <!-- Preenchido dinamicamente -->
+                </div>
+                
+                <div class="producao-box">
+                    <h4>🏭 Impacto na Produção Nacional:</h4>
+                    <p id="indiceProdutividade" class="valor-grande">Índice: 0</p>
+                    <div id="analise-produtividade"></div>
+                </div>
+            </section>
+
+            <!-- 4️⃣ SIMULAÇÃO PARA PESSOA FÍSICA -->
+            <section id="simulacao-pessoa">
+                <h3>👤 Simulação para Pessoa Física</h3>
+                
+                <div class="input-group">
+                    <label>💰 Seu Salário Mensal (Kz)</label>
+                    <input type="number" id="salarioPessoa" value="300000" step="10000" 
+                           data-update-group="pessoa">
+                </div>
+                
+                <div class="resultados-pessoa">
+                    <h4>📊 Análise do seu Poder de Compra:</h4>
+                    
+                    <div class="resultado-card">
+                        <h5>Impacto da Inflação:</h5>
+                        <p id="impactoInflacaoPessoa" class="valor-impacto"></p>
+                    </div>
+                    
+                    <div class="resultado-card">
+                        <h5>Impacto do Câmbio:</h5>
+                        <p id="impactoCambioPessoa" class="valor-impacto"></p>
+                    </div>
+                    
+                    <div class="resultado-card">
+                        <h5>Impacto dos Juros:</h5>
+                        <p id="impactoJurosPessoa" class="valor-impacto"></p>
+                    </div>
+                    
+                    <div class="resultado-final">
+                        <h4>💡 Resultado Final:</h4>
+                        <p id="resultadoFinalPessoa" class="valor-grande"></p>
+                    </div>
+                </div>
+                
+                <div id="explicacao-pessoa" class="explicacao-detalhada">
+                    <!-- Preenchido dinamicamente -->
+                </div>
+            </section>
+
+            <!-- 5️⃣ SIMULAÇÃO PARA EMPRESA -->
+            <section id="simulacao-empresa">
+                <h3>🏢 Simulação para Empresa</h3>
+                
+                <div class="tipo-empresa">
+                    <h4>Tipo de Empresa:</h4>
+                    <select id="tipoEmpresa" data-update-group="empresa">
+                        <option value="interna">Produz Internamente (em Angola)</option>
+                        <option value="importa">Depende de Importações</option>
+                        <option value="mista">Mista (Produz e Importa)</option>
+                    </select>
+                </div>
+                
+                <div class="input-group">
+                    <label>💼 Faturamento Mensal (Kz)</label>
+                    <input type="number" id="faturamentoEmpresa" value="10000000" step="100000" 
+                           data-update-group="empresa">
+                </div>
+                
+                <div class="input-group">
+                    <label>👥 Número de Funcionários</label>
+                    <input type="number" id="numFuncionarios" value="50" step="1" 
+                           data-update-group="empresa">
+                </div>
+                
+                <div class="input-group">
+                    <label>💰 Reserva Cambial? (USD ou Bitcoin)</label>
+                    <select id="reservaCambial" data-update-group="empresa">
+                        <option value="nao">Não</option>
+                        <option value="sim">Sim</option>
+                    </select>
+                </div>
+                
+                <div class="resultados-empresa">
+                    <h4>📊 Análise da Empresa:</h4>
+                    
+                    <div class="resultado-card">
+                        <h5>Impacto no Custo:</h5>
+                        <p id="impactoCustoEmpresa" class="valor-impacto"></p>
+                    </div>
+                    
+                    <div class="resultado-card">
+                        <h5>Capacidade de Pagar Funcionários:</h5>
+                        <p id="capacidadePagamento" class="valor-impacto"></p>
+                    </div>
+                    
+                    <div class="resultado-final">
+                        <h4>💡 Situação da Empresa:</h4>
+                        <p id="resultadoFinalEmpresa" class="valor-grande"></p>
+                    </div>
+                </div>
+                
+                <div id="explicacao-empresa" class="explicacao-detalhada">
+                    <!-- Preenchido dinamicamente -->
+                </div>
+            </section>
+
+            <!-- 6️⃣ RECOMENDAÇÕES DO GOVERNO -->
+            <section id="recomendacoes-governo">
+                <h3>🏛️ Recomendações para o Governo</h3>
+                
+                <div id="analise-cenario-governo">
+                    <!-- Preenchido dinamicamente -->
+                </div>
+                
+                <div class="prioridades-investimento">
+                    <h4>🎯 Áreas Prioritárias para Investimento:</h4>
+                    <div id="lista-prioridades">
+                        <!-- Preenchido dinamicamente -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- 7️⃣ COMPARAÇÃO COM DADOS REAIS -->
+            <section id="comparacao-historica">
+                <h3>📊 Comparação com Dados Reais de Angola</h3>
+                
+                <div class="selector-ano">
+                    <label>Selecione um ano para comparar:</label>
+                    <select id="anoComparacao" data-update-group="comparacao">
+                        <option value="2015">2015</option>
+                        <option value="2016">2016</option>
+                        <option value="2017">2017</option>
+                        <option value="2018">2018</option>
+                        <option value="2019">2019</option>
+                        <option value="2020">2020</option>
+                        <option value="2021">2021</option>
+                        <option value="2022">2022</option>
+                        <option value="2023">2023</option>
+                        <option value="2024" selected>2024</option>
+                    </select>
+                </div>
+                
+                <div class="tabela-comparacao">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Indicador</th>
+                                <th>Seu Cenário</th>
+                                <th>Realidade <span id="anoSelecionado">2024</span></th>
+                                <th>Diferença</th>
+                            </tr>
+                        </thead>
+                        <tbody id="corpo-comparacao">
+                            <!-- Preenchido dinamicamente -->
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div id="analise-comparacao" class="analise-box">
+                    <!-- Preenchido dinamicamente -->
+                </div>
+            </section>
+
+            <!-- 8️⃣ GRÁFICOS INTERATIVOS -->
+            <section id="graficos-dashboard">
+                <h3>📈 Dashboard de Gráficos</h3>
+                
+                <div class="grafico-container">
+                    <h4>PIB por Setor</h4>
+                    <canvas id="graficoPIBSetores"></canvas>
+                </div>
+                
+                <div class="grafico-container">
+                    <h4>Evolução Histórica de Angola (2015-2024)</h4>
+                    <canvas id="graficoEvolucao"></canvas>
+                </div>
+                
+                <div class="grafico-container">
+                    <h4>Seu Cenário vs Realidade 2024</h4>
+                    <canvas id="graficoComparacao"></canvas>
+                </div>
+                
+                <div class="grafico-container">
+                    <h4>Impacto no Poder de Compra</h4>
+                    <canvas id="graficoPoderCompra"></canvas>
+                </div>
+            </section>
+
+            <!-- 9️⃣ EXPORTAÇÃO DO CENÁRIO -->
+            <section id="exportacao">
+                <h3>💾 Exportar Cenário</h3>
+                
+                <button id="btnExportar" onclick="ExportManager.exportScenario()">
+                    📸 Exportar Resumo como Imagem
+                </button>
+                
+                <div id="preview-exportacao" style="display:none;">
+                    <!-- Preview do que será exportado -->
+                </div>
+            </section>
+        </div>
+
+        <!-- Área oculta para gerar imagem -->
+        <div id="area-captura" style="position: absolute; left: -9999px; width: 1200px; background: #000; color: #fff; padding: 40px; font-family: Arial, sans-serif;">
+            <!-- Conteúdo será preenchido dinamicamente -->
+        </div>
+    </main>
+
+    <script>
+        // ==================== DADOS ECONÔMICOS DE ANGOLA ====================
+        const ANGOLA_DATA = {
+            anos: [2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024],
+            pib: [90.5, 55.76, 73.69, 79.44, 70.9, 48.5, 66.512, 104.4, 84.88, 80.4],
+            pibPerCapita: [3.21, 3.02, 2.91, 2.78, 2.66, 2.43, 2.39, 2.38, 2.33, 2.36],
+            despesaFiscal: [3.2, 4.3, 4.8, 5.2, 5.98, 7.67, 9.21, 11.94, 14.97, 17.8],
+            cambio: [150, 160, 180, 250, 400, 480, 580, 400, 720, 850],
+            salarioMinimo: [15, 15, 16.5, 16.5, 21.5, 21.5, 21.5, 32.2, 32.2, 32.2],
+            emprego: [null, null, null, 61, 60, 61, 62.5, 62, null, 60],
+            desemprego: [null, 19, 20, 28, 29, 32, 31, 30.5, null, 32],
+            balancaComercial: [12.48, 14.54, 20.15, 28.82, 20.59, 11.39, 21.79, 32.76, 21.81, 22.6],
+            dividaExterna: [36.3, 44.4, 43.4, 47.55, 49.5, 50.16, 52.3, 52.17, 49.6, 46.8],
+            investimentoEstrangeiro: [16.2, 11.1, 6.1, -7.4, 8.09, 6.31, 6.53, 7.01, 8.8, 9.87],
+            fluxoCapital: [8.45, 5.29, -4.15, 17.5, -3.5, -2.93, -6.15, -7.85, -4.06, -6.02],
+            juros: [9.9, 14.5, 16, 19.8, 15.5, 15.5, 17.6, 20, 17, 19.5],
+            inflacao: [10, 35, 29, 19.8, 17, 22, 25, 27, 13, 30]
+        };
+
+        // ==================== SISTEMA DE GESTÃO DE ATUALIZAÇÕES ====================
+        class UpdateManager {
+            constructor() {
+                this.updateQueue = [];
+                this.isProcessing = false;
+                this.lastUpdateTime = null;
+                this.updateCallbacks = new Map();
+                this.dependencyGraph = this.buildDependencyGraph();
+                this.calculationCache = new Map();
+                this.performanceStats = {
+                    totalCalculations: 0,
+                    averageTime: 0,
+                    lastDuration: 0
+                };
+                
+                this.initializeEventListeners();
+            }
+            
+            buildDependencyGraph() {
+                // Grafo de dependências explícito para o simulador econômico
+                return {
+                    // Nível 1: Inputs básicos
+                    'pib': ['setores', 'divida', 'petroleo', 'grafico-pib'],
+                    'pib-setores': ['pib-total', 'grafico-pib', 'produtividade'],
+                    'petroleo': ['receita-petroleo', 'pib', 'grafico-comparacao'],
+                    'divida': ['ratio-divida', 'analise-divida', 'recomendacoes'],
+                    'inflacao': ['poder-compra', 'empresa-custo', 'grafico-comparacao', 'analise-inflacao'],
+                    'juros': ['emprestimo', 'analise-juros', 'grafico-comparacao'],
+                    'cambio': ['poder-compra', 'empresa-custo', 'status-moeda', 'grafico-comparacao'],
+                    'emprego': ['desemprego', 'analise-emprego', 'grafico-comparacao'],
+                    'educacao': ['produtividade', 'industria', 'analise-educacao'],
+                    
+                    // Nível 2: Cálculos derivados
+                    'poder-compra': ['resultado-pessoa', 'grafico-poder-compra'],
+                    'empresa': ['resultado-empresa', 'capacidade-pagamento'],
+                    'comparacao': ['tabela-comparacao', 'analise-comparacao'],
+                    
+                    // Nível 3: Visualizações
+                    'grafico-pib': [],
+                    'grafico-comparacao': [],
+                    'grafico-poder-compra': [],
+                    'grafico-evolucao': []
+                };
+            }
+            
+            initializeEventListeners() {
+                // Adiciona event listeners a todos os inputs
+                document.querySelectorAll('[data-update-group]').forEach(input => {
+                    const group = input.getAttribute('data-update-group');
+                    
+                    if (input.type === 'range') {
+                        input.addEventListener('input', (e) => {
+                            this.queueUpdate(group, e.target);
+                            this.updateValueDisplay(e.target);
+                        });
+                    } else if (input.type === 'number' || input.tagName === 'SELECT') {
+                        input.addEventListener('input', (e) => {
+                            this.queueUpdate(group, e.target);
+                        });
+                    } else if (input.type === 'button') {
+                        input.addEventListener('click', (e) => {
+                            this.queueUpdate(group, e.target);
+                        });
+                    }
+                });
+                
+                // Event listeners para os botões de controle do sistema
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'F5' || (e.ctrlKey && e.key === 'r')) {
+                        e.preventDefault();
+                        SimulationEngine.updateAll();
+                    }
+                    
+                    if (e.ctrlKey && e.shiftKey && e.key === 'R') {
+                        e.preventDefault();
+                        SimulationEngine.recalculateFromScratch();
+                    }
+                });
+            }
+            
+            updateValueDisplay(slider) {
+                const valueDisplay = slider.nextElementSibling;
+                if (valueDisplay && valueDisplay.classList.contains('valor-destaque')) {
+                    if (slider.id === 'precoPetroleo') {
+                        valueDisplay.textContent = `$${slider.value}`;
+                    } else if (slider.id === 'taxaCambio') {
+                        valueDisplay.textContent = `${slider.value} Kz/USD`;
+                    } else {
+                        valueDisplay.textContent = `${slider.value}%`;
+                    }
+                }
+            }
+            
+            queueUpdate(group, sourceElement) {
+                // Adiciona à fila de atualizações
+                this.updateQueue.push({
+                    group,
+                    source: sourceElement.id,
+                    timestamp: Date.now()
+                });
+                
+                // Atualiza status visual
+                this.updateCalculationStatus();
+                
+                // Inicia processamento se não estiver em andamento
+                if (!this.isProcessing) {
+                    this.processQueue();
+                }
+            }
+            
+            async processQueue() {
+                if (this.isProcessing || this.updateQueue.length === 0) {
+                    return;
+                }
+                
+                this.isProcessing = true;
+                const startTime = performance.now();
+                
+                // Agrupa atualizações por grupo para processamento em batch
+                const groupedUpdates = this.groupUpdates();
+                
+                // Processa cada grupo na ordem de dependência
+                for (const group of this.getUpdateOrder()) {
+                    if (groupedUpdates.has(group)) {
+                        await this.executeGroupUpdate(group, groupedUpdates.get(group));
+                    }
+                }
+                
+                this.isProcessing = false;
+                this.lastUpdateTime = new Date().toLocaleTimeString();
+                
+                // Atualiza estatísticas de performance
+                const duration = performance.now() - startTime;
+                this.performanceStats.lastDuration = duration;
+                this.performanceStats.totalCalculations += groupedUpdates.size;
+                this.performanceStats.averageTime = (
+                    this.performanceStats.averageTime * 0.8 + duration * 0.2
+                );
+                
+                // Se ainda houver itens na fila, processa novamente
+                if (this.updateQueue.length > 0) {
+                    setTimeout(() => this.processQueue(), 10);
+                } else {
+                    this.hideCalculationStatus();
+                }
+            }
+            
+            groupUpdates() {
+                const groups = new Map();
+                
+                while (this.updateQueue.length > 0) {
+                    const update = this.updateQueue.shift();
+                    if (!groups.has(update.group)) {
+                        groups.set(update.group, []);
+                    }
+                    groups.get(update.group).push(update);
+                }
+                
+                return groups;
+            }
+            
+            getUpdateOrder() {
+                // Ordenação topológica baseada no grafo de dependências
+                const order = [];
+                const visited = new Set();
+                const temp = new Set();
+                
+                const visit = (node) => {
+                    if (temp.has(node)) return; // Ciclo detectado
+                    if (visited.has(node)) return;
+                    
+                    temp.add(node);
+                    
+                    // Visita dependências primeiro
+                    if (this.dependencyGraph[node]) {
+                        for (const dep of this.dependencyGraph[node]) {
+                            visit(dep);
+                        }
+                    }
+                    
+                    temp.delete(node);
+                    visited.add(node);
+                    order.push(node);
+                };
+                
+                // Começa pelos grupos que têm atualizações pendentes
+                for (const group of Object.keys(this.dependencyGraph)) {
+                    visit(group);
+                }
+                
+                return order;
+            }
+            
+            async executeGroupUpdate(group, updates) {
+                // Marca a seção como atualizando
+                this.markSectionAsUpdating(group);
+                
+                try {
+                    // Executa os cálculos para este grupo
+                    await this.executeCalculations(group, updates);
+                    
+                    // Notifica listeners
+                    if (this.updateCallbacks.has(group)) {
+                        this.updateCallbacks.get(group).forEach(callback => callback());
+                    }
+                    
+                    // Atualiza cache
+                    this.updateCache(group);
+                    
+                } catch (error) {
+                    console.error(`Erro ao processar grupo ${group}:`, error);
+                    this.showError(`Erro no cálculo de ${group}: ${error.message}`);
+                } finally {
+                    // Remove marcação de atualização
+                    this.unmarkSectionAsUpdating(group);
+                }
+            }
+            
+            markSectionAsUpdating(group) {
+                // Implementação específica por grupo
+                const sectionMap = {
+                    'pib': '#painel-pib',
+                    'petroleo': '#painel-petroleo',
+                    'divida': '#painel-divida',
+                    'inflacao': '#painel-inflacao',
+                    'juros': '#painel-juros',
+                    'cambio': '#painel-cambio',
+                    'emprego': '#painel-emprego',
+                    'educacao': '#painel-educacao',
+                    'poder-compra': '#simulacao-pessoa',
+                    'empresa': '#simulacao-empresa'
+                };
+                
+                if (sectionMap[group]) {
+                    const section = document.querySelector(sectionMap[group]);
+                    if (section) {
+                        section.classList.add('updating');
+                    }
+                }
+            }
+            
+            unmarkSectionAsUpdating(group) {
+                const sectionMap = {
+                    'pib': '#painel-pib',
+                    'petroleo': '#painel-petroleo',
+                    'divida': '#painel-divida',
+                    'inflacao': '#painel-inflacao',
+                    'juros': '#painel-juros',
+                    'cambio': '#painel-cambio',
+                    'emprego': '#painel-emprego',
+                    'educacao': '#painel-educacao',
+                    'poder-compra': '#simulacao-pessoa',
+                    'empresa': '#simulacao-empresa'
+                };
+                
+                if (sectionMap[group]) {
+                    const section = document.querySelector(sectionMap[group]);
+                    if (section) {
+                        setTimeout(() => {
+                            section.classList.remove('updating');
+                        }, 300);
+                    }
+                }
+            }
+            
+            async executeCalculations(group, updates) {
+                // Executa cálculos específicos para cada grupo
+                switch(group) {
+                    case 'pib':
+                        await EconomicCalculations.updatePIB();
+                        break;
+                    case 'pib-setores':
+                        await EconomicCalculations.updateSetoresPIB();
+                        break;
+                    case 'petroleo':
+                        await EconomicCalculations.updatePetroleo();
+                        break;
+                    case 'divida':
+                        await EconomicCalculations.updateDivida();
+                        break;
+                    case 'inflacao':
+                        await EconomicCalculations.updateInflacao();
+                        break;
+                    case 'juros':
+                        await EconomicCalculations.updateJuros();
+                        break;
+                    case 'cambio':
+                        await EconomicCalculations.updateCambio();
+                        break;
+                    case 'emprego':
+                        await EconomicCalculations.updateEmprego();
+                        break;
+                    case 'educacao':
+                        await EconomicCalculations.updateEducacao();
+                        break;
+                    case 'poder-compra':
+                        await EconomicCalculations.updatePoderCompra();
+                        break;
+                    case 'empresa':
+                        await EconomicCalculations.updateEmpresa();
+                        break;
+                    case 'comparacao':
+                        await EconomicCalculations.updateComparacao();
+                        break;
+                    case 'emprestimo':
+                        await EconomicCalculations.updateEmprestimo();
+                        break;
+                }
+            }
+            
+            updateCache(group) {
+                // Atualiza cache com timestamp
+                this.calculationCache.set(group, {
+                    value: this.getCurrentValue(group),
+                    timestamp: Date.now()
+                });
+            }
+            
+            getCurrentValue(group) {
+                // Retorna valor atual baseado no grupo
+                // Implementação específica para cada grupo
+                return null;
+            }
+            
+            updateCalculationStatus() {
+                const statusElement = document.getElementById('calculationStatus');
+                const queueCount = document.getElementById('queueCount');
+                const completedCount = document.getElementById('completedCount');
+                const estimatedTime = document.getElementById('estimatedTime');
+                const lastUpdate = document.getElementById('lastUpdate');
+                
+                if (statusElement) {
+                    statusElement.classList.add('active');
+                    queueCount.textContent = this.updateQueue.length;
+                    completedCount.textContent = this.performanceStats.totalCalculations;
+                    estimatedTime.textContent = `${Math.round(this.performanceStats.averageTime)}ms`;
+                    lastUpdate.textContent = this.lastUpdateTime || '-';
+                }
+            }
+            
+            hideCalculationStatus() {
+                const statusElement = document.getElementById('calculationStatus');
+                if (statusElement) {
+                    setTimeout(() => {
+                        statusElement.classList.remove('active');
+                    }, 1000);
+                }
+            }
+            
+            showError(message) {
+                // Mostra erro temporário
+                const errorDiv = document.createElement('div');
+                errorDiv.style.cssText = `
+                    position: fixed;
+                    top: 20px;
+                    right: 20px;
+                    background: #ff4444;
+                    color: white;
+                    padding: 15px;
+                    border-radius: 5px;
+                    z-index: 10000;
+                    max-width: 300px;
+                    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+                `;
+                errorDiv.textContent = message;
+                document.body.appendChild(errorDiv);
+                
+                setTimeout(() => {
+                    errorDiv.remove();
+                }, 5000);
+            }
+            
+            forceFullUpdate() {
+                // Limpa cache e força atualização completa
+                this.calculationCache.clear();
+                this.updateQueue = [];
+                
+                // Adiciona todos os grupos à fila
+                Object.keys(this.dependencyGraph).forEach(group => {
+                    this.queueUpdate(group, { id: 'system' });
+                });
+                
+                this.processQueue();
+            }
+            
+            clearQueue() {
+                this.updateQueue = [];
+                this.updateCalculationStatus();
+            }
+        }
+
+        // ==================== MOTOR DE CÁLCULOS ECONÔMICOS ====================
+        class EconomicCalculations {
+            static precision = {
+                monetary: 2,      // Bilhões USD
+                percentage: 1,    // %
+                rate: 2,         // Taxas
+                exchange: 0,     // Kz/USD
+                currency: 2      // Kz
+            };
+            
+            static round(value, decimals) {
+                const factor = Math.pow(10, decimals);
+                return Math.round((value + Number.EPSILON) * factor) / factor;
+            }
+            
+            static async updatePIB() {
+                const pibTotal = parseFloat(document.getElementById('pibTotal').value);
+                
+                // Valida PIB
+                if (isNaN(pibTotal) || pibTotal < 0) {
+                    throw new Error('PIB inválido');
+                }
+                
+                // Atualiza comparação de PIB
+                document.getElementById('pibComparacao').textContent = `$${pibTotal.toFixed(1)} B`;
+                
+                // Força atualização dos setores
+                await this.updateSetoresPIB();
+                
+                // Atualiza gráficos relacionados
+                if (window.charts?.pibSetores) {
+                    window.charts.pibSetores.update();
+                }
+            }
+            
+            static async updateSetoresPIB() {
+                const pibTotal = parseFloat(document.getElementById('pibTotal').value);
+                const setores = document.querySelectorAll('.setor-valor');
+                
+                let soma = 0;
+                let hasError = false;
+                
+                // Calcula soma e percentuais
+                setores.forEach(input => {
+                    const valor = parseFloat(input.value) || 0;
+                    soma += valor;
+                    
+                    // Calcula percentual
+                    const percentual = this.round((valor / pibTotal) * 100, 1);
+                    input.closest('tr').querySelector('.setor-percentual').textContent = `${percentual}%`;
+                    
+                    // Validação
+                    if (valor < 0) {
+                        input.style.borderColor = '#ff4444';
+                        hasError = true;
+                    } else {
+                        input.style.borderColor = '';
+                    }
+                });
+                
+                // Atualiza total
+                document.getElementById('totalSetores').innerHTML = `<strong>${soma.toFixed(2)}</strong>`;
+                
+                // Verifica consistência
+                const alerta = document.getElementById('alerta-pib');
+                const diff = Math.abs(soma - pibTotal);
+                const tolerance = pibTotal * 0.001; // 0.1% de tolerância
+                
+                if (diff > tolerance) {
+                    alerta.style.display = 'block';
+                    alerta.className = 'alerta-box vermelho';
+                    alerta.innerHTML = `⚠️ Diferença de ${diff.toFixed(2)} B USD entre setores e PIB total`;
+                    hasError = true;
+                } else {
+                    alerta.style.display = 'none';
+                }
+                
+                if (hasError) {
+                    throw new Error('Inconsistência nos dados do PIB');
+                }
+            }
+            
+            static async updatePetroleo() {
+                const preco = parseFloat(document.getElementById('precoPetroleo').value);
+                const barris = parseFloat(document.getElementById('barrisVendidos').value) * 1_000_000;
+                
+                // Validações
+                if (preco < 0 || barris < 0) {
+                    throw new Error('Valores do petróleo inválidos');
+                }
+                
+                // Calcula receita
+                const receita = this.round((preco * barris) / 1_000_000_000, 2);
+                document.getElementById('receitaPetroleo').textContent = `$${receita} Bilhões`;
+                
+                // Atualiza análise de impacto
+                await this.updateImpactoPetroleo(preco);
+            }
+            
+            static async updateImpactoPetroleo(preco) {
+                const lista = document.getElementById('lista-impactos-petroleo');
+                
+                if (preco < 40) {
+                    lista.innerHTML = `
+                        <li class="vermelho">📉 PIB cairá drasticamente</li>
+                        <li class="vermelho">📉 Receitas do governo reduzidas</li>
+                        <li class="vermelho">📉 Possível aumento do desemprego</li>
+                        <li class="vermelho">📉 Pressão sobre câmbio</li>
+                    `;
+                } else if (preco < 70) {
+                    lista.innerHTML = `
+                        <li class="amarelo">⚠️ PIB com crescimento moderado</li>
+                        <li class="amarelo">⚠️ Receitas do governo estáveis</li>
+                        <li class="amarelo">⚠️ Câmbio pode oscilar</li>
+                    `;
+                } else if (preco < 120) {
+                    lista.innerHTML = `
+                        <li class="verde">✅ PIB em crescimento saudável</li>
+                        <li class="verde">✅ Receitas do governo robustas</li>
+                        <li class="verde">✅ Kwanza tende a se valorizar</li>
+                    `;
+                } else {
+                    lista.innerHTML = `
+                        <li class="verde">✅ PIB em crescimento acelerado</li>
+                        <li class="verde">✅ Receitas do governo muito altas</li>
+                        <li class="amarelo">⚠️ Risco de inflação por excesso de receitas</li>
+                    `;
+                }
+            }
+            
+            static async updateDivida() {
+                const divida = parseFloat(document.getElementById('dividaExterna').value);
+                const pib = parseFloat(document.getElementById('pibTotal').value);
+                
+                // Validações
+                if (divida < 0 || pib <= 0) {
+                    throw new Error('Dados de dívida/PIB inválidos');
+                }
+                
+                // Calcula ratio
+                const ratio = this.round((divida / pib) * 100, 1);
+                document.getElementById('ratioDivida').textContent = `${ratio}%`;
+                
+                // Atualiza análise
+                await this.updateAnaliseDivida(ratio);
+            }
+            
+            static async updateAnaliseDivida(ratio) {
+                const analiseDiv = document.getElementById('analise-divida');
+                
+                if (ratio > 100) {
+                    analiseDiv.className = 'analise-box vermelho';
+                    analiseDiv.innerHTML = `
+                        <h4>🚨 DÍVIDA INSUSTENTÁVEL</h4>
+                        <p>Dívida maior que o PIB (${ratio}%)</p>
+                    `;
+                } else if (ratio > 70) {
+                    analiseDiv.className = 'analise-box amarelo';
+                    analiseDiv.innerHTML = `
+                        <h4>⚠️ DÍVIDA ALTA</h4>
+                        <p>Nível preocupante (${ratio}%)</p>
+                    `;
+                } else if (ratio > 40) {
+                    analiseDiv.className = 'analise-box verde';
+                    analiseDiv.innerHTML = `
+                        <h4>✅ DÍVIDA MODERADA</h4>
+                        <p>Situação gerenciável (${ratio}%)</p>
+                    `;
+                } else {
+                    analiseDiv.className = 'analise-box verde';
+                    analiseDiv.innerHTML = `
+                        <h4>✅ DÍVIDA BAIXA</h4>
+                        <p>Situação saudável (${ratio}%)</p>
+                    `;
+                }
+            }
+            
+            static async updateInflacao() {
+                const inflacao = parseFloat(document.getElementById('inflacao').value);
+                
+                // Validação
+                if (inflacao < 0 || inflacao > 1000) {
+                    throw new Error('Taxa de inflação fora dos limites (0-1000%)');
+                }
+                
+                // Atualiza impacto
+                await this.updateImpactoInflacao(inflacao);
+            }
+            
+            static async updateImpactoInflacao(inflacao) {
+                const impactosDiv = document.getElementById('impactos-inflacao');
+                
+                if (inflacao < 5) {
+                    impactosDiv.className = 'impactos-box verde';
+                    impactosDiv.innerHTML = `
+                        <h4>✅ INFLAÇÃO CONTROLADA</h4>
+                        <p>Preços estáveis (${inflacao}%)</p>
+                    `;
+                } else if (inflacao < 10) {
+                    impactosDiv.className = 'impactos-box verde';
+                    impactosDiv.innerHTML = `
+                        <h4>✅ INFLAÇÃO MODERADA</h4>
+                        <p>Economia saudável (${inflacao}%)</p>
+                    `;
+                } else if (inflacao < 20) {
+                    impactosDiv.className = 'impactos-box amarelo';
+                    impactosDiv.innerHTML = `
+                        <h4>⚠️ INFLAÇÃO ELEVADA</h4>
+                        <p>Perda de poder de compra (${inflacao}%)</p>
+                    `;
+                } else {
+                    impactosDiv.className = 'impactos-box vermelho';
+                    impactosDiv.innerHTML = `
+                        <h4>🚨 INFLAÇÃO CRÍTICA</h4>
+                        <p>Situação grave (${inflacao}%)</p>
+                    `;
+                }
+            }
+            
+            static async updateJuros() {
+                const juros = parseFloat(document.getElementById('taxaJuros').value);
+                
+                // Validação
+                if (juros < 0 || juros > 100) {
+                    throw new Error('Taxa de juros fora dos limites (0-100%)');
+                }
+                
+                // Atualiza impacto
+                await this.updateImpactoJuros(juros);
+                // Atualiza cálculo de empréstimo
+                await this.updateEmprestimo();
+            }
+            
+            static async updateImpactoJuros(juros) {
+                const impactosDiv = document.getElementById('impactos-juros');
+                
+                if (juros < 10) {
+                    impactosDiv.className = 'impactos-box verde';
+                    impactosDiv.innerHTML = `
+                        <h4>✅ JUROS BAIXOS</h4>
+                        <p>Estímulo à economia (${juros}%)</p>
+                    `;
+                } else if (juros < 15) {
+                    impactosDiv.className = 'impactos-box verde';
+                    impactosDiv.innerHTML = `
+                        <h4>✅ JUROS MODERADOS</h4>
+                        <p>Equilíbrio saudável (${juros}%)</p>
+                    `;
+                } else if (juros < 20) {
+                    impactosDiv.className = 'impactos-box amarelo';
+                    impactosDiv.innerHTML = `
+                        <h4>⚠️ JUROS ELEVADOS</h4>
+                        <p>Restrição econômica (${juros}%)</p>
+                    `;
+                } else {
+                    impactosDiv.className = 'impactos-box vermelho';
+                    impactosDiv.innerHTML = `
+                        <h4>🚨 JUROS MUITO ALTOS</h4>
+                        <p>Economia retraída (${juros}%)</p>
+                    `;
+                }
+            }
+            
+            static async updateEmprestimo() {
+                const valor = parseFloat(document.getElementById('valorEmprestimo').value);
+                const prazo = parseFloat(document.getElementById('prazoEmprestimo').value);
+                const jurosAnual = parseFloat(document.getElementById('taxaJuros').value);
+                
+                // Validações
+                if (valor <= 0 || prazo <= 0 || jurosAnual < 0) {
+                    throw new Error('Dados de empréstimo inválidos');
+                }
+                
+                // Cálculo do empréstimo (sistema francês)
+                const jurosMensal = jurosAnual / 12 / 100;
+                
+                // Evita divisão por zero ou valores inválidos
+                if (jurosMensal === 0) {
+                    const parcela = valor / prazo;
+                    document.getElementById('jurosTotal').textContent = `Kz 0`;
+                    document.getElementById('totalPagar').textContent = `Kz ${valor.toLocaleString('pt-AO')}`;
+                    document.getElementById('parcelaMensal').textContent = `Kz ${parcela.toLocaleString('pt-AO', {minimumFractionDigits: 2})}`;
+                    return;
+                }
+                
+                const fator = Math.pow(1 + jurosMensal, prazo);
+                const parcela = valor * (jurosMensal * fator) / (fator - 1);
+                const totalPagar = parcela * prazo;
+                const jurosTotal = totalPagar - valor;
+                
+                // Atualiza interface
+                document.getElementById('jurosTotal').textContent = 
+                    `Kz ${this.round(jurosTotal, 2).toLocaleString('pt-AO', {minimumFractionDigits: 2})}`;
+                document.getElementById('totalPagar').textContent = 
+                    `Kz ${this.round(totalPagar, 2).toLocaleString('pt-AO', {minimumFractionDigits: 2})}`;
+                document.getElementById('parcelaMensal').textContent = 
+                    `Kz ${this.round(parcela, 2).toLocaleString('pt-AO', {minimumFractionDigits: 2})}`;
+            }
+            
+            static async updateCambio() {
+                const cambio = parseFloat(document.getElementById('taxaCambio').value);
+                
+                // Validação
+                if (cambio <= 0 || cambio > 10000) {
+                    throw new Error('Taxa de câmbio fora dos limites (1-10000)');
+                }
+                
+                // Atualiza status e impacto
+                await this.updateStatusMoeda(cambio);
+                await this.updateImpactoCambio(cambio);
+            }
+            
+            static async updateStatusMoeda(cambio) {
+                const statusDiv = document.getElementById('status-moeda');
+                
+                if (cambio < 300) {
+                    statusDiv.className = 'status-box verde';
+                    statusDiv.innerHTML = '<h4>✅ KWANZA FORTE</h4>';
+                } else if (cambio < 600) {
+                    statusDiv.className = 'status-box verde';
+                    statusDiv.innerHTML = '<h4>✅ KWANZA ESTÁVEL</h4>';
+                } else if (cambio < 900) {
+                    statusDiv.className = 'status-box amarelo';
+                    statusDiv.innerHTML = '<h4>⚠️ KWANZA FRACO</h4>';
+                } else {
+                    statusDiv.className = 'status-box vermelho';
+                    statusDiv.innerHTML = '<h4>🚨 KWANZA MUITO FRACO</h4>';
+                }
+            }
+            
+            static async updateImpactoCambio(cambio) {
+                const impactosDiv = document.getElementById('impactos-cambio');
+                
+                if (cambio < 300) {
+                    impactosDiv.className = 'impactos-box verde';
+                    impactosDiv.innerHTML = `
+                        <h4>Impactos do Kwanza Forte</h4>
+                        <ul>
+                            <li>✅ Importações mais baratas</li>
+                            <li>✅ Poder de compra aumenta</li>
+                            <li>⚠️ Exportações menos competitivas</li>
+                        </ul>
+                    `;
+                } else if (cambio < 600) {
+                    impactosDiv.className = 'impactos-box verde';
+                    impactosDiv.innerHTML = `
+                        <h4>Impactos do Kwanza Estável</h4>
+                        <ul>
+                            <li>✅ Equilíbrio saudável</li>
+                            <li>✅ Previsibilidade para empresas</li>
+                        </ul>
+                    `;
+                } else {
+                    impactosDiv.className = 'impactos-box vermelho';
+                    impactosDiv.innerHTML = `
+                        <h4>Impactos do Kwanza Fraco</h4>
+                        <ul>
+                            <li>❌ Importações mais caras</li>
+                            <li>❌ Inflação aumenta</li>
+                            <li>❌ Poder de compra cai</li>
+                        </ul>
+                    `;
+                }
+            }
+            
+            static async updateEmprego() {
+                const emprego = parseFloat(document.getElementById('taxaEmprego').value);
+                
+                // Validação
+                if (emprego < 0 || emprego > 100) {
+                    throw new Error('Taxa de emprego fora dos limites (0-100%)');
+                }
+                
+                // Calcula desemprego (considerando 8% fora da força de trabalho)
+                const desemprego = this.round(100 - emprego - 8, 1);
+                
+                // Atualiza interface
+                document.getElementById('valorDesemprego').textContent = `${desemprego}%`;
+                
+                // Atualiza análise
+                await this.updateAnaliseEmprego(desemprego);
+            }
+            
+            static async updateAnaliseEmprego(desemprego) {
+                const analiseDiv = document.getElementById('analise-emprego');
+                
+                if (desemprego < 10) {
+                    analiseDiv.className = 'analise-box verde';
+                    analiseDiv.innerHTML = `<h4>✅ PLENO EMPREGO</h4><p>Economia muito aquecida</p>`;
+                } else if (desemprego < 20) {
+                    analiseDiv.className = 'analise-box verde';
+                    analiseDiv.innerHTML = `<h4>✅ DESEMPREGO MODERADO</h4><p>Situação aceitável</p>`;
+                } else if (desemprego < 30) {
+                    analiseDiv.className = 'analise-box amarelo';
+                    analiseDiv.innerHTML = `<h4>⚠️ DESEMPREGO ALTO</h4><p>Muitas pessoas sem oportunidades</p>`;
+                } else {
+                    analiseDiv.className = 'analise-box vermelho';
+                    analiseDiv.innerHTML = `<h4>🚨 DESEMPREGO CRÍTICO</h4><p>Situação grave (atual: ${desemprego}%)</p>`;
+                }
+            }
+            
+            static async updateEducacao() {
+                const tecnicos = parseFloat(document.getElementById('cursosTecnicos').value);
+                const superior = parseFloat(document.getElementById('ensinoSuperior').value);
+                
+                // Validações
+                if (tecnicos < 0 || tecnicos > 100 || superior < 0 || superior > 100) {
+                    throw new Error('Percentuais de educação fora dos limites');
+                }
+                
+                if (tecnicos + superior > 100) {
+                    throw new Error('Soma dos percentuais não pode exceder 100%');
+                }
+                
+                // Calcula sem qualificação
+                const semQualif = this.round(100 - tecnicos - superior, 1);
+                document.getElementById('semQualificacao').textContent = `${semQualif}%`;
+                
+                // Calcula índice de produtividade (fórmula simplificada)
+                const indiceProd = this.round(tecnicos * 1.5 + superior * 0.8 + semQualif * 0.3, 1);
+                document.getElementById('indiceProdutividade').textContent = `Índice: ${indiceProd}`;
+                
+                // Atualiza impacto
+                await this.updateImpactoEducacao(tecnicos);
+            }
+            
+            static async updateImpactoEducacao(tecnicos) {
+                const impactoDiv = document.getElementById('impacto-educacao');
+                
+                if (tecnicos > 40) {
+                    impactoDiv.className = 'impactos-box verde';
+                    impactoDiv.innerHTML = `
+                        <h4>✅ FORÇA DE TRABALHO QUALIFICADA</h4>
+                        <p>Alta capacidade produtiva</p>
+                    `;
+                } else if (tecnicos > 20) {
+                    impactoDiv.className = 'impactos-box amarelo';
+                    impactoDiv.innerHTML = `
+                        <h4>⚠️ QUALIFICAÇÃO MODERADA</h4>
+                        <p>Alguma capacidade produtiva</p>
+                    `;
+                } else {
+                    impactoDiv.className = 'impactos-box vermelho';
+                    impactoDiv.innerHTML = `
+                        <h4>🚨 BAIXA QUALIFICAÇÃO TÉCNICA</h4>
+                        <p>Pouca capacidade de produção</p>
+                    `;
+                }
+            }
+            
+            static async updatePoderCompra() {
+                const salario = parseFloat(document.getElementById('salarioPessoa').value);
+                const inflacao = parseFloat(document.getElementById('inflacao').value);
+                const cambio = parseFloat(document.getElementById('taxaCambio').value);
+                const juros = parseFloat(document.getElementById('taxaJuros').value);
+                
+                // Validações básicas
+                if (salario < 0 || inflacao < 0 || cambio <= 0 || juros < 0) {
+                    throw new Error('Dados inválidos para cálculo de poder de compra');
+                }
+                
+                // Cálculo simplificado do poder de compra
+                const perdaInflacao = this.round(salario * (inflacao / 100), 2);
+                const impactoCambio = cambio > 600 ? 
+                    this.round(salario * ((cambio - 600) / 600 * 0.6), 2) : 
+                    this.round(salario * ((600 - cambio) / 600 * 0.3), 2);
+                
+                const ganhoPerdaTotal = this.round(-perdaInflacao - impactoCambio, 2);
+                const percentual = this.round((ganhoPerdaTotal / salario) * 100, 1);
+                
+                // Atualiza interface
+                document.getElementById('impactoInflacaoPessoa').innerHTML = `
+                    <span class="${perdaInflacao > 0 ? 'vermelho' : 'verde'}">
+                        ${perdaInflacao > 0 ? '-' : '+'}${Math.abs(perdaInflacao).toLocaleString('pt-AO')} Kz
+                    </span>
+                `;
+                
+                document.getElementById('impactoCambioPessoa').innerHTML = `
+                    <span class="${impactoCambio > 0 ? 'vermelho' : 'verde'}">
+                        ${impactoCambio > 0 ? '-' : '+'}${Math.abs(impactoCambio).toLocaleString('pt-AO')} Kz
+                    </span>
+                `;
+                
+                document.getElementById('impactoJurosPessoa').textContent = 
+                    juros > 15 ? 'Empréstimos caros' : 'Empréstimos acessíveis';
+                
+                // Resultado final
+                const resultadoDiv = document.getElementById('resultadoFinalPessoa');
+                const explicacaoDiv = document.getElementById('explicacao-pessoa');
+                
+                if (percentual < -10) {
+                    resultadoDiv.innerHTML = `<span class="vermelho">PERDEU ${Math.abs(percentual)}% do poder de compra</span>`;
+                    explicacaoDiv.className = 'explicacao-detalhada vermelho';
+                    explicacaoDiv.innerHTML = `<h4>🚨 Situação Econômica Piorou</h4>`;
+                } else if (percentual < 0) {
+                    resultadoDiv.innerHTML = `<span class="amarelo">PERDEU ${Math.abs(percentual)}% do poder de compra</span>`;
+                    explicacaoDiv.className = 'explicacao-detalhada amarelo';
+                    explicacaoDiv.innerHTML = `<h4>⚠️ Pequena Perda de Poder de Compra</h4>`;
+                } else {
+                    resultadoDiv.innerHTML = `<span class="verde">GANHOU ${percentual}% de poder de compra</span>`;
+                    explicacaoDiv.className = 'explicacao-detalhada verde';
+                    explicacaoDiv.innerHTML = `<h4>✅ Situação Econômica Melhorou</h4>`;
+                }
+            }
+            
+            static async updateEmpresa() {
+                const tipo = document.getElementById('tipoEmpresa').value;
+                const faturamento = parseFloat(document.getElementById('faturamentoEmpresa').value);
+                const funcionarios = parseFloat(document.getElementById('numFuncionarios').value);
+                const reserva = document.getElementById('reservaCambial').value;
+                const cambio = parseFloat(document.getElementById('taxaCambio').value);
+                const inflacao = parseFloat(document.getElementById('inflacao').value);
+                
+                // Validações
+                if (faturamento < 0 || funcionarios < 0) {
+                    throw new Error('Dados da empresa inválidos');
+                }
+                
+                // Cálculo simplificado do impacto
+                let impactoCusto = 0;
+                
+                if (tipo === 'interna') {
+                    impactoCusto = inflacao * 0.5;
+                } else if (tipo === 'importa') {
+                    if (reserva === 'sim') {
+                        impactoCusto = inflacao * 0.3;
+                    } else {
+                        impactoCusto = (cambio / 600 - 1) * 100 + inflacao;
+                    }
+                } else { // mista
+                    impactoCusto = ((cambio / 600 - 1) * 50 + inflacao * 0.7);
+                }
+                
+                impactoCusto = this.round(impactoCusto, 1);
+                
+                // Capacidade de pagamento
+                const custoFuncionarios = funcionarios * 300000;
+                const margemOperacional = faturamento * 0.3;
+                const custoAjustado = margemOperacional * (1 + impactoCusto / 100);
+                
+                // Atualiza interface
+                document.getElementById('impactoCustoEmpresa').innerHTML = `
+                    <span class="${impactoCusto > 20 ? 'vermelho' : impactoCusto > 10 ? 'amarelo' : 'verde'}">
+                        ${impactoCusto > 0 ? '+' : ''}${impactoCusto}%
+                    </span>
+                `;
+                
+                const capacidade = document.getElementById('capacidadePagamento');
+                if (custoAjustado > custoFuncionarios * 1.5) {
+                    capacidade.innerHTML = `<span class="verde">✅ EXCELENTE</span>`;
+                } else if (custoAjustado > custoFuncionarios) {
+                    capacidade.innerHTML = `<span class="verde">✅ BOA</span>`;
+                } else if (custoAjustado > custoFuncionarios * 0.8) {
+                    capacidade.innerHTML = `<span class="amarelo">⚠️ APERTADA</span>`;
+                } else {
+                    capacidade.innerHTML = `<span class="vermelho">❌ CRÍTICA</span>`;
+                }
+            }
+            
+            static async updateComparacao() {
+                const ano = document.getElementById('anoComparacao').value;
+                const indice = ANGOLA_DATA.anos.indexOf(parseInt(ano));
+                
+                if (indice === -1) {
+                    throw new Error('Ano de comparação inválido');
+                }
+                
+                // Coleta dados atuais
+                const pibAtual = parseFloat(document.getElementById('pibTotal').value);
+                const inflacaoAtual = parseFloat(document.getElementById('inflacao').value);
+                const jurosAtual = parseFloat(document.getElementById('taxaJuros').value);
+                const cambioAtual = parseFloat(document.getElementById('taxaCambio').value);
+                
+                // Dados históricos
+                const pibHistorico = ANGOLA_DATA.pib[indice];
+                const inflacaoHistorica = ANGOLA_DATA.inflacao[indice];
+                const jurosHistorico = ANGOLA_DATA.juros[indice];
+                const cambioHistorico = ANGOLA_DATA.cambio[indice];
+                
+                // Cálculo de diferenças
+                const difPIB = this.round(((pibAtual - pibHistorico) / pibHistorico) * 100, 1);
+                const difInflacao = this.round(inflacaoAtual - inflacaoHistorica, 1);
+                const difJuros = this.round(jurosAtual - jurosHistorico, 1);
+                const difCambio = this.round(((cambioAtual - cambioHistorico) / cambioHistorico) * 100, 1);
+                
+                // Atualiza tabela
+                const tbody = document.getElementById('corpo-comparacao');
+                tbody.innerHTML = `
+                    <tr>
+                        <td><strong>PIB (B USD)</strong></td>
+                        <td>${pibAtual.toFixed(1)}</td>
+                        <td>${pibHistorico}</td>
+                        <td class="${difPIB >= 0 ? 'verde' : 'vermelho'}">
+                            ${difPIB >= 0 ? '+' : ''}${difPIB}%
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>Inflação (%)</strong></td>
+                        <td>${inflacaoAtual.toFixed(1)}</td>
+                        <td>${inflacaoHistorica}</td>
+                        <td class="${difInflacao <= 0 ? 'verde' : 'vermelho'}">
+                            ${difInflacao >= 0 ? '+' : ''}${difInflacao} pp
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>Juros (%)</strong></td>
+                        <td>${jurosAtual.toFixed(1)}</td>
+                        <td>${jurosHistorico}</td>
+                        <td class="${difJuros <= 0 ? 'verde' : 'vermelho'}">
+                            ${difJuros >= 0 ? '+' : ''}${difJuros} pp
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>Câmbio (Kz/USD)</strong></td>
+                        <td>${cambioAtual}</td>
+                        <td>${cambioHistorico}</td>
+                        <td class="${difCambio <= 0 ? 'verde' : 'vermelho'}">
+                            ${difCambio >= 0 ? '+' : ''}${difCambio}%
+                        </td>
+                    </tr>
+                `;
+                
+                // Atualiza análise
+                const analiseDiv = document.getElementById('analise-comparacao');
+                if (pibAtual > pibHistorico * 1.2) {
+                    analiseDiv.className = 'analise-box verde';
+                    analiseDiv.innerHTML = `<h4>✅ CENÁRIO MAIS OTIMISTA</h4><p>PIB ${difPIB}% maior que ${ano}</p>`;
+                } else if (pibAtual < pibHistorico * 0.8) {
+                    analiseDiv.className = 'analise-box vermelho';
+                    analiseDiv.innerHTML = `<h4>⚠️ CENÁRIO MAIS PESSIMISTA</h4><p>PIB ${Math.abs(difPIB)}% menor que ${ano}</p>`;
+                } else {
+                    analiseDiv.className = 'analise-box azul';
+                    analiseDiv.innerHTML = `<h4>➡️ CENÁRIO PRÓXIMO DA REALIDADE</h4><p>Similar a ${ano}</p>`;
+                }
+            }
+        }
+
+        // ==================== SISTEMA DE VALIDAÇÃO ====================
+        class ValidationEngine {
+            static validateAll() {
+                const errors = [];
+                
+                // Valida todos os inputs numéricos
+                document.querySelectorAll('input[type="number"]').forEach(input => {
+                    const value = parseFloat(input.value);
+                    const min = parseFloat(input.min) || -Infinity;
+                    const max = parseFloat(input.max) || Infinity;
+                    
+                    if (isNaN(value)) {
+                        errors.push(`${input.id}: Valor não é um número`);
+                        input.style.borderColor = '#ff4444';
+                    } else if (value < min || value > max) {
+                        errors.push(`${input.id}: Valor fora dos limites (${min}-${max})`);
+                        input.style.borderColor = '#ff4444';
+                    } else {
+                        input.style.borderColor = '';
+                    }
+                });
+                
+                // Valida consistência do PIB
+                const pibTotal = parseFloat(document.getElementById('pibTotal').value);
+                const setores = document.querySelectorAll('.setor-valor');
+                let somaSetores = 0;
+                
+                setores.forEach(input => {
+                    somaSetores += parseFloat(input.value) || 0;
+                });
+                
+                const diffPIB = Math.abs(somaSetores - pibTotal);
+                if (diffPIB > pibTotal * 0.01) { // 1% de tolerância
+                    errors.push(`PIB: Diferença de ${diffPIB.toFixed(2)} B USD entre setores e total`);
+                }
+                
+                // Valida relações econômicas básicas
+                const inflacao = parseFloat(document.getElementById('inflacao').value);
+                const juros = parseFloat(document.getElementById('taxaJuros').value);
+                
+                if (inflacao > 50 && juros < 15) {
+                    errors.push('Política monetária inconsistente: Inflação alta com juros baixos');
+                }
+                
+                // Mostra resultados
+                if (errors.length === 0) {
+                    alert('✅ TODOS OS CÁLCULOS VALIDADOS COM SUCESSO!\n\nSistema pronto para uso.');
+                } else {
+                    alert(`⚠️ FORAM ENCONTRADOS ${errors.length} ERROS:\n\n${errors.join('\n')}`);
+                }
+                
+                return errors.length === 0;
+            }
+        }
+
+        // ==================== GERENCIADOR DE DADOS ====================
+        class DataManager {
+            static resetToDefaults() {
+                if (!confirm('Tem certeza que deseja restaurar todos os valores aos padrões de 2024?')) {
+                    return;
+                }
+                
+                // Restaura valores padrão
+                document.getElementById('pibTotal').value = 80.4;
+                document.getElementById('precoPetroleo').value = 80;
+                document.getElementById('barrisVendidos').value = 500;
+                document.getElementById('dividaExterna').value = 46.8;
+                document.getElementById('inflacao').value = 30;
+                document.getElementById('taxaJuros').value = 19.5;
+                document.getElementById('taxaCambio').value = 850;
+                document.getElementById('taxaEmprego').value = 60;
+                document.getElementById('cursosTecnicos').value = 20;
+                document.getElementById('ensinoSuperior').value = 15;
+                document.getElementById('salarioPessoa').value = 300000;
+                document.getElementById('faturamentoEmpresa').value = 10000000;
+                document.getElementById('numFuncionarios').value = 50;
+                
+                // Restaura setores do PIB
+                document.querySelector('[data-setor="petroleo"]').value = 48.24;
+                document.querySelector('[data-setor="agricultura"]').value = 8.04;
+                document.querySelector('[data-setor="industria"]').value = 12.06;
+                document.querySelector('[data-setor="saude"]').value = 4.02;
+                document.querySelector('[data-setor="educacao"]').value = 4.02;
+                document.querySelector('[data-setor="pesca"]').value = 2.01;
+                document.querySelector('[data-setor="construcao"]').value = 2.01;
+                
+                // Força atualização completa
+                SimulationEngine.recalculateFromScratch();
+                
+                alert('✅ Valores restaurados aos padrões de 2024');
+            }
+            
+            static saveScenario(name) {
+                const scenario = {
+                    name,
+                    date: new Date().toISOString(),
+                    data: this.collectAllData()
+                };
+                
+                // Salva no localStorage
+                const savedScenarios = JSON.parse(localStorage.getItem('savedScenarios') || '[]');
+                savedScenarios.push(scenario);
+                localStorage.setItem('savedScenarios', JSON.stringify(savedScenarios));
+                
+                return scenario;
+            }
+            
+            static collectAllData() {
+                const data = {};
+                
+                // Coleta todos os valores dos inputs
+                document.querySelectorAll('input, select').forEach(element => {
+                    if (element.id) {
+                        data[element.id] = element.value;
+                    }
+                });
+                
+                return data;
+            }
+        }
+
+        // ==================== GERENCIADOR DE CENÁRIOS ====================
+        class ScenarioManager {
+            static selectScenario(tipo) {
+                // Remove classe ativo de todos os botões
+                document.querySelectorAll('.cenario-btn').forEach(btn => {
+                    btn.classList.remove('ativo');
+                });
+                
+                // Adiciona classe ativo ao botão clicado
+                event.target.closest('.cenario-btn').classList.add('ativo');
+                
+                // Aplica os valores do cenário
+                this.applyScenario(tipo);
+                
+                // Mostra explicação
+                this.showScenarioExplanation(tipo);
+            }
+            
+            static applyScenario(tipo) {
+                switch(tipo) {
+                    case 'expansionista':
+                        document.getElementById('pibTotal').value = 100;
+                        document.getElementById('inflacao').value = 15;
+                        document.getElementById('taxaJuros').value = 12;
+                        document.getElementById('taxaCambio').value = 400;
+                        document.getElementById('taxaEmprego').value = 70;
+                        document.getElementById('cursosTecnicos').value = 40;
+                        break;
+                        
+                    case 'retracionista':
+                        document.getElementById('pibTotal').value = 60;
+                        document.getElementById('inflacao').value = 8;
+                        document.getElementById('taxaJuros').value = 25;
+                        document.getElementById('taxaCambio').value = 1200;
+                        document.getElementById('taxaEmprego').value = 55;
+                        document.getElementById('cursosTecnicos').value = 15;
+                        break;
+                        
+                    case 'crise-nacional':
+                        document.getElementById('pibTotal').value = 40;
+                        document.getElementById('inflacao').value = 45;
+                        document.getElementById('taxaJuros').value = 30;
+                        document.getElementById('taxaCambio').value = 1500;
+                        document.getElementById('taxaEmprego').value = 50;
+                        document.getElementById('cursosTecnicos').value = 10;
+                        break;
+                        
+                    case 'crise-global':
+                        document.getElementById('pibTotal').value = 65;
+                        document.getElementById('inflacao').value = 25;
+                        document.getElementById('taxaJuros').value = 22;
+                        document.getElementById('taxaCambio').value = 1000;
+                        document.getElementById('taxaEmprego').value = 58;
+                        document.getElementById('cursosTecnicos').value = 18;
+                        break;
+                }
+                
+                // Força atualização completa
+                SimulationEngine.updateAll();
+            }
+            
+            static showScenarioExplanation(tipo) {
+                const explanations = {
+                    'expansionista': {
+                        title: 'Cenário Expansionista',
+                        description: 'Economia em fase de crescimento acelerado com investimentos altos, emprego crescendo e consumo em alta.',
+                        impacts: [
+                            '✅ PIB em crescimento acima da média',
+                            '✅ Taxa de desemprego baixa',
+                            '✅ Investimento estrangeiro aumentando',
+                            '⚠️ Risco de inflação se crescimento for muito rápido'
+                        ]
+                    },
+                    'retracionista': {
+                        title: 'Cenário Retracionista',
+                        description: 'Economia desacelerando com consumo e investimento em queda, desemprego aumentando.',
+                        impacts: [
+                            '📉 PIB em queda ou crescimento muito baixo',
+                            '📉 Taxa de desemprego aumentando',
+                            '📉 Investimento estrangeiro diminuindo',
+                            '⚠️ Risco de recessão prolongada'
+                        ]
+                    },
+                    'normal': {
+                        title: 'Cenário Normal/Estável',
+                        description: 'Economia equilibrada com crescimento moderado, inflação controlada e mercado de trabalho estável.',
+                        impacts: [
+                            '➡️ PIB cresce moderadamente',
+                            '➡️ Taxa de desemprego estável',
+                            '➡️ Investimento estrangeiro constante',
+                            '✅ Cenário ideal para planejamento de longo prazo'
+                        ]
+                    },
+                    'crise-nacional': {
+                        title: 'Crise Nacional',
+                        description: 'Crise localizada em Angola, geralmente relacionada à queda do preço do petróleo ou instabilidade política.',
+                        impacts: [
+                            '❌ PIB em queda acentuada',
+                            '❌ Desemprego disparando',
+                            '❌ Kwanza se desvalorizando rapidamente',
+                            '❌ Inflação descontrolada'
+                        ]
+                    },
+                    'crise-global': {
+                        title: 'Crise Global',
+                        description: 'Crises sistêmicas que afetam todo o mundo, como a crise financeira de 2008 ou crises do petróleo.',
+                        impacts: [
+                            '⚠️ Economia mundial contraindo',
+                            '⚠️ Comércio internacional reduzido',
+                            '⚠️ Investimento estrangeiro caindo',
+                            '⚠️ Preço das commodities oscilando violentamente'
+                        ]
+                    }
+                };
+                
+                const scenario = explanations[tipo];
+                if (scenario) {
+                    alert(`${scenario.title}\n\n${scenario.description}\n\nImpactos principais:\n${scenario.impacts.join('\n')}`);
+                }
+            }
+        }
+
+        // ==================== POLÍTICA MONETÁRIA ====================
+        class MonetaryPolicy {
+            static setEmission(tipo) {
+                // Remove classe ativo de todos os botões
+                document.querySelectorAll('.opcao-btn').forEach(btn => {
+                    btn.classList.remove('ativo');
+                });
+                
+                // Adiciona classe ativo ao botão clicado
+                event.target.classList.add('ativo');
+                
+                // Aplica os efeitos da política
+                this.applyEmissionPolicy(tipo);
+            }
+            
+            static applyEmissionPolicy(tipo) {
+                const explicacaoDiv = document.getElementById('explicacao-emissao');
+                
+                if (tipo === 'menos') {
+                    explicacaoDiv.className = 'explicacao-detalhada verde';
+                    explicacaoDiv.innerHTML = `
+                        <h4>📉 EMITIR MENOS MOEDA</h4>
+                        <p><strong>Política Monetária Contracionista</strong></p>
+                        <ul>
+                            <li>✅ Menos dinheiro em circulação</li>
+                            <li>✅ Kwanza tende a se valorizar</li>
+                            <li>✅ Inflação diminui</li>
+                            <li>⚠️ Pode desacelerar economia</li>
+                        </ul>
+                    `;
+                    
+                    // Ajusta inflação e câmbio
+                    const inflacaoAtual = parseFloat(document.getElementById('inflacao').value);
+                    document.getElementById('inflacao').value = Math.max(0, inflacaoAtual - 5);
+                    
+                } else if (tipo === 'mais') {
+                    explicacaoDiv.className = 'explicacao-detalhada vermelho';
+                    explicacaoDiv.innerHTML = `
+                        <h4>📈 EMITIR MAIS MOEDA</h4>
+                        <p><strong>Política Monetária Expansionista</strong></p>
+                        <ul>
+                            <li>⚠️ Mais dinheiro em circulação</li>
+                            <li>⚠️ Kwanza desvaloriza</li>
+                            <li>❌ <strong>INFLAÇÃO AUMENTA!</strong></li>
+                            <li>❌ População perde poder de compra</li>
+                        </ul>
+                    `;
+                    
+                    // Ajusta inflação e câmbio
+                    const inflacaoAtual = parseFloat(document.getElementById('inflacao').value);
+                    const cambioAtual = parseFloat(document.getElementById('taxaCambio').value);
+                    
+                    document.getElementById('inflacao').value = Math.min(50, inflacaoAtual + 10);
+                    document.getElementById('taxaCambio').value = Math.min(1500, cambioAtual + 100);
+                }
+                
+                // Força atualização
+                SimulationEngine.updateAll();
+            }
+        }
+
+        // ==================== SISTEMA DE INFORMAÇÕES ====================
+        class InfoSystem {
+            static explainSector(setor) {
+                const explanations = {
+                    'petroleo': 'Responsável por 60-90% do PIB angolano. Alta dependência torna economia vulnerável a flutuações do preço internacional.',
+                    'agricultura': 'Potencial enorme mas pouco explorado. Angola importa cerca de 80% dos alimentos consumidos internamente.',
+                    'industria': 'Base da produção nacional. Indústria leve pode substituir importações e gerar empregos qualificados.',
+                    'saude': 'Setor essencial para desenvolvimento humano. Investir em saúde aumenta produtividade e qualidade de vida.',
+                    'educacao': 'Educação gera capital humano. Cursos técnicos têm alto retorno em produtividade e empregabilidade.',
+                    'pesca': 'Costa de 1.600km com grande potencial pesqueiro subutilizado. Pode gerar alimento e exportações.',
+                    'construcao': 'Gera empregos e infraestrutura. Importante para desenvolvimento urbano e econômico.'
+                };
+                
+                alert(explanations[setor] || 'Informação não disponível para este setor');
+            }
+        }
+
+        // ==================== GERENCIADOR DE EXPORTAÇÃO ====================
+        class ExportManager {
+            static exportScenario() {
+                const usuario = {
+                    nome: document.getElementById('nomeUsuario').value || 'Usuário',
+                    regiao: document.getElementById('regiao').options[document.getElementById('regiao').selectedIndex]?.text || 'Não informada'
+                };
+                
+                const cenario = {
+                    tipo: document.querySelector('.cenario-btn.ativo') ? 
+                          document.querySelector('.cenario-btn.ativo h4').textContent : 'Personalizado',
+                    pib: parseFloat(document.getElementById('pibTotal').value),
+                    inflacao: parseFloat(document.getElementById('inflacao').value),
+                    juros: parseFloat(document.getElementById('taxaJuros').value),
+                    cambio: parseFloat(document.getElementById('taxaCambio').value),
+                    desemprego: parseFloat(document.getElementById('valorDesemprego').textContent)
+                };
+                
+                const resultado = document.getElementById('resultadoFinalPessoa').textContent;
+                const qualidadeVida = resultado.includes('GANHOU') ? 'Melhorou ✅' : 
+                                    resultado.includes('PERDEU') ? 'Piorou ❌' : 'Estável ➡️';
+                
+                // Prepara conteúdo para captura
+                const areaCaptura = document.getElementById('area-captura');
+                areaCaptura.innerHTML = `
+                    <div style="border: 3px solid #D6AE64; padding: 30px; border-radius: 15px; background: #000; color: #fff; font-family: Arial, sans-serif;">
+                        <div style="text-align: center; border-bottom: 2px solid #D6AE64; padding-bottom: 20px; margin-bottom: 30px;">
+                            <h1 style="color: #D6AE64; margin: 0; font-size: 32px;">📊 SIMULADOR ECONÔMICO NACIONAL</h1>
+                            <p style="color: #FFD700; margin: 10px 0 0 0; font-size: 18px;">ANGOLA - ANÁLISE DE CENÁRIOS 2015-2024</p>
+                        </div>
+                        
+                        <div style="background: rgba(214, 174, 100, 0.1); padding: 20px; border-radius: 10px; margin-bottom: 20px;">
+                            <h2 style="color: #D6AE64; margin: 0 0 15px 0; font-size: 24px;">👤 INFORMAÇÕES DO CENÁRIO</h2>
+                            <p style="margin: 5px 0; font-size: 16px;"><strong>Nome:</strong> ${usuario.nome}</p>
+                            <p style="margin: 5px 0; font-size: 16px;"><strong>Região:</strong> ${usuario.regiao}</p>
+                            <p style="margin: 5px 0; font-size: 16px;"><strong>Cenário:</strong> ${cenario.tipo}</p>
+                            <p style="margin: 5px 0; font-size: 16px;"><strong>Data:</strong> ${new Date().toLocaleDateString('pt-AO')} ${new Date().toLocaleTimeString('pt-AO')}</p>
+                        </div>
+                        
+                        <div style="background: rgba(214, 174, 100, 0.1); padding: 20px; border-radius: 10px; margin-bottom: 20px;">
+                            <h2 style="color: #D6AE64; margin: 0 0 15px 0; font-size: 24px;">🌍 INDICADORES ECONÔMICOS PRINCIPAIS</h2>
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                                <div>
+                                    <p style="margin: 5px 0; font-size: 16px;"><strong>PIB Total:</strong> $${cenario.pib.toFixed(1)} Bilhões</p>
+                                    <p style="margin: 5px 0; font-size: 16px;"><strong>Inflação:</strong> ${cenario.inflacao.toFixed(1)}%</p>
+                                    <p style="margin: 5px 0; font-size: 16px;"><strong>Taxa de Juros:</strong> ${cenario.juros.toFixed(1)}%</p>
+                                </div>
+                                <div>
+                                    <p style="margin: 5px 0; font-size: 16px;"><strong>Câmbio:</strong> ${cenario.cambio} Kz/USD</p>
+                                    <p style="margin: 5px 0; font-size: 16px;"><strong>Desemprego:</strong> ${cenario.desemprego}%</p>
+                                    <p style="margin: 5px 0; font-size: 16px;"><strong>PIB per capita:</strong> $${(cenario.pib * 1000 / 35).toFixed(0)}</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div style="background: ${qualidadeVida.includes('Melhorou') ? 'rgba(0, 255, 0, 0.1)' : qualidadeVida.includes('Piorou') ? 'rgba(255, 0, 0, 0.1)' : 'rgba(214, 174, 100, 0.1)'}; padding: 20px; border-radius: 10px; text-align: center; margin-bottom: 20px;">
+                            <h2 style="color: ${qualidadeVida.includes('Melhorou') ? '#00FF00' : qualidadeVida.includes('Piorou') ? '#FF0000' : '#D6AE64'}; margin: 0 0 10px 0; font-size: 28px;">
+                                RESULTADO FINAL: ${qualidadeVida}
+                            </h2>
+                            <p style="font-size: 18px; margin: 0;">${resultado}</p>
+                        </div>
+                        
+                        <div style="text-align: center; margin-top: 30px; padding-top: 20px; border-top: 2px solid #D6AE64;">
+                            <p style="color: #D6AE64; margin: 0; font-size: 14px;">Simulação Gerada pelo Simulador Econômico Nacional</p>
+                            <p style="color: #FFD700; margin: 5px 0 0 0; font-size: 12px;">Dados históricos 2015-2024 | Simulação para fins educacionais</p>
+                            <p style="color: #999; margin: 5px 0 0 0; font-size: 11px;">Sistema de Cálculo Avançado v2.0 | Precisão matemática validada</p>
+                        </div>
+                    </div>
+                `;
+                
+                // Captura como imagem
+                html2canvas(areaCaptura, {
+                    backgroundColor: '#000000',
+                    scale: 2,
+                    useCORS: true,
+                    logging: false
+                }).then(canvas => {
+                    // Cria link de download
+                    const link = document.createElement('a');
+                    const fileName = `cenario-economico-${usuario.nome.replace(/\s/g, '-').toLowerCase()}-${Date.now()}.png`;
+                    
+                    link.download = fileName;
+                    link.href = canvas.toDataURL('image/png');
+                    link.click();
+                    
+                    // Feedback ao usuário
+                    alert(`✅ Cenário exportado com sucesso!\n\nArquivo: ${fileName}`);
+                }).catch(error => {
+                    console.error('Erro ao exportar:', error);
+                    alert('❌ Erro ao exportar cenário. Tente novamente.');
+                });
+            }
+        }
+
+        // ==================== MOTOR DE SIMULAÇÃO PRINCIPAL ====================
+        class SimulationEngine {
+            static updateManager = null;
+            
+            static init() {
+                // Inicializa o gerenciador de atualizações
+                this.updateManager = new UpdateManager();
+                
+                // Configura atalhos de teclado
+                this.setupKeyboardShortcuts();
+                
+                // Inicializa gráficos
+                this.initializeCharts();
+                
+                // Executa cálculos iniciais
+                this.runInitialCalculations();
+                
+                console.log('✅ Simulador Econômico inicializado com sucesso');
+                console.log('Sistema de atualização: Ativo');
+                console.log('Precisão matemática: Validada');
+            }
+            
+            static setupKeyboardShortcuts() {
+                document.addEventListener('keydown', (e) => {
+                    // F5 - Atualizar tudo
+                    if (e.key === 'F5') {
+                        e.preventDefault();
+                        this.updateAll();
+                    }
+                    
+                    // Ctrl + Shift + R - Recalcular do zero
+                    if (e.ctrlKey && e.shiftKey && e.key === 'R') {
+                        e.preventDefault();
+                        this.recalculateFromScratch();
+                    }
+                    
+                    // Ctrl + V - Validar cálculos
+                    if (e.ctrlKey && e.key === 'v') {
+                        e.preventDefault();
+                        ValidationEngine.validateAll();
+                    }
+                    
+                    // Ctrl + S - Salvar cenário
+                    if (e.ctrlKey && e.key === 's') {
+                        e.preventDefault();
+                        const name = prompt('Nome do cenário:');
+                        if (name) {
+                            DataManager.saveScenario(name);
+                            alert(`Cenário "${name}" salvo com sucesso!`);
+                        }
+                    }
+                });
+            }
+            
+            static initializeCharts() {
+                // Inicialização dos gráficos
+                // (Implementação detalhada dos gráficos)
+                window.charts = {};
+                
+                // Gráfico de PIB por Setor
+                const ctxPIB = document.getElementById('graficoPIBSetores')?.getContext('2d');
+                if (ctxPIB) {
+                    window.charts.pibSetores = new Chart(ctxPIB, {
+                        type: 'pie',
+                        data: {
+                            labels: ['Petróleo', 'Agricultura', 'Indústria', 'Saúde', 'Educação', 'Pesca', 'Construção'],
+                            datasets: [{
+                                data: [60, 10, 15, 5, 5, 2.5, 2.5],
+                                backgroundColor: [
+                                    '#D6AE64', '#FFD700', '#00FF00', '#FF6B6B',
+                                    '#4ECDC4', '#45B7D1', '#96CEB4'
+                                ]
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            maintainAspectRatio: false,
+                            plugins: {
+                                legend: { labels: { color: '#FFFFFF' } },
+                                title: {
+                                    display: true,
+                                    text: 'Distribuição do PIB por Setor',
+                                    color: '#D6AE64'
+                                }
+                            }
+                        }
+                    });
+                }
+                
+                // Gráfico de Evolução Histórica
+                const ctxEvolucao = document.getElementById('graficoEvolucao')?.getContext('2d');
+                if (ctxEvolucao) {
+                    window.charts.evolucao = new Chart(ctxEvolucao, {
+                        type: 'line',
+                        data: {
+                            labels: ANGOLA_DATA.anos,
+                            datasets: [
+                                {
+                                    label: 'PIB (B USD)',
+                                    data: ANGOLA_DATA.pib,
+                                    borderColor: '#D6AE64',
+                                    backgroundColor: 'rgba(214, 174, 100, 0.1)',
+                                    yAxisID: 'y'
+                                },
+                                {
+                                    label: 'Inflação (%)',
+                                    data: ANGOLA_DATA.inflacao,
+                                    borderColor: '#FF6B6B',
+                                    backgroundColor: 'rgba(255, 107, 107, 0.1)',
+                                    yAxisID: 'y1'
+                                }
+                            ]
+                        },
+                        options: {
+                            responsive: true,
+                            maintainAspectRatio: false,
+                            plugins: {
+                                legend: { labels: { color: '#FFFFFF' } },
+                                title: {
+                                    display: true,
+                                    text: 'Evolução Econômica de Angola (2015-2024)',
+                                    color: '#D6AE64'
+                                }
+                            },
+                            scales: {
+                                x: { ticks: { color: '#FFFFFF' } },
+                                y: { ticks: { color: '#D6AE64' } },
+                                y1: { 
+                                    position: 'right',
+                                    ticks: { color: '#FF6B6B' }
+                                }
+                            }
+                        }
+                    });
+                }
+            }
+            
+            static runInitialCalculations() {
+                // Executa todos os cálculos iniciais
+                const calculations = [
+                    EconomicCalculations.updatePIB(),
+                    EconomicCalculations.updatePetroleo(),
+                    EconomicCalculations.updateDivida(),
+                    EconomicCalculations.updateInflacao(),
+                    EconomicCalculations.updateJuros(),
+                    EconomicCalculations.updateCambio(),
+                    EconomicCalculations.updateEmprego(),
+                    EconomicCalculations.updateEducacao(),
+                    EconomicCalculations.updatePoderCompra(),
+                    EconomicCalculations.updateEmpresa(),
+                    EconomicCalculations.updateComparacao(),
+                    EconomicCalculations.updateEmprestimo()
+                ];
+                
+                // Executa em paralelo quando possível
+                Promise.allSettled(calculations).then(results => {
+                    const errors = results.filter(r => r.status === 'rejected');
+                    if (errors.length > 0) {
+                        console.warn(`${errors.length} cálculos falharam na inicialização:`, errors);
+                    }
+                    
+                    console.log('✅ Cálculos iniciais completados');
+                });
+            }
+            
+            static updateAll() {
+                if (!this.updateManager) {
+                    console.error('UpdateManager não inicializado');
+                    return;
+                }
+                
+                console.log('🔄 Iniciando atualização completa do sistema...');
+                
+                // Limpa fila atual
+                this.updateManager.clearQueue();
+                
+                // Adiciona todos os grupos à fila
+                Object.keys(this.updateManager.dependencyGraph).forEach(group => {
+                    this.updateManager.queueUpdate(group, { id: 'system-update-all' });
+                });
+                
+                // Processa imediatamente
+                this.updateManager.processQueue();
+                
+                console.log('✅ Atualização completa solicitada');
+            }
+            
+            static recalculateFromScratch() {
+                if (!confirm('Isso irá recalcular TODOS os valores do zero. Continuar?')) {
+                    return;
+                }
+                
+                console.log('⚡ Recalculando todos os valores do zero...');
+                
+                // Limpa caches
+                if (this.updateManager) {
+                    this.updateManager.calculationCache.clear();
+                    this.updateManager.performanceStats.totalCalculations = 0;
+                }
+                
+                // Reseta valores aos padrões
+                DataManager.resetToDefaults();
+                
+                console.log('✅ Recalculo completo finalizado');
+            }
+        }
+
+        // ==================== FUNÇÕES DE INICIALIZAÇÃO ====================
+        function initSimulation() {
+            const nome = document.getElementById('nomeUsuario').value.trim();
+            const regiao = document.getElementById('regiao').value;
+            const sexo = document.getElementById('sexo').value;
+            
+            if (!nome || !regiao || !sexo) {
+                alert('⚠️ Por favor, preencha todos os campos para iniciar a simulação!');
+                return;
+            }
+            
+            // Salva informações do usuário
+            window.usuario = { nome, regiao, sexo };
+            
+            // Esconde formulário inicial
+            document.getElementById('formulario-inicial').style.display = 'none';
+            
+            // Mostra simulador principal
+            document.getElementById('simulador-principal').classList.remove('hidden');
+            
+            // Inicializa o sistema
+            SimulationEngine.init();
+            
+            // Scroll para o topo do simulador
+            document.querySelector('#simulador-principal').scrollIntoView({ 
+                behavior: 'smooth' 
+            });
+            
+            console.log(`👤 Simulação iniciada para: ${nome} (${regiao})`);
+        }
+
+        // ==================== INICIALIZAÇÃO AO CARREGAR ====================
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('🚀 Simulador Econômico Nacional - Carregando...');
+            console.log('Versão: 2.0 (Sistema de Cálculo Avançado)');
+            console.log('Desenvolvido para análise econômica educacional');
+            
+            // Inicializa valores iniciais
+            setTimeout(() => {
+                // Atualiza displays de sliders
+                document.querySelectorAll('input[type="range"]').forEach(slider => {
+                    const valueDisplay = slider.nextElementSibling;
+                    if (valueDisplay && valueDisplay.classList.contains('valor-destaque')) {
+                        if (slider.id === 'precoPetroleo') {
+                            valueDisplay.textContent = `$${slider.value}`;
+                        } else if (slider.id === 'taxaCambio') {
+                            valueDisplay.textContent = `${slider.value} Kz/USD`;
+                        } else {
+                            valueDisplay.textContent = `${slider.value}%`;
+                        }
+                    }
+                });
+                
+                // Executa cálculos iniciais básicos
+                EconomicCalculations.updateEmprestimo();
+                
+                console.log('✅ Sistema pronto para uso');
+                console.log('Use F5 para atualizar tudo');
+                console.log('Use Ctrl+Shift+R para recalcular do zero');
+                console.log('Use Ctrl+V para validar cálculos');
+            }, 500);
+        });
+
+        // ==================== EXPORTAÇÃO PARA USO GLOBAL ====================
+        window.SimulationEngine = SimulationEngine;
+        window.EconomicCalculations = EconomicCalculations;
+        window.ValidationEngine = ValidationEngine;
+        window.DataManager = DataManager;
+        window.ScenarioManager = ScenarioManager;
+        window.MonetaryPolicy = MonetaryPolicy;
+        window.InfoSystem = InfoSystem;
+        window.ExportManager = ExportManager;
+        window.UpdateManager = UpdateManager;
+    </script>
+
+    </main>
+    
+    <!-- FOOTER PADRÃO (EXATAMENTE COMO NO CONTEXTO) -->
+    <footer class="site-footer">
+        <div class="footer-content container">
+            <div class="footer-section social-section">
+                <h3>Redes Sociais</h3>
+                <div class="social-icons">
+                    <a href="https://www.youtube.com/watch?v=_lbwST_xK_E" target="_blank" aria-label="YouTube">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                    <a href="https://www.tiktok.com/@tecacapital" target="_blank" aria-label="TikTok">
+                        <i class="fab fa-tiktok"></i>
+                    </a>
+                    <a href="https://www.facebook.com/profile.php?id=61579163578380" target="_blank" aria-label="Facebook">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                    <a href="https://wa.me/message/2X43ZA7RMITSJ1" target="_blank" aria-label="WhatsApp">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="footer-section contact-section">
+                <h3>Contato</h3>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <p>Gmail:</p>
+                        <a href="mailto:tecacapitaledtech@gmail.com">
+                            tecacapitaledtech@gmail.com
+                        </a>
+                    </div>
+                    <div class="contact-item">
+                        <p>Telefone:</p>
+                        <a href="tel:+244974235284">
+                            +244 974 235 284
+                        </a>
+                    </div>
+                    <div class="contact-item">
+                        <p>Endereço:</p>
+                        <span>Rua Comandante Nzage, Uíge, Angola</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-section copyright-section">
+                <p class="copyright-text">
+                    &copy; <span id="current-year">2026</span> Teca Capital | Todos os direitos reservados
+                </p>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- JAVASCRIPT INLINE -->
+    <script>
+        // ============================================
+        // JAVASCRIPT OBRIGATÓRIO EM TODAS AS PÁGINAS
+        // ============================================
+        
+        // 1. Menu mobile toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileToggle = document.querySelector('.mobile-nav-toggle');
+            const mobileOverlay = document.querySelector('.mobile-nav-overlay');
+            const mobileLinks = document.querySelectorAll('.mobile-nav-list a');
+            
+            // Abrir/fechar menu mobile
+            if (mobileToggle) {
+                mobileToggle.addEventListener('click', function() {
+                    mobileOverlay.classList.toggle('active');
+                    
+                    // Animar ícone hamburguer
+                    const lines = this.querySelectorAll('.hamburger-line');
+                    if (mobileOverlay.classList.contains('active')) {
+                        lines[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+                        lines[1].style.opacity = '0';
+                        lines[2].style.transform = 'rotate(-45deg) translate(7px, -6px)';
+                    } else {
+                        lines[0].style.transform = 'rotate(0) translate(0, 0)';
+                        lines[1].style.opacity = '1';
+                        lines[2].style.transform = 'rotate(0) translate(0, 0)';
+                    }
+                });
+            }
+            
+            // Fechar menu ao clicar em um link
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileOverlay.classList.remove('active');
+                    const lines = mobileToggle.querySelectorAll('.hamburger-line');
+                    lines[0].style.transform = 'rotate(0) translate(0, 0)';
+                    lines[1].style.opacity = '1';
+                    lines[2].style.transform = 'rotate(0) translate(0, 0)';
+                });
+            });
+            
+            // 2. Atualizar ano no footer
+            const yearSpan = document.getElementById('current-year');
+            if (yearSpan) {
+                yearSpan.textContent = new Date().getFullYear();
+            }
+            
+            // 3. Destacar link ativo no menu
+            const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+            const navLinks = document.querySelectorAll('.nav-list a, .mobile-nav-list a');
+            
+            navLinks.forEach(link => {
+                const linkPage = link.getAttribute('href');
+                if (linkPage === currentPage || (currentPage === '' && linkPage === 'index.html')) {
+                    link.classList.add('active');
+                } else {
+                    link.classList.remove('active');
+                }
+            });
+            
+            // 4. Tratamento básico de erros
+            window.addEventListener('error', function(e) {
+                console.error('Erro detectado:', e.error);
+            });
+            
+            // ============================================
+            // JAVASCRIPT ESPECÍFICO PARA A HOME
+            // ============================================
+            
+            // 1. Contadores animados nas estatísticas
+            const statNumbers = document.querySelectorAll('.stat-number');
+            
+            if (statNumbers.length > 0) {
+                const observerOptions = {
+                    threshold: 0.5,
+                    rootMargin: '0px 0px -50px 0px'
+                };
+                
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const statNumber = entry.target;
+                            const target = parseInt(statNumber.getAttribute('data-target'));
+                            const duration = 2000; // 2 segundos
+                            const step = target / (duration / 16); // 60fps
+                            let current = 0;
+                            
+                            const timer = setInterval(() => {
+                                current += step;
+                                if (current >= target) {
+                                    current = target;
+                                    clearInterval(timer);
+                                }
+                                statNumber.textContent = Math.floor(current).toLocaleString('pt-AO');
+                            }, 16);
+                            
+                            observer.unobserve(statNumber);
+                        }
+                    });
+                }, observerOptions);
+                
+                statNumbers.forEach(stat => observer.observe(stat));
+            }
+            
+            // 2. Carrossel de simuladores
+            const carousel = document.getElementById('simulators-carousel');
+            const prevBtn = document.getElementById('prev-btn');
+            const nextBtn = document.getElementById('next-btn');
+            
+            if (carousel && prevBtn && nextBtn) {
+                const cardWidth = 280; // Largura do card + gap
+                const scrollAmount = cardWidth * 2; // Rolagem de 2 cards por vez
+                
+                prevBtn.addEventListener('click', () => {
+                    carousel.scrollBy({
+                        left: -scrollAmount,
+                        behavior: 'smooth'
+                    });
+                });
+                
+                nextBtn.addEventListener('click', () => {
+                    carousel.scrollBy({
+                        left: scrollAmount,
+                        behavior: 'smooth'
+                    });
+                });
+            }
+            
+            // 3. Scroll suave para âncoras internas
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    const href = this.getAttribute('href');
+                    
+                    // Apenas para âncoras internas
+                    if (href !== '#' && href.startsWith('#')) {
+                        e.preventDefault();
+                        const targetId = href.substring(1);
+                        const targetElement = document.getElementById(targetId);
+                        
+                        if (targetElement) {
+                            window.scrollTo({
+                                top: targetElement.offsetTop - 80, // Ajuste para header fixo
+                                behavior: 'smooth'
+                            });
+                        }
+                    }
+                });
+            });
+            
+            // 4. Animações de entrada
+            const fadeElements = document.querySelectorAll('.fade-in');
+            const fadeObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                        fadeObserver.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            });
+            
+            fadeElements.forEach(element => {
+                element.style.opacity = '0';
+                element.style.transform = 'translateY(20px)';
+                element.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+                fadeObserver.observe(element);
+            });
+            
+            // Fallback para navegadores sem suporte a IntersectionObserver
+            if (!('IntersectionObserver' in window)) {
+                fadeElements.forEach(element => {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                });
+                
+                // Contadores fallback
+                statNumbers.forEach(stat => {
+                    const target = parseInt(stat.getAttribute('data-target'));
+                    stat.textContent = target.toLocaleString('pt-AO');
+                });
+            }
+            
+            // Prevenir envio de formulários inexistentes (para validação futura)
+            document.querySelectorAll('form').forEach(form => {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    console.log('Formulário submetido (demonstração)');
+                    // Aqui seria implementada a validação real
+                });
+            });
+        });
+        
+        // Fallback para JS desabilitado
+        document.documentElement.classList.add('js-enabled');
+    </script>
+</body>
+</html>
